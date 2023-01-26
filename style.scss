@@ -1,0 +1,1351 @@
+$mainOrange: #eb5f28;
+$mainWhite: #fdfdfd;
+$mainGrey: #878787;
+
+$logoFontSize: 2.5em;
+$navFontSize: 1.5em;
+$bodyFontSize: 2.5rem;
+
+$cardSizeMultiplier: 1.4;
+$widthRatio: 1;
+
+/* Fonts */
+
+@font-face {
+    font-family: Main;
+    src: url('./fonts/Helvetica.otf');
+}
+
+@font-face {
+    font-family: DMSans;
+    src: url('./fonts/DMSans-Regular.ttf');
+}
+
+/* No Select */
+
+.noselect, img {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                        supported by Chrome, Edge, Opera and Firefox */
+}
+
+input,
+textarea,
+button,
+select,
+a,
+svg,
+div {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+*::selection {
+    background-color: $mainOrange;
+    color: $mainWhite;
+    text-shadow: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #d0d0d0; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to top, $mainOrange, #eb9472);
+}
+
+/* Loading Page */
+.loadingPage {
+    position: fixed;
+    background-color: $mainWhite;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999999999;
+    pointer-events: none;
+}
+
+// Curosr Follower
+.cursorFollowerContainer {
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 200;
+}
+
+.cursorFollower {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: $mainOrange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $mainOrange;
+}
+
+.cursorSVGContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cursorSVG {
+    position: absolute;
+    transform: scale(0);
+}
+
+.cursorSVGPath {
+    fill: $mainOrange;
+}
+
+.cursorSVGSlide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateZ(90deg);
+}
+
+/* Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: $mainWhite;
+    font-size: 10px;
+    color: $mainGrey;
+    overflow-x: hidden;
+    /* cursor: none; */
+}
+
+body {
+    background-color: $mainWhite;
+    box-sizing: border-box;
+    z-index: 100;
+    font-size: 10px;
+    box-sizing: border-box;
+    width: 100vw;
+    overflow-x: hidden;
+    font-family: DMSans;
+    background-color: #eb9472;
+}
+
+.canvasOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* z-index: 100000000; */
+    z-index: 0;
+    pointer-events: none;
+}
+
+.webgl {
+    position: fixed;
+    outline: none;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    /* z-index: 100000000; */
+    pointer-events: none;
+}
+
+main {
+    background-color: $mainWhite;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 5rem 1rem #0000002a;
+    border-radius: 0 0 5rem 5rem;
+}
+
+/* Responsive */
+
+/* Max-Width 1080px */
+
+@media screen and (max-width: 1800px) {
+    html {
+        font-size: 8px;
+    }
+
+    @media (orientation: Portrait) {
+       /* Portrait */
+
+    }
+      
+    @media (orientation: landscape) {
+        /* Landscape */
+
+    }
+
+    /* Responsive Common */
+
+}
+
+@media screen and (max-width: 1550px) {
+    html {
+        font-size: 7px;
+    }
+
+    @media (orientation: Portrait) {
+       /* Portrait */
+
+    }
+      
+    @media (orientation: landscape) {
+        /* Landscape */
+
+    }
+
+    /* Responsive Common */
+
+}
+
+@media screen and (max-width: 1350px) {
+    html {
+        font-size: 6px;
+    }
+
+    @media (orientation: Portrait) {
+       /* Portrait */
+
+    }
+      
+    @media (orientation: landscape) {
+        /* Landscape */
+
+    }
+
+    /* Responsive Common */
+
+}
+
+@media screen and (max-width: 1150px) {
+    html {
+        font-size: 5px;
+    }
+
+    @media (orientation: Portrait) {
+       /* Portrait */
+
+    }
+      
+    @media (orientation: landscape) {
+        /* Landscape */
+
+    }
+
+    /* Responsive Common */
+
+}
+
+@media screen and (max-width: 950px) {
+    html {
+        font-size: 4px;
+    }
+
+    @media (orientation: Portrait) {
+       /* Portrait */
+
+    }
+      
+    @media (orientation: landscape) {
+        /* Landscape */
+
+    }
+
+    /* Responsive Common */
+
+}
+
+@media screen and (max-width: 900px) {
+
+    @media (orientation: Portrait) {
+       /* Portrait */
+
+    }
+      
+    @media (orientation: landscape) {
+        /* Landscape */
+
+    }
+
+    /* Responsive Common */
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    .cursorFollowerContainer {
+        opacity: 0;
+    }
+
+}
+
+// Modal Section
+.modalSection {
+    position: fixed;
+    z-index: 50;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: flex-start;
+    padding-inline: 10rem;
+    padding-top: 11.5rem;
+    padding-bottom: 10rem;
+    overflow-x: hidden;
+    display: none;
+    opacity: 0;
+    // display: flex;
+    // opacity: 1;
+}
+
+.modalClose {
+    position: fixed;
+    top: 2.5rem;
+    right: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    box-shadow: -3px 3px 10px 0px $mainGrey;
+    background-image: linear-gradient(to top right, $mainOrange, #eb9472);
+    pointer-events: auto;
+    transform: scale(0);
+    cursor: pointer;
+}
+
+.closeSVG {
+    fill: $mainWhite;
+}
+
+.modalPopup {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5rem;
+    box-shadow: 0px 0px 10px 0px $mainGrey;
+    background-color: #fffffff0;
+}
+
+.modalContent {
+    z-index: 1;
+    width: 100%;
+    min-height: calc(100vh - 21.5rem);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 5rem;
+    pointer-events: none;
+    position: relative;
+}
+
+.modalContentHeader {
+    position: relative;
+    width: min(75rem, 100%);
+    text-align: left;
+    font-size: 13rem;
+    line-height: 13rem;
+    border-bottom: 1px solid $mainGrey;
+    padding-bottom: 2rem;
+}
+
+.modalContentDescription {
+    width: min(75rem, 100%);
+    text-align: left;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    margin-top: 2.5rem;
+}
+
+.modalContentSizes {
+    width: 100%;
+    text-align: right;
+    font-size: 2.2rem;
+    line-height: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+.modalContentFeatures {
+    width: 35%;
+    right: 0;
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
+    text-align: right;
+    padding-top: 7.5rem;
+    padding-right: 5rem;
+    gap: 10rem;
+    font-size: 2.2rem;
+    line-height: 2.5rem;
+}
+
+.modalContentExtra {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10rem;
+    text-align: center;
+    width: 100%;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    padding-top: 20rem;
+}
+
+.modalContentExtraOverlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% + 10rem);
+    height: 200%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#modalContentExtraOverlayFlip {
+    transform: scaleX(-1);
+}
+
+.modalContentExtraPhotoDiv {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalContentPhotoLavender {
+    position: absolute;
+    left: -1rem;
+    width: 12%;
+    transform: rotateZ(45deg);
+    margin-bottom: 15%;
+}
+
+#modalContentPhotoChamomile {
+    position: absolute;
+    left: -1rem;
+    width: 14%;
+    transform: rotateZ(45deg);
+    margin-top: 15%;
+}
+
+#modalContentPhotoCalendula {
+    position: absolute;
+    right: -1rem;
+    width: 12%;
+    transform: scaleX(-1) scaleY(1) rotateZ(45deg);
+    margin-bottom: 15%;
+}
+
+#modalContentPhotoRosemary {
+    position: absolute;
+    right: -5rem;
+    width: 20%;
+    transform: scaleX(-1) scaleY(1) rotateZ(-60deg);
+    margin-top: 15%;
+}
+
+.modalContentApproval {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10%;
+    width: 100%;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    padding-top: 15rem;
+}
+
+.modalContentApprovalaDivLeft {
+    text-align: left;
+}
+
+.modalContentEApprovalDivRight {
+    text-align: right;
+}
+
+.modalContentCharts {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding-top: 10rem;
+}
+
+.modalContentChartsContainer {
+    position: relative;
+    background-color: #eb5f2850;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.modalContentChartsFill {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.modalContentChartsCenter {
+    position: absolute;
+    z-index: 1;
+    width: calc(75%);
+    height: calc(75%);
+    box-shadow: inset 0 0 2px 0px #00000020;
+    border-radius: 50%;
+    background-color: $mainWhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: $mainOrange;
+}
+
+.modalContentChartsCard {
+    width: calc(100%/3);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.modalContentChartsText {
+    width: 100%;
+    padding-inline: 10rem;
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+.orbitCanvas {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: calc(100vw * 1080/1928);
+}
+
+// Nav Section
+.navSection {
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    padding-block: 2rem;
+    padding-left: 10rem;
+    pointer-events: none;
+    font-size: 10px;
+}
+
+.navToggle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: linear-gradient(to right, $mainOrange, #eb9472);
+    box-shadow: inset 0 0 5px 1px #00000020;
+    border-radius: 6.5em / 2 + 0.4em;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0.4em;
+    pointer-events: auto;
+}
+
+.navLogo {
+    width: 6.5em;
+    height: 6.5em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $mainWhite;
+    box-shadow: 0 0 4px 1px #00000020;
+    pointer-events: auto;
+}
+
+.logoImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: scale(0.55);
+}
+
+.logoBar {
+    width: 2.5em;
+    height: 0.5em;
+    border-radius: 0.5em;
+    background-color: $mainOrange;
+    margin-block: 0.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: left;
+}
+
+#logoBar1 {
+    width: 1em;
+    transform: translateX(0.45em);
+}
+
+#logoBar2 {
+    width: 1.5em;
+}
+
+#logoBar3 {
+    width: 2.3em;
+    transform: translateX(-0.3em);
+}
+
+#logoBar4 {
+    width: 3.2em;
+    transform: translateX(-0.3em);
+}
+
+#logoBar5 {
+    width: 4.6em;
+    transform: translateX(-0.2em);
+}
+
+#logoBar6 {
+    width: 5.6em;
+}
+
+#logoBar7 {
+    width: 6.1em;
+}
+
+#logoBar8 {
+    width: 6.1em;
+}
+
+#logoBar9 {
+    width: 5.9em;
+    transform: translateX(0.06em);
+}
+
+#logoBar10 {
+    width: 5.4em;
+    transform: translateX(0.06em);
+}
+
+#logoBar11 {
+    width: 4em;
+    transform: translateX(0.06em);
+}
+
+#logoBar12 {
+    width: 1.9em;
+    transform: translateX(0.06em);
+}
+
+.navName {
+    height: 6.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: $mainWhite;
+    font-size: $logoFontSize;
+    font-family: Main;
+}
+
+.navNameText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    padding-left: 0.5em;
+    padding-right: 0.25em;
+    text-shadow: 0 0 5px 1px #00000020;
+}
+
+nav {
+    height: 6.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: $mainWhite;
+    font-size: $navFontSize;
+    overflow: hidden;
+}
+
+.navChoice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    padding-inline: 1rem;
+    padding-block: 3rem;
+    position: relative;
+}
+
+.navChoiceDot {
+    position: absolute;
+    width: 0.2em;
+    height: 0.2em;
+    border-radius: 50%;
+    background-color: $mainWhite;
+    transform: translateY(1.4em);
+}
+
+// Hero Section
+.heroSection {
+    position: relative;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.heroHeaderText {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    // background: linear-gradient(to right, $mainOrange, #eb9472);
+    // background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    color: $mainOrange;
+    font-size: 25rem;
+}
+
+#heroHeaderText1 {
+    justify-content: flex-start;
+    transform: translateY(-20rem);
+    padding-left: 10rem;
+}
+
+#heroHeaderText2 {
+    justify-content: center;
+    // color: transparent;
+    // -webkit-text-stroke-width: 3px;
+    // -webkit-text-stroke-color: $mainWhite;
+}
+
+#heroHeaderText3 {
+    justify-content: flex-end;
+    transform: translateY(20rem);
+    padding-right: 10rem;
+}
+
+.heroSubHeaderText {
+    position: absolute;
+    bottom: 2.5rem;
+    font-size: 4rem;
+    text-align: center;
+}
+
+// Intro Section
+.introSection {
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    height: 70rem;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem;
+}
+
+.introContainer {
+    width: 100%;
+    height: 100%;
+    border-radius: 100rem;
+    background-image: linear-gradient(to right, $mainOrange, #eb9472, $mainOrange);
+    box-shadow: inset 0 -5px 10px 0px #0000002a;
+}
+
+// Product Section
+.productSection {
+    position: relative;
+    width: 100vw;
+    height: calc((100vw - 20rem - 40rem)/2 * 1.1 + 20rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10rem;
+    z-index: 2;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.productChoice {
+    position: relative;
+    width: calc((100vw - 20rem - 40rem)/2);
+    height: calc((100vw - 20rem - 40rem)/2 * 1.1);
+    border-radius: 5rem;
+    z-index: -1;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 2.5rem;
+    position: absolute;
+}
+
+#skincareChoice {
+    box-shadow: 2px -2px 10px 0px $mainGrey;
+    left: 10rem;
+    top: 10rem;
+}
+
+#dryskinChoice {
+    box-shadow: -2px -2px 10px 0px $mainGrey;
+    right: 10rem;
+    top: 10rem;
+}
+
+.productName {
+    font-size: 4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.productQuestion {
+    font-size: 4rem;
+    font-weight: 900;
+    color: $mainOrange;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+// Banner Section
+.bannerSection {
+    position: relative;
+    width: 100vw;
+    height: 50rem;
+    margin-left: -10rem;
+    margin-bottom: 5rem;
+    overflow: hidden;
+    border-radius: 0 25rem 25rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.bannerPhoto {
+    position: absolute;
+    width: 100%;
+}
+
+// History Section
+.historySection {
+    position: relative;
+    z-index: 2;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 0rem;
+}
+
+.historyContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5rem;
+}
+
+.historyYear {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25rem;
+    font-family: Main;
+    color: $mainOrange;
+    line-height: 25rem;
+    padding-left: 10rem;
+}
+
+.historyDigitContainer {
+    width: 18rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.historyTextContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: $bodyFontSize;
+    line-height: (27rem/5);
+    padding-top: 3rem;
+}
+
+.historyText {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-right: 10rem;
+    padding-left: 5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.historyTextScrape {
+    position: absolute;
+    width: 100%;
+    padding-right: 10rem;
+    padding-left: 5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: transparent;
+    color: transparent;
+    z-index: 1;
+    border-radius: 100rem 0 0 100rem;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.historyTextScrapeBar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $mainOrange;
+    left: 0;
+}
+
+.historyTimelineContainer {
+    position: relative;
+    width: 100vw;
+    padding-block: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.historyTimeline {
+    position: relative;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7rem;
+    background-image: linear-gradient(to top, $mainWhite, #fafafa);
+    box-shadow: inset 0px -2px 10px 1px $mainGrey;
+}
+
+#historySlider {
+    width: 50vw;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#historySlider::-webkit-slider-thumb {
+    appearance: none;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+.historySliderThumb {
+    position: absolute;
+    left: 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.historySliderThumbInner {
+    position: absolute;
+    z-index: 1;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background-color: $mainOrange;
+}
+
+.historySliderMilestoneContainer {
+    position: absolute;
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.historySliderMilestone {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, $mainWhite, #fafafa);
+    box-shadow: inset 0px -1px 5px 1px $mainGrey;
+    z-index: 1;
+}
+
+.historyTimelinePtoP {
+    position: relative;
+    width: 50vw;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+    gap: 2.5rem;
+}
+
+.historyTimelinePtoPLine {
+    width: 100%;
+    height: 1px;
+    background-color: $mainGrey;
+}
+
+// Purchase Section
+.purchaseSection {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 5rem;
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+    z-index: 2;
+}
+
+.purchaseText {
+    position: relative;
+    font-size: 5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-bottom: 5rem;
+}
+
+.purchaseTextLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.purchaseDrugStores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+
+.purchaseSupermarkets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    padding-bottom: 5rem;
+}
+
+.purchaseDSLogo {
+    height: 5rem;
+}
+
+.purchaseSMLogo {
+    height: 8rem;
+}
+
+.purchaseOLLogo {
+    height: 6rem;
+}
+
+.purchaseLogo {
+    cursor: pointer;
+}
+
+.purchaseOverlayContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    perspective: 1000px;
+}
+
+// Purchase Photo Card
+#photoCardP1 {
+    transform: rotateY(5deg) rotateZ(10deg) translateX(-28rem) translateY(10rem) translateZ(-40rem);
+    background-image: linear-gradient(to right, $mainOrange, #eb9472);
+}
+
+#photoCardP2 {
+    transform: rotateY(-5deg) rotateZ(-10deg) translateX(30rem) translateY(-30rem) translateZ(-35rem);
+    background-image: linear-gradient(to left, $mainOrange, #eb9472);
+}
+
+.photoCardP {
+    width: (35rem * $cardSizeMultiplier);
+    height: (45rem * $cardSizeMultiplier);
+    border-radius: (2rem * $cardSizeMultiplier);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    // background-color: $mainOrange;
+    padding: (2rem * $cardSizeMultiplier);
+    pointer-events: none;
+    gap: 3rem;
+    z-index: -1;
+}
+
+.photoFrameP {
+    position: relative;
+    width: (31rem * $cardSizeMultiplier);
+    height: (31rem * $cardSizeMultiplier);
+    border-radius: (1rem * $cardSizeMultiplier);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photoP {
+    width: 110%;
+    pointer-events: none;
+}
+
+.photoCaptionP {
+    color: $mainWhite;
+    font-size: 2rem;
+    font-style: italic;
+    pointer-events: auto;
+}
+
+// Photos Section
+.photoSection {
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photoCardSection {
+    position: relative;
+    width: 60%;
+    perspective: 100rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.photoCard {
+    position: absolute;
+    width: (35rem * $cardSizeMultiplier);
+    height: (45rem * $cardSizeMultiplier);
+    border-radius: (2rem * $cardSizeMultiplier);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(to left, $mainOrange, #eb9472);
+    // background-color: $mainOrange;
+    padding: (2rem * $cardSizeMultiplier);
+    pointer-events: none;
+    gap: 3rem;
+}
+
+.photoFrame {
+    position: relative;
+    width: (31rem * $cardSizeMultiplier);
+    height: (31rem * $cardSizeMultiplier);
+    border-radius: (1rem * $cardSizeMultiplier);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo {
+    width: 110%;
+    pointer-events: none;
+}
+
+.photoCaption {
+    color: $mainWhite;
+    font-size: 2rem;
+    font-style: italic;
+    pointer-events: auto;
+}
+
+.photoSectionText {
+    position: relative;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 10rem;
+    font-size: 7.5rem;
+    z-index: 2;
+    padding-top: 6rem;
+    padding-bottom: 10rem;
+    flex-direction: column;
+    gap: 10rem;
+}
+
+.followLinkDiv {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    white-space: nowrap;
+}
+
+.followLinkContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    padding-block: 1rem;
+    color: $mainOrange;
+    font-size: 5rem;
+    cursor: pointer;
+}
+
+.linkArrowSVG {
+    transform: scale($widthRatio);
+}
+
+.linkArrowPath {
+    fill: $mainOrange;
+}
+
+// Blank Section
+.blankSection {
+    height: min(50vh, 60rem);
+}
+
+// Footer
+footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 60rem;
+    background-image: linear-gradient(to top, $mainOrange, 70%,#eb9472);
+}
+
+.footerBottomText {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 50rem;
+    line-height: 0;
+    font-family: Main;
+    color: $mainWhite;
+    white-space: nowrap;
+    bottom: 5rem;
+}
+
+// Commons
+.mainFont {
+    font-family: Main;
+    color: $mainOrange;
+}
+
+.orangeFont {
+    color: $mainOrange;
+}
+
+a {
+    text-decoration: none;
+}
+
+.italic {
+    font-style: italic;
+}
+
+// Text Animations
+.textAnimationClass {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.textAnimationClassContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

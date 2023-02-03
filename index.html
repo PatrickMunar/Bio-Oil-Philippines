@@ -26,7 +26,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
 
-
     <!-- Lottie Player -->
     <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
 
@@ -44,6 +43,19 @@
     <!-- Cursor Follower -->
     <div class="cursorFollowerContainer">
         <div class="cursorFollower">
+            <div class="cursorText">
+                Lavender
+            </div>
+            <div class="cursorText">
+                Chamomile
+            </div>
+            <div class="cursorText">
+                Calendula
+            </div>
+            <div class="cursorText">
+                Rosemary
+            </div>
+
             <div class="cursorSVGContainer">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="cursorSVG"><path class="cursorSVGPath" d="M24 31.5q3.55 0 6.025-2.475Q32.5 26.55 32.5 23q0-3.55-2.475-6.025Q27.55 14.5 24 14.5q-3.55 0-6.025 2.475Q15.5 19.45 15.5 23q0 3.55 2.475 6.025Q20.45 31.5 24 31.5Zm0-2.9q-2.35 0-3.975-1.625T18.4 23q0-2.35 1.625-3.975T24 17.4q2.35 0 3.975 1.625T29.6 23q0 2.35-1.625 3.975T24 28.6Zm0 9.4q-7.3 0-13.2-4.15Q4.9 29.7 2 23q2.9-6.7 8.8-10.85Q16.7 8 24 8q7.3 0 13.2 4.15Q43.1 16.3 46 23q-2.9 6.7-8.8 10.85Q31.3 38 24 38Zm0-15Zm0 12q6.05 0 11.125-3.275T42.85 23q-2.65-5.45-7.725-8.725Q30.05 11 24 11t-11.125 3.275Q7.8 17.55 5.1 23q2.7 5.45 7.775 8.725Q17.95 35 24 35Z"/></svg>
                 <div class="cursorSVGSlide">
@@ -97,23 +109,50 @@
             </div>
 
             <nav>
-                <div class="navChoice">
-                    PRODUCTS
+                <div class="navChoice" id="navChoice1" tabindex="0">
+                    <span class="navChoiceLetter1">P</span>
+                    <span class="navChoiceLetter1">R</span>
+                    <span class="navChoiceLetter1">O</span>
+                    <span class="navChoiceLetter1">D</span>
+                    <span class="navChoiceLetter1">U</span>
+                    <span class="navChoiceLetter1">C</span>
+                    <span class="navChoiceLetter1">T</span>
+                    <span class="navChoiceLetter1">S</span>
 
                     <div class="navChoiceDot"></div>
                 </div>
-                <div class="navChoice">
-                    HISTORY
+                <div class="navChoice" id="navChoice2" tabindex="0">
+                    <span class="navChoiceLetter2">H</span>
+                    <span class="navChoiceLetter2">I</span>
+                    <span class="navChoiceLetter2">S</span>
+                    <span class="navChoiceLetter2">T</span>
+                    <span class="navChoiceLetter2">O</span>
+                    <span class="navChoiceLetter2">R</span>
+                    <span class="navChoiceLetter2">Y</span>
 
                     <div class="navChoiceDot"></div>
                 </div>
-                <div class="navChoice">
-                    PURCHASE
+                <div class="navChoice" id="navChoice3" tabindex="0">
+                    <span class="navChoiceLetter3">P</span>
+                    <span class="navChoiceLetter3">U</span>
+                    <span class="navChoiceLetter3">R</span>
+                    <span class="navChoiceLetter3">C</span>
+                    <span class="navChoiceLetter3">H</span>
+                    <span class="navChoiceLetter3">A</span>
+                    <span class="navChoiceLetter3">S</span>
+                    <span class="navChoiceLetter3">E</span>
 
                     <div class="navChoiceDot"></div>
                 </div>
-                <div class="navChoice" id="navChoiceLast">
-                    CONTACT
+                <div class="navChoice" id="navChoiceLast" tabindex="0">
+                    <span class="navChoiceLetter4">C</span>
+                    <span class="navChoiceLetter4">O</span>
+                    <span class="navChoiceLetter4">N</span>
+                    <span class="navChoiceLetter4">T</span>
+                    <span class="navChoiceLetter4">A</span>
+                    <span class="navChoiceLetter4">C</span>
+                    <span class="navChoiceLetter4">T</span>
+                    <span class="navChoiceLetter4">S</span>
 
                     <div class="navChoiceDot"></div>
                 </div>
@@ -348,13 +387,13 @@
                 <div class="heroHeaderText noselect" id="heroHeaderText2">your</div>
                 <div class="heroHeaderText noselect" id="heroHeaderText3">skin</div>
                 <div class="heroSubHeaderText">
-                    <t>Harness the <t class="italic">power of oil</t><br/>with the</t> <t class="mainFont">Bio-Oil</t> <t class="orangeFont">specialist skincare range</t>
+                    <div class="heroSubHeaderText1">
+                        <t>Harness the <t class="italic bold">power of oil</t> with </t>
+                    </div>
+                    <div class="heroSubHeaderText2">
+                        the <t class="mainFont subHeaderParallax">Bio-Oil</t> <t class="bold orangeFont subHeaderParallax">specialist skincare range</t>
+                    </div>
                 </div>
-            </section>
-
-            <!-- Intro Section -->
-            <section class="introSection">
-                <div class="introContainer"></div>
             </section>
             
             <!-- Product Section -->
@@ -364,8 +403,10 @@
                         Scars & Stretch Marks?
                     </div>
 
+                    <img src="./images/Stretch1.jpg" alt="" class="productImage">
+
                     <div class="productName">
-                        <t class="mainFont">Bio-Oil</t>&nbsp;Skincare Oil
+                        <t class="mainFontWhite">Bio-Oil</t>&nbsp;Skincare Oil
                     </div>
                 </div>
 
@@ -374,95 +415,88 @@
                         Dry Skin?
                     </div>
 
+                    <img src="./images/Dry1.jpg" alt="" class="productImage">
+
                     <div class="productName">
-                        <t class="mainFont">Bio-Oil</t>&nbsp;Dry Skin Gel
+                        <t class="mainFontWhite">Bio-Oil</t>&nbsp;Dry Skin Gel
                     </div>
                 </div>
             </section>
 
-            <!-- Banner Section -->
-            <section class="bannerSection">
-                <img src="./images/HistoryNewPackaging.jpg" alt="" class="bannerPhoto">
-                <img src="./images/banner1.webp" alt="" class="bannerPhoto">
-                <img src="./images/HistoryNewPackaging.jpg" alt="" class="bannerPhoto">
+            <!-- Versus Section -->
+            <section class="versusSection">
+                <div class="versusHeader">
+                    The <br/> <t class="powerText  bold">Power</t> <br/> <t class="italic ofText">of</t> <t class="mainFont">Oil</t>
+                </div>
+
+                <div class="versusOverlay">
+                    <div class="versusImageContainer">
+                        <div class="versusImageDiv" id="versusImageDiv1">
+                            <img src="./images/Random3.png" alt="" class="versusImage">
+                        </div>
+
+                        <div class="versusImageDiv" id="versusImageDiv2">
+                            <img src="./images/Random4.jpg" alt="" class="versusImage">
+                        </div>
+                    </div>
+
+                    <div class="versusPointContainer" id="versusPoint1">
+                        <div class="versusPointButton" tabindex="0">
+                            <div class="versusPointInner">
+                                +
+                            </div>
+                        </div>
+
+                        <div class="versusPointBody">
+                            <t class="versusPointBodyText">
+                                Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
+                            </t>
+                        </div>
+                    </div>
+
+                    <div class="versusPointContainer" id="versusPoint2">
+                        <div class="versusPointButton" tabindex="0">
+                            <div class="versusPointInner">
+                                +
+                            </div>
+                        </div>
+
+                        <div class="versusPointBody">
+                            <t class="versusPointBodyText">
+                                Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
+                            </t>
+                        </div>
+                    </div>
+
+                    <div class="versusPointContainer" id="versusPoint3">
+                        <div class="versusPointButton" tabindex="0">
+                            <div class="versusPointInner">
+                                +
+                            </div>
+                        </div>
+
+                        <div class="versusPointBody">
+                            <t class="versusPointBodyText">
+                                Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
+                            </t>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- History Section -->
             <section class="historySection">
-
-                <div class="historyContent">
-                    <div class="historyYear">
-                        <div class="historyDigitContainer">
-                            <t class="historyDigit">
-                                1
-                            </t>
-                        </div>
-                        <div class="historyDigitContainer">
-                            <t class="historyDigit">
-                                9
-                            </t>
-                        </div>
-                        <div class="historyDigitContainer">
-                            <t class="historyDigit">
-                                8
-                            </t>
-                        </div>
-                        <div class="historyDigitContainer">
-                            <t class="historyDigit">
-                                7
-                            </t>
-                        </div>
+                <div class="history1">
+                    <div class="historyBanner1">
+                        <img src="./images/HistoryNewPackaging.jpg" alt="" class="historyBannerPhoto">
                     </div>
-            
+
                     <div class="historyTextContainer">
-                        <div class="historyText">
-                            Bio-Oil pioneered using oil to help improve the appearance of scars and stretch marks. Today Bio-Oil Skincare Oil has become a leading product in scar and stretch mark treatment. Bio-Oil continues to research and develop skincare products using oil to deliver superior product performance.
+                        <div class="historyYear">1987</div>
+                        <div class="historyTitle">From Humble Beginnings</div>
+                        <div class="historyBody">
+                            Bio-Oil pioneered using oil to help improve the appearance of scars and stretch marks. At the time almost every product on the shelf was either a cream or a lotion, and the product was met with much scepticism. Today, the product is the world's leading scar and stretch mark product. Bio-Oil continues to research and develop skincare products using oil to deliver superior product performance.
                         </div>
-                        <div class="historyText">
-                            22
-                        </div>
-                        <div class="historyText">
-                            33
-                        </div>
-                        <div class="historyText">
-                            44
-                        </div>
-                        <div class="historyText">
-                            55
-                        </div>
-                        <div class="historyText">
-                            66
-                        </div>
-
-                        <div class="historyTextScrape noselect">
-                            Bio-Oil pioneered using oil to help improve the appearance of scars and stretch marks. Today Bio-Oil Skincare Oil has become a leading product in scar and stretch mark treatment. Bio-Oil continues to research and develop skincare products using oil to deliver superior product performance.
-
-                            <div class="historyTextScrapeBar"></div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="historyTimelineContainer">
-                    <div class="historyTimeline">
-                        <input type="range" name="historySlider" id="historySlider" min="0" max="5" value="0" class="cursorChoice">
-                        <div class="historySliderMilestoneContainer">
-                            <div class="historySliderThumb">
-                                <div class="historySliderThumbInner"></div>
-                            </div>
-                            <div class="historySliderMilestone"></div>
-                            <div class="historySliderMilestone"></div>
-                            <div class="historySliderMilestone"></div>
-                            <div class="historySliderMilestone"></div>
-                            <div class="historySliderMilestone"></div>
-                            <div class="historySliderMilestone"></div>
-                        </div>
-                    </div>
-
-                    <div class="historyTimelinePtoP">
-                        <t class="orangeFont" id="pastText">Past</t>
-                        <div class="historyTimelinePtoPLine"></div>
-                        <t class="orangeFont" id="presentText">Present</t>
                     </div>
                 </div>
             </section>
@@ -496,39 +530,39 @@
                 <!-- Purchase Text -->
                 <div class="purchaseText">
                     <div class="purchaseTextLine">
-                        <t class="mainFont" id="purchaseTextLine1">Bio-Oil </t>&nbsp;products are available
+                        <t class="mainFont" id="purchaseTextLine1">Bio-Oil </t>&nbsp;<t class="purchaseTextGrey">products are available</t>
                     </div>
                     <div class="purchaseTextLine">
-                        in a range of sizes in&nbsp;<t class="mainFont" id="purchaseTextLine2"> leading&nbsp;drugstores</t>,
+                        <t class="purchaseTextGrey">in a range of sizes in</t>&nbsp;<t class="mainFont" id="purchaseTextLine2">leading&nbsp;drugstores</t><t class="purchaseTextGrey">,</t>
                     </div>
                     <div class="purchaseTextLine">
-                        <t class="mainFont" id="purchaseTextLine3">supermarkets</t>&nbsp;&&nbsp;<t class="mainFont" id="purchaseTextLine4">online&nbsp;stores</t>&nbsp;nationwide.
+                        <t class="mainFont" id="purchaseTextLine3">supermarkets</t>&nbsp;<t class="purchaseTextGrey">&</t>&nbsp;<t class="mainFont" id="purchaseTextLine4">online&nbsp;stores</t>&nbsp;<t class="purchaseTextGrey">nationwide.</t>
                     </div>
                 </div>
 
                 <div class="purchaseDrugStores">
-                    <a href="#link">
+                    <a href="#link" class="purchaseLinks1">
                         <img src="./images/MercuryDrug.png" alt="Mercury Drug" class="purchaseDSLogo purchaseLogo cursorChoice">
                     </a>
-                    <a href="#link">
+                    <a href="#link" class="purchaseLinks1">
                         <img src="./images/SouthStar.png" alt="South Star" class="purchaseDSLogo purchaseLogo cursorChoice">
                     </a>
-                    <a href="#link">
+                    <a href="#link" class="purchaseLinks1">
                         <img src="./images/Watsons.png" alt="Watsons" class="purchaseDSLogo purchaseLogo cursorChoice">
                     </a>
                 </div>
 
                 <div class="purchaseSupermarkets">
-                    <a href="#link">
+                    <a href="#link" class="purchaseLinks2">
                         <img src="./images/Landers.png" alt="Landers" class="purchaseSMLogo purchaseLogo cursorChoice">
                     </a>
-                    <a href="#link">
+                    <a href="#link" class="purchaseLinks2">
                         <img src="./images/SnR.png" alt="SnR" class="purchaseSMLogo purchaseLogo cursorChoice">
                     </a>
-                    <a href="#link">
+                    <a href="#link" class="purchaseLinks3">
                         <img src="./images/Lazada.png" alt="Lazada" class="purchaseOLLogo purchaseLogo cursorChoice">
                     </a>
-                    <a href="#link">
+                    <a href="#link" class="purchaseLinks3">
                         <img src="./images/Shopee.png" alt="Shopee" class="purchaseOLLogo purchaseLogo cursorChoice">
                     </a>
                 </div>
@@ -629,6 +663,7 @@
                             " Bio-Oil Skincare Oil helps improve the appearance of stretch marks. During pregnancy, apply Bio-Oil twice daily from the start of second trimester. "
                         </div>
                     </div>
+                    
                 </div>
                 
             </section>

@@ -313,6 +313,19 @@ main {
         opacity: 0;
     }
 
+    .textAnimationClass {
+        padding-top: 5rem;
+    }
+
+    .productSection {
+        flex-direction: column;
+    }
+
+    .productChoice {
+        gap: 10rem !important;
+        width: calc(100vw - 20rem) !important;
+        height: calc(70vh / 2) !important;
+    }
 }
 
 // Modal Section
@@ -790,7 +803,7 @@ nav {
 
 .heroSubHeaderText {
     position: absolute;
-    bottom: 2.5rem;
+    bottom: 7.5rem;
     right: 10rem;
     font-size: 4rem;
     text-align: right;
@@ -800,20 +813,22 @@ nav {
 .productSection {
     position: relative;
     width: 100vw;
-    height: calc((100vw - 20rem - 40rem)/2 * 1.1 + 20rem);
+    height: 100vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10rem;
+    padding-inline: 10rem;
+    padding-bottom: 10rem;
+    padding-top: 11.25rem;
     z-index: 2;
     overflow: hidden;
     perspective: 1000px;
 }
 
 .productChoice {
-    position: absolute;
+    position: relative;
     width: calc((100vw - 20rem - 40rem)/2);
-    height: calc((100vw - 20rem - 40rem)/2 * 1.1);
+    height: calc(100vh - 21.25rem);
     border-radius: 5rem;
     cursor: pointer;
     display: flex;
@@ -834,14 +849,10 @@ nav {
 
 #skincareChoice {
     box-shadow: 1px -1px 3px 0px #0000002a;
-    left: 10rem;
-    top: 10rem;
 }
 
 #dryskinChoice {
     box-shadow: -1px -1px 3px 0px #0000002a;
-    right: 10rem;
-    top: 10rem;
 }
 
 .productName {
@@ -919,6 +930,14 @@ nav {
     cursor: pointer;
 }
 
+.versusPointOuter {
+    position: absolute;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 1px solid $mainOrange;
+}
+
 .versusPointInner {
     width: 5rem;
     height: 5rem;
@@ -937,15 +956,16 @@ nav {
     box-shadow: -0.2rem 0.2rem 0.5rem 0.2rem #0000002a;
     border-radius: 2.5rem;
     backdrop-filter: blur(10px);
+    background-color: #ffffffa0;
     margin-inline: 2.5rem;
-}
-
-.versusPointBodyText {
-    // color: $mainOrange;
+    position: relative;
+    z-index: 1;
+    color: $mainGrey;
+    text-shadow: 0 0 10px $mainWhite;
 }
 
 #versusPoint1 {
-    transform: translateX(40rem) translateY(-20rem);
+    transform: translateX(40rem) translateY(-17.5rem);
 }
 
 #versusPoint2 {
@@ -957,10 +977,29 @@ nav {
     transform: translateX(30rem) translateY(35rem);
 }
 
+#versusBody1 {
+    transform-origin: left;
+}
+
+#versusBody2 {
+    transform-origin: right;
+}
+
+#versusBody3 {
+    transform-origin: left;
+}
+
 .versusImageContainer {
     position: absolute;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.versusImageParallaxDiv {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -975,8 +1014,12 @@ nav {
     overflow: hidden;
 }
 
-.versusImage {
+.versusImageW {
     height: calc(100% + 20px);
+}
+
+.versusImageH {
+    width: calc(100% + 20px);
 }
 
 #versusImageDiv1 {
@@ -991,6 +1034,18 @@ nav {
     transform: translateX(40vw) translateY(20vh);
 }
 
+#versusImageDiv3 {
+    width: 25rem;
+    height: 25rem;
+    transform: translateX(-25vw) translateY(-30vh);
+}
+
+#versusImageDiv4 {
+    width: 32rem;
+    height: 32rem;
+    transform: translateX(20vw) translateY(-42.5vh);
+}
+
 // History Section
 .historySection {
     position: relative;
@@ -1000,7 +1055,7 @@ nav {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    margin-top: 10rem;
+    padding-top: 11.25rem;
 }
 
 .history1 {
@@ -1008,7 +1063,7 @@ nav {
     width: 100vw;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .historyBanner1 {

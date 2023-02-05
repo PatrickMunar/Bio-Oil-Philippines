@@ -1,3 +1,22 @@
+const lenis = new Lenis({
+    duration: 3,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+    direction: 'vertical', // vertical, horizontal
+    gestureDirection: 'vertical', // vertical, horizontal, both
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+})
+
+const raf = (time) => {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
+
 const main = () => {
     gsap.ticker.fps(60)
     gsap.registerPlugin(ScrollTrigger)
@@ -22,6 +41,8 @@ const main = () => {
         width: window.innerWidth,
         height: window.innerHeight
     }
+
+    let cameraMaxY = -20
 
     window.addEventListener('resize', () => {    
         // Update sizes
@@ -55,13 +76,14 @@ const main = () => {
     // GLTF Loader
     const logo3D = new THREE.Group
     const rLogo3D = new THREE.Group
+    const logoScale = 0.05
 
     const gltfLoader = new THREE.GLTFLoader()
     gltfLoader.load(
         './glb/Logo.glb',
         (obj) => {
             rLogo3D.add(obj.scene)
-            obj.scene.scale.set(0.03,0.03,0.03)
+            obj.scene.scale.set(logoScale, logoScale, logoScale)
 
             obj.scene.children[0].material = new THREE.MeshStandardMaterial({
                 color: new THREE.Color(0xffffff),
@@ -74,7 +96,7 @@ const main = () => {
         }
     )
     logo3D.add(rLogo3D)
-    logo3D.position.set(0,-5.25,2)
+    logo3D.position.set(0,cameraMaxY * 4.5 / 12,0)
     scene.add(logo3D)
 
     // 3D Objects
@@ -103,16 +125,19 @@ const main = () => {
 
     // Blob
     const blobM = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(0xfdfdfd),
-        emissive: new THREE.Color(0xeb5f28),
-        emissiveIntensity: 0.1,
+        color: new THREE.Color(0xeb5f28),
+        emissive: new THREE.Color(0xffffff),
+        emissiveIntensity: 0.4,
         envMap: envMapTexture,
         roughness: 0.1,
+        // transparent: true,
+        // opacity: 0.95,
+        // depthWrite: false
     })
 
     const blob = new THREE.MarchingCubes( 64, blobM, true, true, 100000 )
     blob.isolation = 50
-    blob.scale.set(2,2,2)
+    blob.scale.set(2,0.5,2)
     blob.enableUvs = false
     blob.enableColors = false
     blob.frustumCulled = false
@@ -125,6 +150,9 @@ const main = () => {
     blobUp.position.set(-2,0,2)
     blobUp.add(blob)
     scene.add(blobUp)
+
+    gsap.to(blob.scale, {duration: 0, x: 1.5, z: 1.5})
+    gsap.to(blob.rotation, {duration: 0, y: Math.PI/20})
 
     const updateCubes = (object, time, numblobs) => {
         object.reset()
@@ -154,8 +182,7 @@ const main = () => {
     heroGroup.add(blobUp)
     scene.add(heroGroup)
 
-    // Versus
-    // Particles    
+    // Versus Particles    
     // Parameters
     const particleGroup = []
 
@@ -185,7 +212,7 @@ const main = () => {
         // Randomize Particle Position in a Circle
         const x = -2 + 0.2 * w
         const y = -2 + 0.2 * h
-        const z = -7 * (1920/1080)/(sizes.width/sizes.height)
+        const z = 0
 
         // Save Original Positions
         originalPositions[particleIndex] = [x,y]
@@ -213,7 +240,13 @@ const main = () => {
         })
     )
 
-    planePic.position.z = -7 * (1920/1080)/(sizes.width/sizes.height)
+    planePic.position.z = 0
+
+    const versusGroup = new THREE.Group
+    versusGroup.add(allParticles)
+    versusGroup.add(planePic)
+    scene.add(versusGroup)
+    versusGroup.position.set(0,cameraMaxY * 7.5 / 12,0)
 
     // ----------------------------------------------------------------
 
@@ -224,12 +257,6 @@ const main = () => {
     camera.add(ambientLight)
     camera.add(directionalLight)
     directionalLight.position.set(10, 10, 10)
-    const versusGroup = new THREE.Group
-    versusGroup.add(allParticles)
-    versusGroup.add(planePic)
-    const versusUpGroup = new THREE.Group
-    versusUpGroup.add(versusGroup)
-    camera.add(versusUpGroup)
 
     // Controls
     // const controls = new THREE.OrbitControls(camera, canvas)
@@ -338,7 +365,7 @@ const main = () => {
 
     const scrollDestinations = [
         document.querySelector('.productSection').getBoundingClientRect().top - (window.innerHeight - document.querySelector('.productSection').clientHeight)/2,
-        document.querySelector('.historySection').getBoundingClientRect().top - (window.innerHeight - document.querySelector('.historySection').clientHeight)/2,
+        document.querySelector('.historySection').getBoundingClientRect().top,
         document.querySelector('.purchaseSection').getBoundingClientRect().top - (window.innerHeight - document.querySelector('.purchaseSection').clientHeight)/2,
         document.querySelector('.photoSection').getBoundingClientRect().top - (window.innerHeight - document.querySelector('.photoSection').clientHeight) + document.querySelector('.bottomBorderSection').clientHeight
         ]
@@ -371,21 +398,18 @@ const main = () => {
         navChoices[i].addEventListener('click', () => {
             if (i != navClickedIndex && isNavClicked == false) {
                 isNavClicked = true
-                if (i == 0) {
-                    if (navClickedIndex > i) {
-                        gsap.to(window, {duration: 1, scrollTo: scrollDestinations[i] + 1})
-                    }
-                    else {
-                        gsap.to(window, {duration: 1, scrollTo: scrollDestinations[i]})
-                    }
+                if (navClickedIndex > i) {
+                    lenis.scrollTo('html', {offset: scrollDestinations[i] + 1, duration: 2})
+                    // gsap.to(window, {duration: 1, scrollTo: scrollDestinations[i] + 1})
                 }
                 else {
-                    gsap.to(window, {duration: 1, scrollTo: scrollDestinations[i]})
+                    lenis.scrollTo('html', {offset: scrollDestinations[i] - 1, duration: 2})
+                    // gsap.to(window, {duration: 1, scrollTo: scrollDestinations[i]})
                 }
                 changeNavChoice(i)
                 setTimeout(() => {
                     isNavClicked = false
-                }, 1000)
+                }, 2000)
             }
         })
     }
@@ -410,17 +434,10 @@ const main = () => {
 
     // Scroll Nav Change
     let scrollY = 0
-    let scrollOnVersus = false
+    let scrollOnVersus = true
 
     document.addEventListener('scroll', () => {
         scrollY = window.pageYOffset
-
-        if (document.querySelector('.versusSection').getBoundingClientRect().top <= 0 && document.querySelector('.versusSection').getBoundingClientRect().top > -4) {
-            scrollOnVersus = true
-        }
-        else {
-            scrollOnVersus = false
-        }
 
         if (isNavClicked == false) {
             if (scrollY < scrollDestinations[0]) {
@@ -439,6 +456,86 @@ const main = () => {
                 changeNavChoice(3)
             }
         }
+    })
+
+    // Versus Setup
+    const versusPointBodys = document.querySelectorAll('.versusPointBody')
+    const versusPointButtons = document.querySelectorAll('.versusPointButton')
+    const versusPointOuters = document.querySelectorAll('.versusPointOuter')
+    const versusBodyStates = [0,0,0]
+
+    for (let i = 0; i < versusPointButtons.length; i++) {
+        if (i == 1) {
+            gsap.to(versusPointBodys[i], {duration: 0, x: 20, opacity: 0})
+        }
+        else {
+            gsap.to(versusPointBodys[i], {duration: 0, x: -20, opacity: 0})
+        }
+
+        versusPointButtons[i].addEventListener('click', () => {
+            clickVersusPoint(i)
+        })
+
+        versusPointButtons[i].addEventListener('pointerenter', () => {
+            if (versusBodyStates[i] == 0) {
+                gsap.to(versusPointOuters[i], {duration: 0.2, width: '10rem', height: '10rem'})
+            }
+        })
+
+        versusPointButtons[i].addEventListener('pointerleave', () => {
+            if (versusBodyStates[i] == 0) {
+                gsap.to(versusPointOuters[i], {duration: 0.2, width: '8rem', height: '8rem'})
+            }
+        })
+    }
+
+    const clickVersusPoint = (i) => {
+        if (versusBodyStates[i] == 0) {
+            versusBodyStates[i] = 1
+
+            gsap.to(versusPointOuters[i], {duration: 0.2, width: '9rem', height: '9rem'})
+            gsap.to(versusPointOuters[i], {duration: 0.3, delay: 0.2, width: '20rem', height: '20rem', opacity: 0})
+
+            gsap.fromTo(versusPointButtons[i], {rotateZ: '0deg'}, {duration: 0.1, rotateZ: '45deg', scale: 0.9})
+            gsap.fromTo(versusPointButtons[i], {scale: 0.9}, {duration: 0.15, delay: 0.1, scale: 0.95})
+
+            if (i == 1) {
+                gsap.to(versusPointBodys[i], {duration: 0.5, x: 0, opacity: 1})
+            }
+            else {
+                gsap.to(versusPointBodys[i], {duration: 0.5, x: 0, opacity: 1})
+            }
+        }
+        else {
+            versusBodyStates[i] = 0
+
+            gsap.to(versusPointOuters[i], {duration: 0.5, width: '8rem', height: '8rem'})
+            gsap.to(versusPointOuters[i], {duration: 0.3, delay: 0.2, opacity: 1})
+
+            gsap.fromTo(versusPointButtons[i], {scale: 0.95}, {duration: 0.1, scale: 0.9})
+            gsap.fromTo(versusPointButtons[i], {rotateZ: '45deg'}, {duration: 0.15, delay: 0.1, rotateZ: '0deg', scale: 1})
+
+            if (i == 1) {
+                gsap.to(versusPointBodys[i], {duration: 0.5, x: 20, opacity: 0})
+            }
+            else {
+                gsap.to(versusPointBodys[i], {duration: 0.5, x: -20, opacity: 0})
+            }
+        }
+    }
+
+    let isVersusInitialized = false
+    const startVersusPoint = () => {
+        if (isVersusInitialized == false) {
+            isVersusInitialized = true
+            clickVersusPoint(0)
+        }
+    }
+
+    ScrollTrigger.create({
+        trigger: '.versusSection',
+        start: () => document.querySelector('.versusSection').clientHeight * 0.25 + ' center',
+        onEnter: startVersusPoint
     })
     
     // Photos Startup
@@ -489,7 +586,6 @@ const main = () => {
     })
 
     // Mouse
-    const raycaster = new THREE.Raycaster()
     const pointer = new THREE.Vector3()
     const point = new THREE.Vector3()
 
@@ -526,8 +622,8 @@ const main = () => {
 
                     // Check for Affected Particles
                     for (let i = 0; i < particleGroup.length; i++) {
-                        const distanceFromPointerSquared = (particleGroup[i].position.x - pointer.x)**2 + (particleGroup[i].position.y - pointer.y)**2
-                        const directionVector = new THREE.Vector2(particleGroup[i].position.x - pointer.x, particleGroup[i].position.y - pointer.y)
+                        const distanceFromPointerSquared = (particleGroup[i].position.x - pointer.x)**2 + (particleGroup[i].position.y + (versusGroup.position.y - camera.position.y) - pointer.y)**2
+                        const directionVector = new THREE.Vector2(particleGroup[i].position.x - pointer.x, particleGroup[i].position.y + (versusGroup.position.y - camera.position.y) - pointer.y)
 
                         // Case: Affected
                         if (distanceFromPointerSquared < parameters.radius) {
@@ -577,7 +673,10 @@ const main = () => {
                         // Logo
                         gsap.to(rLogo3D.rotation, {duration: 2, y: mouse.x * Math.PI/6, x: -mouse.y * Math.PI/6})
 
-                        gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
+                        // Versus
+                        // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
+                        gsap.to('.versusImage', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
+                        // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/window.innerHeight})
                     }
                         
                     // Photo
@@ -629,8 +728,8 @@ const main = () => {
 
                 // Check for Affected Particles
                 for (let i = 0; i < particleGroup.length; i++) {
-                    const distanceFromPointerSquared = (particleGroup[i].position.x - pointer.x)**2 + (particleGroup[i].position.y - pointer.y)**2
-                    const directionVector = new THREE.Vector2(particleGroup[i].position.x - pointer.x, particleGroup[i].position.y - pointer.y)
+                    const distanceFromPointerSquared = (particleGroup[i].position.x - pointer.x)**2 + (particleGroup[i].position.y + (versusGroup.position.y - camera.position.y) - pointer.y)**2
+                    const directionVector = new THREE.Vector2(particleGroup[i].position.x - pointer.x, particleGroup[i].position.y + (versusGroup.position.y - camera.position.y) - pointer.y)
 
                     // Case: Affected
                     if (distanceFromPointerSquared < parameters.radius) {
@@ -679,7 +778,9 @@ const main = () => {
                         // Logo
                         gsap.to(rLogo3D.rotation, {duration: 2, y: mouse.x * Math.PI/6, x: -mouse.y * Math.PI/6})
 
-                        gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
+                        // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
+                        gsap.to('.versusImage', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
+                        // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/window.innerHeight})
                     }
                         
                     // Photo
@@ -955,7 +1056,10 @@ const main = () => {
     const animateText = (e, td, dir) => {
         const spans = textAnimationDivs[e]
         for (let i = 0; i < spans.length; i++) {
-            if (dir == 'up') {
+            if (dir == 'upHero') {
+                gsap.to(spans[i], {duration: 0.7, delay: i * td, y: 0, opacity: 1, ease: 'back'})
+            }
+            else if (dir == 'up') {
                 gsap.to(spans[i], {duration: 0.7, delay: i * td, y: 0, opacity: 1})
             }
             else  if (dir == 'left') {
@@ -965,13 +1069,20 @@ const main = () => {
     }
 
     const startupAnimations = () => {
-        animateText(0, 0.1, 'up')
+        // Text
         setTimeout(() => {
-            animateText(1, 0.1, 'up')
-        }, 5 * 0.1 * 1000)
-        setTimeout(() => {
-            animateText(2, 0.1, 'up')
-        }, 9 * 0.1 * 1000)
+            animateText(0, 0.1, 'upHero')
+            setTimeout(() => {
+                animateText(1, 0.1, 'upHero')
+            }, 5 * 0.1 * 1000)
+            setTimeout(() => {
+                animateText(2, 0.1, 'upHero')
+            }, 9 * 0.1 * 1000)
+        }, 1000)
+
+        // Blob
+        gsap.fromTo(blob.scale, {x: 1.5, z: 1.5}, {duration: 2, x: 2, z: 2})
+        gsap.fromTo(blob.rotation, {y: Math.PI/20}, {duration: 2, y: 0})
     }
 
     const purchaseTextGreys = document.querySelectorAll('.purchaseTextGrey')
@@ -1182,8 +1293,9 @@ const main = () => {
                 else {
                     tick()
                 }
+                
                 window.requestAnimationFrame(tickMain)
-            }, 1000 / 60)
+            }, 1000 / 300)
         }
 
         tickMain()
@@ -1200,14 +1312,14 @@ const main = () => {
             scrollTrigger: {
                 trigger: '.heroSection',
                 start: () => document.querySelector('.heroSection').clientHeight * 0 + ' top',
-                end: () => document.querySelector('.heroSection').clientHeight + document.querySelector('.productSection').clientHeight + ' top',
+                end: () => window.innerHeight * 5 + ' top',
                 // toggleActions: "play none none reverse",
                 // snap: 1,
                 scrub: true,
                 // pin: true,
                 // markers: true
             },
-            y: -7,
+            y: cameraMaxY,
         })
 
         // Logo
@@ -1217,26 +1329,12 @@ const main = () => {
                 start: () => document.querySelector('.productSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.productSection').clientHeight * 0.5 + ' center',
                 // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 1,
+                // ,
+                scrub: true,
                 // pin: true,
                 // markers: true
             },
             y: Math.PI * 2
-        })
-
-        gsap.fromTo(logo3D.position, {y: -5.25, z: 2}, {
-            scrollTrigger: {
-                trigger: '.productSection',
-                start: () => document.querySelector('.productSection').clientHeight * 0.5 + ' center',
-                end: () => document.querySelector('.productSection').clientHeight * 1 + ' top',
-                // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 1,
-                // pin: true,
-                // markers: true
-            },
-            y: -3.5, z: 4
         })
 
         // Cards
@@ -1246,8 +1344,8 @@ const main = () => {
                 start: () => document.querySelector('.productSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.productSection').clientHeight * 0.5 + ' center',
                 // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 1,
+                // ,
+                scrub: true,
                 // pin: true,
                 // markers: true
             },
@@ -1260,8 +1358,8 @@ const main = () => {
                 start: () => document.querySelector('.productSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.productSection').clientHeight * 0.5 + ' center',
                 // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 1,
+                // ,
+                scrub: true,
                 // pin: true,
                 // markers: true
             },
@@ -1274,8 +1372,8 @@ const main = () => {
                 start: () => document.querySelector('.productSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.productSection').clientHeight * 0.5 + ' center',
                 // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 1,
+                // ,
+                scrub: true,
                 // pin: true,
                 // markers: true
             },
@@ -1289,8 +1387,8 @@ const main = () => {
                 start: () => document.querySelector('.productSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.productSection').clientHeight * 0.5 + ' center',
                 // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 1,
+                // ,
+                scrub: true,
                 // pin: true,
                 // markers: true
             },
@@ -1305,8 +1403,8 @@ const main = () => {
                 start: () => document.querySelector('.productSection').clientHeight * 0.2 + ' bottom',
                 // end: () => document.querySelector('.productSection').clientHeight * 0 + ' top',
                 toggleActions: "play none none reverse",
-                // snap: 1,
-                // scrub: 2,
+                // ,
+                // scrub: true,
                 // pin: true,
                 // markers: true
             },
@@ -1319,56 +1417,69 @@ const main = () => {
                 trigger: '.productSection',
                 start: () => document.querySelector('.productSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.productSection').clientHeight * 0.5 + ' center',
-                // toggleActions: "play none none reverse",
-                snap: 1,
-                scrub: 1,
+                // toggleActions: "play none none reverse"
+                scrub: true,
                 // pin: true,
                 // markers: true
             },
-            y: '10rem',
-        })
-
-        gsap.fromTo(heroGroup.position, {x: 0, y: 0, z: 0}, {
-            scrollTrigger: {
-                trigger: '.productSection',
-                start: () => document.querySelector('.productSection').clientHeight * 0.55 + ' center',
-                end: () => document.querySelector('.productSection').clientHeight * 0.75 + ' top',
-                // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 2,
-                // pin: true,
-                // markers: true
-            },
-            x: 0, y: 5 * (1920/929)/(sizes.width/sizes.height), z: 5 * (1920/929)/(sizes.width/sizes.height),
+            y: '15rem',
         })
 
         // Versus
-        gsap.fromTo(versusUpGroup.position, {y: 0}, {
-            scrollTrigger: {
-                trigger: '.versusSection',
-                start: () => document.querySelector('.versusSection').clientHeight * 0.5 + 2 + ' center',
-                end: () => document.querySelector('.versusSection').clientHeight * 1 + ' top',
-                // toggleActions: "play none none reverse",
-                snap: 1,
-                scrub: 2,
-                // pin: true,
-                // markers: true
-            },
-            y: 5,
-        })
-
-        gsap.fromTo(versusGroup.position, {y: -5}, {
+        gsap.fromTo('#versusImageParallaxDiv1', {y: 100 * 5}, {
             scrollTrigger: {
                 trigger: '.versusSection',
                 start: () => document.querySelector('.versusSection').clientHeight * 0 + 2 + ' bottom',
-                end: () => document.querySelector('.versusSection').clientHeight * 0.5 + ' center',
+                end: () => document.querySelector('.versusSection').clientHeight * 1 + ' top',
                 // toggleActions: "play none none reverse",
-                snap: 1,
-                scrub: 2,
+                // ,
+                scrub: true,
                 // pin: true,
-                // markers: true
+                // markers: true,
             },
-            y: 0,
+            y: -100 * 5/3,
+        })
+  
+        gsap.fromTo('#versusImageParallaxDiv2', {y: 100 * 2}, {
+            scrollTrigger: {
+                trigger: '.versusSection',
+                start: () => document.querySelector('.versusSection').clientHeight * 0 + 2 + ' bottom',
+                end: () => document.querySelector('.versusSection').clientHeight * 1 + ' top',
+                // toggleActions: "play none none reverse",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            y: -100 * 2/3,
+        })
+          
+        gsap.fromTo('#versusImageParallaxDiv3', {y: 100 * 7}, {
+            scrollTrigger: {
+                trigger: '.versusSection',
+                start: () => document.querySelector('.versusSection').clientHeight * 0 + 2 + ' bottom',
+                end: () => document.querySelector('.versusSection').clientHeight * 1 + ' top',
+                // toggleActions: "play none none reverse",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            y: -100 * 7/3,
+        })
+
+        gsap.fromTo('#versusImageParallaxDiv4', {y: 100 * 6}, {
+            scrollTrigger: {
+                trigger: '.versusSection',
+                start: () => document.querySelector('.versusSection').clientHeight * 0 + 2 + ' bottom',
+                end: () => document.querySelector('.versusSection').clientHeight * 1 + ' top',
+                // toggleActions: "play none none reverse",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            y: -100 * 6/3,
         })
 
         // Photo Cards
@@ -1378,8 +1489,8 @@ const main = () => {
                 start: () => document.querySelector('.blankSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.blankSection').clientHeight * 1 + ' bottom',
                 // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 3
+                // ,
+                scrub: true
                 // pin: true,
                 // markers: true
             },
@@ -1394,8 +1505,8 @@ const main = () => {
                 start: () => document.querySelector('.blankSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.blankSection').clientHeight * 1 + ' bottom',
                 // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 3
+                // ,
+                scrub: true
                 // pin: true,
                 // markers: true
             },
@@ -1408,9 +1519,9 @@ const main = () => {
                 trigger: '.purchaseSection',
                 start: () => document.querySelector('.purchaseSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.purchaseSection').clientHeight * 1 + ' top',
-                // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 2,
+                // toggleActions: "play none none reverse"
+                // ,
+                scrub: true,
                 // pin: true,
                 // markers: true
             },
@@ -1423,8 +1534,8 @@ const main = () => {
                 start: () => document.querySelector('.purchaseSection').clientHeight * 0 + ' bottom',
                 end: () => document.querySelector('.purchaseSection').clientHeight * 1 + ' top',
                 // toggleActions: "play none none reverse",
-                // snap: 1,
-                scrub: 2,
+                // ,
+                scrub: true,
                 // pin: true,
                 // markers: true
             },
@@ -1435,13 +1546,13 @@ const main = () => {
     scrollTriggerJS()
     setTimeout(() => {
         startupAnimations()
-    }, 1000)
+    }, 750)
 }
 
 // ###########################################################
 
 // Load
 window.addEventListener('load', () => {
-    // gsap.to('.loadingPage', {duration: 1, delay: 1, opacity: 0})
+    gsap.to('.loadingPage', {duration: 1, delay: 1, opacity: 0})
     main()
 })

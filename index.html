@@ -26,6 +26,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@0.2.28/bundled/lenis.js"></script>
+
     <!-- Lottie Player -->
     <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
 
@@ -38,7 +40,7 @@
 
 <body>
     <!-- Loading Page -->
-    <!-- <div class="loadingPage"></div> -->
+    <div class="loadingPage"></div>
 
     <!-- Cursor Follower -->
     <div class="cursorFollowerContainer">
@@ -163,7 +165,7 @@
 
 
     <!-- Product Modal Section -->
-    <div class="modalSection">
+    <div class="modalSection" data-lenis-prevent>
 
         <!-- Modal Popup -->
         <div class="modalPopup">
@@ -430,24 +432,45 @@
                 </div>
 
                 <div class="versusOverlay">
+                    <!-- Images -->
                     <div class="versusImageContainer">
-                        <div class="versusImageDiv" id="versusImageDiv1">
-                            <img src="./images/Random3.png" alt="" class="versusImage">
+                        <div class="versusImageParallaxDiv" id="versusImageParallaxDiv1">
+                            <div class="versusImageDiv" id="versusImageDiv1">
+                                <img src="./images/Random3.png" alt="" class="versusImage versusImageW">
+                            </div>
                         </div>
 
-                        <div class="versusImageDiv" id="versusImageDiv2">
-                            <img src="./images/Random4.jpg" alt="" class="versusImage">
+                        <div class="versusImageParallaxDiv" id="versusImageParallaxDiv2">
+                            <div class="versusImageDiv" id="versusImageDiv2">
+                                <img src="./images/Random4.jpg" alt="" class="versusImage versusImageW">
+                            </div>
                         </div>
+
+                        <div class="versusImageParallaxDiv" id="versusImageParallaxDiv3">
+                            <div class="versusImageDiv" id="versusImageDiv3">
+                                <img src="./images/Random2.jpg" alt="" class="versusImage versusImageH">
+                            </div>
+                        </div>
+
+                        <div class="versusImageParallaxDiv" id="versusImageParallaxDiv4">
+                            <div class="versusImageDiv" id="versusImageDiv4">
+                                <img src="./images/Random1.jpg" alt="" class="versusImage versusImageH">
+                            </div>
+                        </div>
+                        
                     </div>
 
+                    <!-- Cards -->
                     <div class="versusPointContainer" id="versusPoint1">
                         <div class="versusPointButton" tabindex="0">
+                            <div class="versusPointOuter"></div>
+
                             <div class="versusPointInner">
                                 +
                             </div>
                         </div>
 
-                        <div class="versusPointBody">
+                        <div class="versusPointBody" id="versusBody1">
                             <t class="versusPointBodyText">
                                 Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
                             </t>
@@ -456,12 +479,14 @@
 
                     <div class="versusPointContainer" id="versusPoint2">
                         <div class="versusPointButton" tabindex="0">
+                            <div class="versusPointOuter"></div>
+
                             <div class="versusPointInner">
                                 +
                             </div>
                         </div>
 
-                        <div class="versusPointBody">
+                        <div class="versusPointBody" id="versusBody2">
                             <t class="versusPointBodyText">
                                 Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
                             </t>
@@ -470,12 +495,14 @@
 
                     <div class="versusPointContainer" id="versusPoint3">
                         <div class="versusPointButton" tabindex="0">
+                            <div class="versusPointOuter"></div>
+
                             <div class="versusPointInner">
                                 +
                             </div>
                         </div>
 
-                        <div class="versusPointBody">
+                        <div class="versusPointBody" id="versusBody3">
                             <t class="versusPointBodyText">
                                 Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
                             </t>
@@ -498,6 +525,44 @@
                             Bio-Oil pioneered using oil to help improve the appearance of scars and stretch marks. At the time almost every product on the shelf was either a cream or a lotion, and the product was met with much scepticism. Today, the product is the world's leading scar and stretch mark product. Bio-Oil continues to research and develop skincare products using oil to deliver superior product performance.
                         </div>
                     </div>
+                </div>
+
+                <div class="history234Container">
+
+                    <div class="history23Container">
+
+                        <div class="history2">
+                            <div class="historyTextContainer">
+                                <div class="historyYear">2013</div>
+                                <div class="historyTitle">Bio-Oil Comes to the Philippines</div>
+                                <div class="historyBody">
+                                    Bio-Oil hits the shelves all across the nation under the distribution of Aspen Philippines. To date, you can purchase the Bio-Oil skincare range over-the-counter in leading pharmacies and supermarkets, or you can get them through your favorite online shopping platforms.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="history3">
+                            <div class="historyTextContainer">
+                                <div class="historyYear">1987</div>
+                                <div class="historyTitle">From Humble Beginnings</div>
+                                <div class="historyBody">
+                                    Bio-Oil pioneered using oil to help improve the appearance of scars and stretch marks. At the time almost every product on the shelf was either a cream or a lotion, and the product was met with much scepticism. Today, the product is the world's leading scar and stretch mark product. Bio-Oil continues to research and develop skincare products using oil to deliver superior product performance.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="history4">
+                        <div class="historyTextContainer">
+                            <div class="historyYear">1987</div>
+                            <div class="historyTitle">From Humble Beginnings</div>
+                            <div class="historyBody">
+                                Bio-Oil pioneered using oil to help improve the appearance of scars and stretch marks. At the time almost every product on the shelf was either a cream or a lotion, and the product was met with much scepticism. Today, the product is the world's leading scar and stretch mark product. Bio-Oil continues to research and develop skincare products using oil to deliver superior product performance.
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 

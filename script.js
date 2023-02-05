@@ -1,3 +1,11 @@
+// GSAP Settings
+gsap.ticker.fps(144)
+gsap.registerPlugin(ScrollTrigger)
+
+// Clear Scroll Memory
+window.history.scrollRestoration = 'manual'
+
+// Lenis
 const lenis = new Lenis({
     duration: 3,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
@@ -10,19 +18,20 @@ const lenis = new Lenis({
     infinite: false,
 })
 
+const modalLenis = new Lenis({
+    wrapper: document.querySelector('.modalSection'), // element which has overflow
+    content: document.querySelector('.modalPopup'), // usually wrapper's direct child
+})
+
 const raf = (time) => {
     lenis.raf(time)
+    modalLenis.raf(time)
     requestAnimationFrame(raf)
 }
 
 requestAnimationFrame(raf)
 
 const main = () => {
-    gsap.ticker.fps(60)
-    gsap.registerPlugin(ScrollTrigger)
-
-    // Clear Scroll Memory
-    window.history.scrollRestoration = 'manual'
 
     // Canvas
         // Change '.webgl' with a canvas querySelector
@@ -43,6 +52,14 @@ const main = () => {
     }
 
     let cameraMaxY = -20
+
+    // Responsive Variable Changes
+    if (sizes.width > sizes.height) {
+        cameraMaxY = -20
+    }
+    else {
+        cameraMaxY = -50
+    }
 
     window.addEventListener('resize', () => {    
         // Update sizes
@@ -361,7 +378,8 @@ const main = () => {
     navLetters[1] = document.querySelectorAll('.navChoiceLetter2')
     navLetters[2] = document.querySelectorAll('.navChoiceLetter3')
     navLetters[3] = document.querySelectorAll('.navChoiceLetter4')
-    const navAnimDelay = 0.04
+
+    const navTextAnimationDelay = 0.03
 
     const scrollDestinations = [
         document.querySelector('.productSection').getBoundingClientRect().top - (window.innerHeight - document.querySelector('.productSection').clientHeight)/2,
@@ -380,7 +398,7 @@ const main = () => {
             gsap.to(navDots[i], {duration: 0.1, scale: 1})
 
             for (let j = 0; j < navLetters[i].length; j++) {
-                gsap.to(navLetters[i][j], {duration: 0.1, delay: navAnimDelay * j, fontStyle: 'italic', y: -4})
+                gsap.to(navLetters[i][j], {duration: 0.1, delay: navTextAnimationDelay * j, fontStyle: 'italic', y: -4})
             }
         })
 
@@ -390,7 +408,7 @@ const main = () => {
                 gsap.to(navDots[i], {duration: 0.1, scale: 0})
 
                 for (let j = 0; j < navLetters[i].length; j++) {
-                    gsap.to(navLetters[i][j], {duration: 0.1, delay: navAnimDelay * j, fontStyle: 'normal', y: 0})
+                    gsap.to(navLetters[i][j], {duration: 0.1, delay: navTextAnimationDelay * j, fontStyle: 'normal', y: 0})
                 }
             }
         })
@@ -398,14 +416,7 @@ const main = () => {
         navChoices[i].addEventListener('click', () => {
             if (i != navClickedIndex && isNavClicked == false) {
                 isNavClicked = true
-                if (navClickedIndex > i) {
-                    lenis.scrollTo('html', {offset: scrollDestinations[i] + 1, duration: 2})
-                    // gsap.to(window, {duration: 1, scrollTo: scrollDestinations[i] + 1})
-                }
-                else {
-                    lenis.scrollTo('html', {offset: scrollDestinations[i] - 1, duration: 2})
-                    // gsap.to(window, {duration: 1, scrollTo: scrollDestinations[i]})
-                }
+                lenis.scrollTo('html', {offset: scrollDestinations[i], duration: 2})
                 changeNavChoice(i)
                 setTimeout(() => {
                     isNavClicked = false
@@ -419,13 +430,13 @@ const main = () => {
         for (let j = 0; j < navChoices.length; j++) {
             if (navClickedIndex != j) {
                 for (let k = 0; k < navLetters[j].length; k++) {
-                    gsap.to(navLetters[j][k], {duration: 0.1, delay: navAnimDelay * k, fontStyle: 'normal', y: 0})
+                    gsap.to(navLetters[j][k], {duration: 0.1, delay: navTextAnimationDelay * k, fontStyle: 'normal', y: 0})
                 }
                 gsap.to(navDots[j], {duration: 0.1, scale: 0})
             }
             else {
                 for (let k = 0; k < navLetters[i].length; k++) {
-                    gsap.to(navLetters[i][k], {duration: 0.1, delay: navAnimDelay * k, fontStyle: 'italic', y: -4})
+                    gsap.to(navLetters[i][k], {duration: 0.1, delay: navTextAnimationDelay * k, fontStyle: 'italic', y: -4})
                 }
                 gsap.to(navDots[i], {duration: 0.1, scale: 1})
             }
@@ -496,8 +507,8 @@ const main = () => {
             gsap.to(versusPointOuters[i], {duration: 0.2, width: '9rem', height: '9rem'})
             gsap.to(versusPointOuters[i], {duration: 0.3, delay: 0.2, width: '20rem', height: '20rem', opacity: 0})
 
-            gsap.fromTo(versusPointButtons[i], {rotateZ: '0deg'}, {duration: 0.1, rotateZ: '45deg', scale: 0.9})
-            gsap.fromTo(versusPointButtons[i], {scale: 0.9}, {duration: 0.15, delay: 0.1, scale: 0.95})
+            gsap.fromTo(versusPointButtons[i], {rotateZ: '0deg'}, {duration: 0.2, rotateZ: '45deg', scale: 0.85})
+            gsap.fromTo(versusPointButtons[i], {scale: 0.9}, {duration: 0.1, delay: 0.2, scale: 0.95})
 
             if (i == 1) {
                 gsap.to(versusPointBodys[i], {duration: 0.5, x: 0, opacity: 1})
@@ -512,8 +523,8 @@ const main = () => {
             gsap.to(versusPointOuters[i], {duration: 0.5, width: '8rem', height: '8rem'})
             gsap.to(versusPointOuters[i], {duration: 0.3, delay: 0.2, opacity: 1})
 
-            gsap.fromTo(versusPointButtons[i], {scale: 0.95}, {duration: 0.1, scale: 0.9})
-            gsap.fromTo(versusPointButtons[i], {rotateZ: '45deg'}, {duration: 0.15, delay: 0.1, rotateZ: '0deg', scale: 1})
+            gsap.fromTo(versusPointButtons[i], {scale: 0.95}, {duration: 0.1, scale: 0.85})
+            gsap.fromTo(versusPointButtons[i], {rotateZ: '45deg'}, {duration: 0.2, delay: 0.1, rotateZ: '0deg', scale: 1})
 
             if (i == 1) {
                 gsap.to(versusPointBodys[i], {duration: 0.5, x: 20, opacity: 0})
@@ -960,21 +971,31 @@ const main = () => {
 
     // Modal Close
     document.querySelector('.modalClose').addEventListener('pointerenter', () => {
-        gsap.to('.modalClose', {duration: 0.1, scale: 1.05})
-        gsap.to('.modalClose', {duration: 0.1, delay: 0.1, scale: 1.})
+        if (isModalOut == true) {
+            gsap.to('.modalClose', {duration: 0.125, scale: 1.05})
+        }
+    })
+
+    document.querySelector('.modalClose').addEventListener('pointerleave', () => {
+        if (isModalOut == true) {
+            gsap.to('.modalClose', {duration: 0.125, scale: 1.})
+        }
     })
 
     document.querySelector('.modalClose').addEventListener('click', () => {
-        isModalOut = false
+        if (isModalOut == true) {
+            isModalOut = false
 
-        gsap.to('.modalSection', {duration: 0, delay: 0.3, display: 'none'})
-        gsap.to('.modalSection', {duration: 0.25, delay: 0.1, opacity: 0, onComplete: resetModalChart})
-        gsap.to('html', {duration: 0, overflowY: 'scroll'})
-        gsap.to('.modalClose', {duration: 0.1, scale: 1.05})
-        gsap.to('.modalClose', {duration: 0.15, delay: 0.1, scale: 0})
+            gsap.to('.modalSection', {duration: 0, delay: 0.3, display: 'none'})
+            gsap.to('.modalSection', {duration: 0.25, delay: 0.1, opacity: 0, onComplete: resetModalChart})
+            gsap.to('html', {duration: 0, overflowY: 'scroll'})
+            gsap.to('.modalClose', {duration: 0.1, scale: 0.5})
+            gsap.to('.modalClose', {duration: 0.1, delay: 0.1, scale: 0.95})
+            gsap.to('.modalClose', {duration: 0.1, delay: 0.25, scale: 0})
 
-        gsap.to('.navToggle', {duration: 0, pointerEvents: 'auto'})
-        gsap.to('.navLogo', {duration: 0, pointerEvents: 'auto'})
+            gsap.to('.navToggle', {duration: 0, pointerEvents: 'auto'})
+            gsap.to('.navLogo', {duration: 0, pointerEvents: 'auto'})
+        }
     })
 
     // Modal Charts
@@ -1087,9 +1108,9 @@ const main = () => {
 
     const purchaseTextGreys = document.querySelectorAll('.purchaseTextGrey')
     const purchaseTextDelays = [0.3,0.6,1.25,2.25,3.1]
-    gsap.to('.purchaseLinks1', {duration: 0, opacity: 0})
-    gsap.to('.purchaseLinks2', {duration: 0, opacity: 0})
-    gsap.to('.purchaseLinks3', {duration: 0, opacity: 0})
+    gsap.to('.purchaseLinks1', {duration: 0, opacity: 0, pointerEvents: 'none'})
+    gsap.to('.purchaseLinks2', {duration: 0, opacity: 0, pointerEvents: 'none'})
+    gsap.to('.purchaseLinks3', {duration: 0, opacity: 0, pointerEvents: 'none'})
     for (let i = 0; i < purchaseTextGreys.length; i++) {
         gsap.to(purchaseTextGreys[i], {duration: 0, opacity: 0})
     }
@@ -1098,9 +1119,9 @@ const main = () => {
         for (let i = 0; i < purchaseTextGreys.length; i++) {
             gsap.to(purchaseTextGreys[i], {duration: 1, delay: purchaseTextDelays[i], opacity: 1})
         }
-        gsap.to('.purchaseLinks1', {duration: 1, delay: 1.25, opacity: 1})
-        gsap.to('.purchaseLinks2', {duration: 1, delay: 2, opacity: 1})
-        gsap.to('.purchaseLinks3', {duration: 1, delay: 3, opacity: 1})
+        gsap.to('.purchaseLinks1', {duration: 1, delay: 1.25, opacity: 1, pointerEvents: 'auto'})
+        gsap.to('.purchaseLinks2', {duration: 1, delay: 2, opacity: 1, pointerEvents: 'auto'})
+        gsap.to('.purchaseLinks3', {duration: 1, delay: 3, opacity: 1, pointerEvents: 'auto'})
 
         animateText(3, 0.05, 'up')
         setTimeout(() => {
@@ -1127,21 +1148,15 @@ const main = () => {
     const clock = new THREE.Clock()
 
     const tick = () => {
-        // setTimeout(() => {
-        //     window.requestAnimationFrame(tick)
-        // }, 1000 / 30)
-
         if (isModalOut == false) {
             // Marching Cubes
-            if (blob.position.y - camera.position.y < 5) {
+            if (blobUp.position.y - camera.position.y < 5) {
                 updateCubes( blob, blobTime, blobCount)
             }
             
             // Render
             renderer.render(scene, camera)
         }
-
-        elapsedTime = clock.getElapsedTime()
 
         blobTime = elapsedTime * 0.15 + 2
     }
@@ -1285,8 +1300,10 @@ const main = () => {
 
         // tick2()
         const tickMain = () => {
+            elapsedTime = clock.getElapsedTime()
+
             // Call tick again on the next frame
-            setTimeout(() => {
+            // setTimeout(() => {
                 if (isModalOut == true) {
                     tick2()
                 }
@@ -1295,7 +1312,7 @@ const main = () => {
                 }
                 
                 window.requestAnimationFrame(tickMain)
-            }, 1000 / 300)
+            // }, 1000 / 300)
         }
 
         tickMain()
@@ -1352,7 +1369,7 @@ const main = () => {
             y: '0rem'
         })
 
-        gsap.fromTo('.productImage', {y: '-20rem'}, {
+        gsap.fromTo('.productImage', {y: '-10rem'}, {
             scrollTrigger: {
                 trigger: '.productSection',
                 start: () => document.querySelector('.productSection').clientHeight * 0 + ' bottom',

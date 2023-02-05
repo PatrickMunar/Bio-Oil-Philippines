@@ -52,6 +52,7 @@ div {
 /* width */
 ::-webkit-scrollbar {
     width: 1rem;
+    pointer-events: none;
 }
 
 /* Track */
@@ -296,6 +297,21 @@ main {
 
     @media (orientation: Portrait) {
        /* Portrait */
+       
+        .productSection {
+            flex-direction: column;
+        }
+
+        .productChoice {
+            gap: 10rem !important;
+            width: calc(100vw - 20rem) !important;
+            height: calc(70vh / 2) !important;
+        }
+
+        .productImage {
+            height: auto !important;
+            width: calc(100% + 10rem) !important;
+        }
 
     }
       
@@ -315,16 +331,6 @@ main {
 
     .textAnimationClass {
         padding-top: 5rem;
-    }
-
-    .productSection {
-        flex-direction: column;
-    }
-
-    .productChoice {
-        gap: 10rem !important;
-        width: calc(100vw - 20rem) !important;
-        height: calc(70vh / 2) !important;
     }
 }
 
@@ -357,14 +363,26 @@ main {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
-    box-shadow: 0px 0px 5px 0px $mainGrey;
-    background-image: linear-gradient(to top right, $mainOrange, #eb9472);
+    box-shadow: 1px 1px 5px 0px $mainGrey;
+    background-image: linear-gradient(to top left, $mainOrange, #eb9472);
     pointer-events: auto;
     transform: scale(0);
     cursor: pointer;
 }
 
+.modalCloseInner {
+    position: absolute;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom right, $mainOrange, #eb9472);
+}
+
 .closeSVG {
+    position: absolute;
     fill: $mainWhite;
 }
 
@@ -378,6 +396,7 @@ main {
     border-radius: 5rem;
     box-shadow: 0px 0px 10px 0px $mainGrey;
     background-color: #fefefe;
+    overscroll-behavior: contain;
 }
 
 .modalContent {
@@ -843,7 +862,7 @@ nav {
 .productImage {
     position: absolute;
     z-index: -1;
-    height: 101%;
+    height: calc(100% + 10rem);
     top: 0;
 }
 
@@ -1330,6 +1349,7 @@ nav {
 // Blank Section
 .blankSection {
     height: min(50vh, 60rem);
+    pointer-events: none;
 }
 
 // Footer
@@ -1340,6 +1360,33 @@ footer {
     width: 100vw;
     height: 60rem;
     background-image: linear-gradient(to top, $mainOrange, 70%,#eb9472);
+    padding-top: 20rem;
+    pointer-events: auto;
+}
+
+.footerContent {
+    max-width: 50vw;
+    padding-left: 10rem;
+    color: $mainWhite;
+}
+
+.footerTMText {
+    font-size: 1.6rem;
+}
+
+.footerLegalLinksContainer {
+    margin-block: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footerLegalLinks {
+    font-size: 1.4rem;
+    text-decoration: underline;
+    color: $mainWhite;
+    cursor: pointer;
 }
 
 .footerBottomText {
@@ -1355,6 +1402,7 @@ footer {
     color: $mainWhite;
     white-space: nowrap;
     bottom: 5rem;
+    pointer-events: none;
 }
 
 // Commons
@@ -1410,4 +1458,28 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+// Plug
+.footerPlug {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: $mainWhite;
+    margin-top: 5rem;
+    cursor: pointer;
+}
+
+.footerPlugText {
+    font-size: 1.2rem;
+}
+
+#logoSVG {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.logoSVGPath {
+    stroke: $mainWhite;
+    stroke-width: 2px;
 }

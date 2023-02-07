@@ -636,39 +636,6 @@ const main = () => {
                 mouse.x = e.clientX/window.innerWidth - 0.5
                 mouse.y = -(e.clientY/window.innerHeight - 0.5)
 
-                // 3D --------------
-                if (scrollOnVersus == true) {
-                    // Update Pointer Coordinates
-                    pointer.set(
-                        ( e.clientX / window.innerWidth ) * 2 - 1,
-                        - ( e.clientY / window.innerHeight ) * 2 + 1,
-                        0.575
-                    )
-
-                    // Match Mouse and 3D Pointer Coordinates
-                    pointer.unproject(camera)
-                    pointer.sub(camera.position).normalize()
-                    let distance = -(camera.position.z) / pointer.z
-                    point.copy(camera.position).add((pointer.multiplyScalar(distance)))
-
-                    // Check for Affected Particles
-                    for (let i = 0; i < particleGroup.length; i++) {
-                        const distanceFromPointerSquared = (particleGroup[i].position.x - pointer.x)**2 + (particleGroup[i].position.y + (versusGroup.position.y - camera.position.y) - pointer.y)**2
-                        const directionVector = new THREE.Vector2(particleGroup[i].position.x - pointer.x, particleGroup[i].position.y + (versusGroup.position.y - camera.position.y) - pointer.y)
-
-                        // Case: Affected
-                        if (distanceFromPointerSquared < parameters.radius) {
-                            // Spread
-                            gsap.to(particleGroup[i].position, {duration: 0.1, x: particleGroup[i].position.x + directionVector.x * 0.5, y: particleGroup[i].position.y + directionVector.y * 0.5})
-
-                            // Size Change
-                            gsap.to(particleGroup[i].scale, {duration: 0.1, x: 0, y: 0, z: 0})
-                            gsap.to(particleGroup[i].scale, {duration: 1, delay: 0.1, x: 1, y: 1, z: 1})
-                            gsap.to(particleGroup[i].position, {duration: 1, delay: 0.1, x: originalPositions[i][0], y: originalPositions[i][1]})
-                        }
-                    } 
-                }
-
                 // Cursor Follower
                 gsap.to('.cursorFollower', {duration: 0.5, x: mouse.x * window.innerWidth, y: -mouse.y * window.innerHeight})
 
@@ -708,6 +675,40 @@ const main = () => {
                         // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
                         gsap.to('.versusImage', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
                         // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/window.innerHeight})
+
+                        // 3D --------------
+                        if (scrollOnVersus == true) {
+                            // Update Pointer Coordinates
+                            pointer.set(
+                                ( e.clientX / window.innerWidth ) * 2 - 1,
+                                - ( e.clientY / window.innerHeight ) * 2 + 1,
+                                0.575
+                            )
+
+                            // Match Mouse and 3D Pointer Coordinates
+                            pointer.unproject(camera)
+                            pointer.sub(camera.position).normalize()
+                            let distance = -(camera.position.z) / pointer.z
+                            point.copy(camera.position).add((pointer.multiplyScalar(distance)))
+
+                            // Check for Affected Particles
+                            for (let i = 0; i < particleGroup.length; i++) {
+                                const distanceFromPointerSquared = (particleGroup[i].position.x - pointer.x)**2 + (particleGroup[i].position.y + (versusGroup.position.y - camera.position.y) - pointer.y)**2
+                                const directionVector = new THREE.Vector2(particleGroup[i].position.x - pointer.x, particleGroup[i].position.y + (versusGroup.position.y - camera.position.y) - pointer.y)
+
+                                // Case: Affected
+                                if (distanceFromPointerSquared < parameters.radius) {
+                                    // Spread
+                                    gsap.to(particleGroup[i].position, {duration: 0.1, x: particleGroup[i].position.x + directionVector.x * 0.5, y: particleGroup[i].position.y + directionVector.y * 0.5})
+
+                                    // Size Change
+                                    gsap.to(particleGroup[i].scale, {duration: 0.1, x: 0, y: 0, z: 0})
+                                    gsap.to(particleGroup[i].scale, {duration: 1, delay: 0.1, x: 1, y: 1, z: 1})
+                                    gsap.to(particleGroup[i].position, {duration: 1, delay: 0.1, x: originalPositions[i][0], y: originalPositions[i][1]})
+                                }
+                            } 
+                        }
+
                     }
                         
                     // Photo
@@ -1398,7 +1399,7 @@ const main = () => {
                 }
                 
                 window.requestAnimationFrame(tickMain)
-            // }, 1000 / 1000)
+            // }, 1000 / 200)
         }
 
         tickMain()

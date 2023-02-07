@@ -331,6 +331,7 @@ main {
 
     .textAnimationClass {
         padding-top: 5rem;
+        margin-bottom: 5rem;
     }
 }
 
@@ -814,10 +815,16 @@ nav {
 
 #heroHeaderText1 {
     transform: translateY(8rem);
+    text-shadow: 0px 0px 0px $mainGrey;
+}
+
+#heroHeaderText2 {
+    text-shadow: 0px 0px 0px $mainGrey;
 }
 
 #heroHeaderText3 {
     transform: translateY(-5rem);
+    text-shadow: 0px 0px 0px $mainGrey;
 }
 
 .heroSubHeaderText {
@@ -1075,14 +1082,7 @@ nav {
     align-items: flex-start;
     flex-direction: column;
     padding-top: 11.25rem;
-}
-
-.history1 {
-    position: relative;
-    width: 100vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    padding-bottom: 10rem;
 }
 
 .historyBanner1 {
@@ -1093,6 +1093,47 @@ nav {
     overflow: hidden;
 }
 
+.history1 {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.history2 {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+    margin-top: 10rem;
+    margin-inline: 10rem
+}
+
+.history3 {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+    margin-top: 10rem;
+    margin-inline: 10rem;
+    padding-left: 15vw;
+}
+
+.history4 {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+}
+
 .historyTextContainer {
     display: flex;
     justify-content: flex-start;
@@ -1101,22 +1142,93 @@ nav {
 }
 
 .historyYear {
-    font-size: 6rem;
+    font-size: 4em;
 }
 
 .historyTitle {
-    font-size: 5rem;
+    font-size: 5em;
     font-family: Main;
     color: $mainOrange;
 }
 
 .historyBody {
     font-size: $bodyFontSize;
-    padding-top: 2rem;
+    padding-top: 1em;
+    font-size: 2.5em;
 }
 
 .historyTextContainer {
     width: max(40vw, 40%);
+}
+
+.historySectionOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: -1;
+}
+
+.historySectionExtraOrangeBorder {
+    position: absolute;
+    width: 100rem;
+    height: 100rem;
+    border-radius: 50%;
+    border: 1px solid $mainOrange;
+    opacity: 0.5;
+    transform: translateX(10rem) translateY(5rem);
+}
+
+.historySectionExtraImageContainer1 {
+    position: absolute;
+    width: 40rem;
+    height: 40rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: translateX(-30vw) translateY(-70%);
+    z-index: 2;
+}
+
+.historySectionExtraImageContainer2 {
+    position: absolute;
+    width: 60rem;
+    height: 60rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: translateX(10rem) translateY(-60%);
+    z-index: 0;
+}
+
+.historySectionExtraImage {
+    height: 100%;
+}
+
+.historySectionExtraBlur {
+    position: absolute;
+    width: 50rem;
+    height: 50rem;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    box-shadow: inset 1px -1px 1px 0px #0000002a;
+    transform: translateX(-20rem) translateY(-10rem);
+    background-image: linear-gradient(to top right, #87878700, 90%, #87878750);
+    z-index: 1;
+}
+
+.historySectionExtraOrange {
+    position: absolute;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    background-color: $mainOrange;
 }
 
 // Purchase Section
@@ -1240,7 +1352,6 @@ nav {
 .photoCaptionP {
     color: $mainWhite;
     font-size: 2rem;
-    font-style: italic;
     pointer-events: auto;
 }
 
@@ -1299,7 +1410,6 @@ nav {
 .photoCaption {
     color: $mainWhite;
     font-size: 2rem;
-    font-style: italic;
     pointer-events: auto;
 }
 
@@ -1327,23 +1437,55 @@ nav {
     white-space: nowrap;
 }
 
+.followLinkOuter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 100rem;
+    margin-top: 2rem;
+    box-shadow: inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a;
+}
+
 .followLinkContainer {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 2rem;
-    padding-block: 1rem;
+    gap: 1rem;
+    padding-block: 0.5rem;
+    padding-left: 2.5rem;
+    padding-right: 0.5rem;
     color: $mainOrange;
-    font-size: 5rem;
+    font-size: 2.5rem;
     cursor: pointer;
+    border-radius: 100rem;
+    background-color: $mainWhite;
+}
+
+.followLinkArrow {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100rem;
+    box-shadow: inset -1px 1px 5px 0 #0000000a;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom left, $mainOrange, 30%, #eb9472);
+}
+
+.linkIconSVG {
+    position: absolute;
+    transform: scale(0.5);
+    z-index: 0;
 }
 
 .linkArrowSVG {
-    transform: scale($widthRatio);
+    transform: scale(0.5);
+    z-index: 0;
 }
 
 .linkArrowPath {
-    fill: $mainOrange;
+    fill: $mainWhite;
 }
 
 // Blank Section
@@ -1462,6 +1604,8 @@ a {
 
 // Plug
 .footerPlug {
+    position: relative;
+    width: 10%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;

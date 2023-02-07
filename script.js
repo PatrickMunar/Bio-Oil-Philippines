@@ -1,5 +1,5 @@
 // GSAP Settings
-gsap.ticker.fps(144)
+gsap.ticker.fps(60)
 gsap.registerPlugin(ScrollTrigger)
 
 // Clear Scroll Memory
@@ -7,7 +7,7 @@ window.history.scrollRestoration = 'manual'
 
 // Lenis
 const lenis = new Lenis({
-    duration: 3,
+    duration: 1.5,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
     direction: 'vertical', // vertical, horizontal
     gestureDirection: 'vertical', // vertical, horizontal, both
@@ -102,6 +102,8 @@ const main = () => {
             rLogo3D.add(obj.scene)
             obj.scene.scale.set(logoScale, logoScale, logoScale)
 
+            console.log(obj.scene)
+
             obj.scene.children[0].material = new THREE.MeshStandardMaterial({
                 color: new THREE.Color(0xffffff),
                 emissive: new THREE.Color(0xeb5f28),
@@ -149,12 +151,11 @@ const main = () => {
         roughness: 0.1,
         // transparent: true,
         // opacity: 0.95,
-        // depthWrite: false
     })
 
     const blob = new THREE.MarchingCubes( 64, blobM, true, true, 100000 )
     blob.isolation = 50
-    blob.scale.set(2,0.5,2)
+    blob.scale.set(2,2,2)
     blob.enableUvs = false
     blob.enableColors = false
     blob.frustumCulled = false
@@ -416,11 +417,11 @@ const main = () => {
         navChoices[i].addEventListener('click', () => {
             if (i != navClickedIndex && isNavClicked == false) {
                 isNavClicked = true
-                lenis.scrollTo('html', {offset: scrollDestinations[i], duration: 2})
+                lenis.scrollTo('html', {offset: scrollDestinations[i], duration: 1, ease: 'none'})
                 changeNavChoice(i)
                 setTimeout(() => {
                     isNavClicked = false
-                }, 2000)
+                }, 1000)
             }
         })
     }
@@ -596,6 +597,25 @@ const main = () => {
         prevY = mouse.y
     })
 
+    // Follow Links
+    const followLinkOuters = document.querySelectorAll('.followLinkOuter')
+    const linkArrowSVGs = document.querySelectorAll('.linkArrowSVG')
+    const linkIconSVGs = document.querySelectorAll('.linkIconSVG')
+
+    for (let i = 0; i < followLinkOuters.length; i++) {
+        gsap.to(linkIconSVGs[i], {duration: 0, x: -30, y: 30})
+
+        followLinkOuters[i].addEventListener('pointerenter', () => {
+            gsap.to(linkArrowSVGs[i], {duration: 0.2, x: 30, y: -30})
+            gsap.to(linkIconSVGs[i], {duration: 0.2, x: 0, y: 0})
+        })
+
+        followLinkOuters[i].addEventListener('pointerleave', () => {
+            gsap.to(linkArrowSVGs[i], {duration: 0.2, x: 0, y: 0})
+            gsap.to(linkIconSVGs[i], {duration: 0.2, x: -30, y: 30})
+        })
+    }
+
     // Mouse
     const pointer = new THREE.Vector3()
     const point = new THREE.Vector3()
@@ -679,7 +699,7 @@ const main = () => {
                         }
                         else {
                             // Blob
-                            gsap.to(blob.rotation, {duration: 1, z: mouse.x * 0.25, x: mouse.y * 0.25 + Math.PI/2})
+                            // gsap.to(blob.rotation, {duration: 1, z: mouse.x * 0.25, x: mouse.y * 0.25 + Math.PI/2})
                         }
                         // Logo
                         gsap.to(rLogo3D.rotation, {duration: 2, y: mouse.x * Math.PI/6, x: -mouse.y * Math.PI/6})
@@ -784,7 +804,7 @@ const main = () => {
                         }
                         else {
                             // Blob
-                            gsap.to(blob.rotation, {duration: 1, z: mouse.x * 0.25, x: mouse.y * 0.25 + Math.PI/2})
+                            // gsap.to(blob.rotation, {duration: 1, z: mouse.x * 0.25, x: mouse.y * 0.25 + Math.PI/2})
                         }
                         // Logo
                         gsap.to(rLogo3D.rotation, {duration: 2, y: mouse.x * Math.PI/6, x: -mouse.y * Math.PI/6})
@@ -866,7 +886,7 @@ const main = () => {
     }
 
     // Cursor Follower Events
-    const cursorIndices = [2,0,0,3,3,3,3,3,3,3,5,6,7,4]
+    const cursorIndices = [2,0,0,3,3,3,3,3,3,3,4]
     const cursorSVGs = document.querySelectorAll('.cursorSVG')
     const cursorChoices = document.querySelectorAll('.cursorChoice')
 
@@ -932,7 +952,7 @@ const main = () => {
     for (let i = 0; i < productChoices.length; i++) {
         productChoices[i].addEventListener('pointerenter', () => {
             gsap.to(productChoices[i], {duration: 0.2, scale: 1.01})
-            gsap.to(productImages[i], {duration: 0.2, scale: 1.2})
+            gsap.to(productImages[i], {duration: 0.2, scale: 1.05})
             productEnterValue = i
         })
 
@@ -948,28 +968,33 @@ const main = () => {
         })
 
         productChoices[i].addEventListener('click', () => {
-            isModalOut = true
+            if (isModalOut == false) {
+                isModalOut = true
 
-            for (let j = 0; j < modalContents.length; j++) {
-                gsap.to(modalContents[j], {duration: 0, display: 'none'})
-            }
-            gsap.to(modalContents[i], {duration: 0, display: 'flex'})
-            gsap.to('.modalSection', {duration: 0, display: 'flex'})
-            gsap.to('html', {duration: 0, overflowY: 'hidden'})
-            gsap.to('.modalClose', {duration: 0.25, delay: 0.1, scale: 1, ease: 'back'})
-            gsap.to('.modalSection', {duration: 0, marginTop: '10rem'})
-            gsap.to('.modalSection', {duration: 0.25, opacity: 1, marginTop: '0rem'})
-            document.querySelector('.modalSection').scrollTo(0,0)
+                for (let j = 0; j < modalContents.length; j++) {
+                    gsap.to(modalContents[j], {duration: 0, display: 'none'})
+                }
+                gsap.to(modalContents[i], {duration: 0, display: 'flex'})
+                gsap.to('.modalSection', {duration: 0, display: 'flex'})
+                gsap.to('html', {duration: 0, overflowY: 'hidden'})
+                gsap.to('.modalClose', {duration: 0, opacity: 1, pointerEvents: 'auto'})
+                gsap.to('.modalClose', {duration: 0.25, delay: 0.1, scale: 1, ease: 'back'})
+                gsap.to('.modalSection', {duration: 0, marginTop: '10rem'})
+                gsap.to('.modalSection', {duration: 0.25, opacity: 1, marginTop: '0rem'})
+                document.querySelector('.modalSection').scrollTo(0,0)
 
-            if (isNavOut == true) {
-                isNavOut = false
-                gsap.to('nav', {duration: navAnimationDuration, width: 0, ease: 'Power1.easeOut'})
-                gsap.to('.navName', {duration: navAnimationDuration, width: navNameWidth, ease: 'Power1.easeOut'})
+                if (isNavOut == true) {
+                    isNavOut = false
+                    gsap.to('nav', {duration: navAnimationDuration, width: 0, ease: 'Power1.easeOut'})
+                    gsap.to('.navName', {duration: navAnimationDuration, width: navNameWidth, ease: 'Power1.easeOut'})
+                }
             }
         })
     }
 
     // Modal Close
+    let isModalCloseClicked = false
+
     document.querySelector('.modalClose').addEventListener('pointerenter', () => {
         if (isModalOut == true) {
             gsap.to('.modalClose', {duration: 0.125, scale: 1.05})
@@ -977,21 +1002,27 @@ const main = () => {
     })
 
     document.querySelector('.modalClose').addEventListener('pointerleave', () => {
-        if (isModalOut == true) {
-            gsap.to('.modalClose', {duration: 0.125, scale: 1.})
+        if (isModalOut == true && isModalCloseClicked == false) {
+            gsap.to('.modalClose', {duration: 0.125, scale: 1})
         }
     })
 
     document.querySelector('.modalClose').addEventListener('click', () => {
         if (isModalOut == true) {
-            isModalOut = false
+            setTimeout(() => {
+                isModalOut = false
+                isModalCloseClicked = false
+            }, 600)
+
+            isModalCloseClicked = true
 
             gsap.to('.modalSection', {duration: 0, delay: 0.3, display: 'none'})
             gsap.to('.modalSection', {duration: 0.25, delay: 0.1, opacity: 0, onComplete: resetModalChart})
             gsap.to('html', {duration: 0, overflowY: 'scroll'})
-            gsap.to('.modalClose', {duration: 0.1, scale: 0.5})
-            gsap.to('.modalClose', {duration: 0.1, delay: 0.1, scale: 0.95})
-            gsap.to('.modalClose', {duration: 0.1, delay: 0.25, scale: 0})
+            gsap.to('.modalClose', {duration: 0, pointerEvents: 'none', scale: 1.05})
+            gsap.to('.modalClose', {duration: 0.15, scale: 0.9})
+            gsap.to('.modalClose', {duration: 0.15, delay: 0.2, scale: 1})
+            gsap.to('.modalClose', {duration: 0.25, delay: 0.35, opacity: 0})
 
             gsap.to('.navToggle', {duration: 0, pointerEvents: 'auto'})
             gsap.to('.navLogo', {duration: 0, pointerEvents: 'auto'})
@@ -1078,7 +1109,20 @@ const main = () => {
         const spans = textAnimationDivs[e]
         for (let i = 0; i < spans.length; i++) {
             if (dir == 'upHero') {
-                gsap.to(spans[i], {duration: 0.7, delay: i * td, y: 0, opacity: 1, ease: 'back'})
+                gsap.to(spans[i], {duration: 1, delay: i * td, y: 0, opacity: 1, ease: 'back'})
+                // gsap.to(spans[i], {duration: 0.25, delay: i * td + 1, textShadow: '5px 0px 0px #878787'})
+            }
+            else if (dir == 'upHero1') {
+                gsap.to(spans[i], {duration: 1, delay: i * td, y: 0, opacity: 1, ease: 'back'})
+                gsap.to(spans[i], {duration: 0.25, delay: i * td + 1, textShadow: '5px 5px 0px #878787'})
+            }
+            else if (dir == 'upHero2') {
+                gsap.to(spans[i], {duration: 1, delay: i * td, y: 0, opacity: 1, ease: 'back'})
+                gsap.to(spans[i], {duration: 0.25, delay: i * td + 1, textShadow: '5px 0px 0px #878787'})
+            }
+            else if (dir == 'upHero3') {
+                gsap.to(spans[i], {duration: 1, delay: i * td, y: 0, opacity: 1, ease: 'back'})
+                gsap.to(spans[i], {duration: 0.25, delay: i * td + 1, textShadow: '5px -5px 0px #878787'})
             }
             else if (dir == 'up') {
                 gsap.to(spans[i], {duration: 0.7, delay: i * td, y: 0, opacity: 1})
@@ -1095,10 +1139,10 @@ const main = () => {
             animateText(0, 0.1, 'upHero')
             setTimeout(() => {
                 animateText(1, 0.1, 'upHero')
-            }, 5 * 0.1 * 1000)
+            }, 5 * 0.05 * 1000)
             setTimeout(() => {
                 animateText(2, 0.1, 'upHero')
-            }, 9 * 0.1 * 1000)
+            }, 9 * 0.05 * 1000)
         }, 1000)
 
         // Blob
@@ -1312,7 +1356,7 @@ const main = () => {
                 }
                 
                 window.requestAnimationFrame(tickMain)
-            // }, 1000 / 300)
+            // }, 1000 / 1000)
         }
 
         tickMain()

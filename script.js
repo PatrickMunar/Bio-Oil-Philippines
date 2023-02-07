@@ -102,8 +102,6 @@ const main = () => {
             rLogo3D.add(obj.scene)
             obj.scene.scale.set(logoScale, logoScale, logoScale)
 
-            console.log(obj.scene)
-
             obj.scene.children[0].material = new THREE.MeshStandardMaterial({
                 color: new THREE.Color(0xffffff),
                 emissive: new THREE.Color(0xeb5f28),
@@ -950,6 +948,7 @@ const main = () => {
     const productImages = document.querySelectorAll('.productImage')
     let isModalOut = false
     let productEnterValue = 2
+    let affectedChartsState = [0,0,0,0,0]
 
     for (let i = 0; i < productChoices.length; i++) {
         productChoices[i].addEventListener('pointerenter', () => {
@@ -972,6 +971,13 @@ const main = () => {
         productChoices[i].addEventListener('click', () => {
             if (isModalOut == false) {
                 isModalOut = true
+
+                if (i == 0) {
+                    affectedChartsState = [1,1,1,0,0]
+                }
+                else {
+                    affectedChartsState = [0,0,0,1,1]
+                }
 
                 for (let j = 0; j < modalContents.length; j++) {
                     gsap.to(modalContents[j], {duration: 0, display: 'none'})
@@ -1017,6 +1023,8 @@ const main = () => {
             }, 600)
 
             isModalCloseClicked = true
+
+            affectedChartsState = [0,0,0,0,0]
 
             gsap.to('.modalSection', {duration: 0, delay: 0.3, display: 'none'})
             gsap.to('.modalSection', {duration: 0.25, delay: 0.1, opacity: 0, onComplete: resetModalChart})
@@ -1347,6 +1355,8 @@ const main = () => {
             })
         }
 
+        const dy = []
+
         // Animate
         // --------------------------------------
 
@@ -1361,10 +1371,12 @@ const main = () => {
                 renderer.render(scene, camera)
 
                 for (let i = 0; i < modalChartsContainers.length; i++) {
-                    const dy = modalChartsContainers[i].getBoundingClientRect().top - window.innerHeight
-                    if (dy <= -59 && modalChartPopupStates[i] == 0) {
-                        modalChartPopupStates[i] = 1
-                        fillModalChart(i)
+                    if (affectedChartsState[i] == 1) {
+                        dy[i] = modalChartsContainers[i].getBoundingClientRect().top - window.innerHeight
+                        if (dy[i] <= -59 && modalChartPopupStates[i] == 0) {
+                            modalChartPopupStates[i] = 1
+                            fillModalChart(i)
+                        }
                     }
                 }
             }

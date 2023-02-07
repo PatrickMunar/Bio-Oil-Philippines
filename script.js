@@ -1,5 +1,5 @@
 // GSAP Settings
-gsap.ticker.fps(60)
+gsap.ticker.fps(144)
 gsap.registerPlugin(ScrollTrigger)
 
 // Clear Scroll Memory
@@ -608,11 +608,13 @@ const main = () => {
         followLinkOuters[i].addEventListener('pointerenter', () => {
             gsap.to(linkArrowSVGs[i], {duration: 0.2, x: 30, y: -30})
             gsap.to(linkIconSVGs[i], {duration: 0.2, x: 0, y: 0})
+            gsap.to(followLinkOuters[i], {duration: 0.2, x: 2, y: -2, boxShadow: 'inset 1px -1px 5px 0 #0000001a, -3px 3px 3px 0 #0000003a'})
         })
 
         followLinkOuters[i].addEventListener('pointerleave', () => {
             gsap.to(linkArrowSVGs[i], {duration: 0.2, x: 0, y: 0})
             gsap.to(linkIconSVGs[i], {duration: 0.2, x: -30, y: 30})
+            gsap.to(followLinkOuters[i], {duration: 0.2, x: 0, y: 0, boxShadow: 'inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a'})
         })
     }
 
@@ -977,7 +979,7 @@ const main = () => {
                 gsap.to(modalContents[i], {duration: 0, display: 'flex'})
                 gsap.to('.modalSection', {duration: 0, display: 'flex'})
                 gsap.to('html', {duration: 0, overflowY: 'hidden'})
-                gsap.to('.modalClose', {duration: 0, opacity: 1, pointerEvents: 'auto'})
+                gsap.to('.modalClose', {duration: 0, opacity: 1, pointerEvents: 'auto', x: '0rem'})
                 gsap.to('.modalClose', {duration: 0.25, delay: 0.1, scale: 1, ease: 'back'})
                 gsap.to('.modalSection', {duration: 0, marginTop: '10rem'})
                 gsap.to('.modalSection', {duration: 0.25, opacity: 1, marginTop: '0rem'})
@@ -1019,7 +1021,7 @@ const main = () => {
             gsap.to('.modalSection', {duration: 0, delay: 0.3, display: 'none'})
             gsap.to('.modalSection', {duration: 0.25, delay: 0.1, opacity: 0, onComplete: resetModalChart})
             gsap.to('html', {duration: 0, overflowY: 'scroll'})
-            gsap.to('.modalClose', {duration: 0, pointerEvents: 'none', scale: 1.05})
+            gsap.to('.modalClose', {duration: 0, pointerEvents: 'none', scale: 1.05, x: '1rem'})
             gsap.to('.modalClose', {duration: 0.15, scale: 0.9})
             gsap.to('.modalClose', {duration: 0.15, delay: 0.2, scale: 1})
             gsap.to('.modalClose', {duration: 0.25, delay: 0.35, opacity: 0})
@@ -1064,7 +1066,7 @@ const main = () => {
         }
     }
 
-    // Startup Animations
+    // Text Animations
     const textAnimationDivs = []
     let textAnimationIndex = 0
 
@@ -1088,6 +1090,9 @@ const main = () => {
             if (dir == 'up') {
                 gsap.to(spans[i], {duration: 0, y: 270, opacity: 0.5})
             }
+            else if (dir == 'upHero') {
+                gsap.to(spans[i], {duration: 0, y: 270, scaleY: 1, opacity: 0.5})
+            }
             else if (dir == 'left') {
                 gsap.to(spans[i], {duration: 0, x: -200, opacity: 0.5})
             }
@@ -1096,9 +1101,9 @@ const main = () => {
         textAnimationIndex++
     }
 
-    textSetup(document.querySelector('#heroHeaderText1'), 'up')
-    textSetup(document.querySelector('#heroHeaderText2'), 'up')
-    textSetup(document.querySelector('#heroHeaderText3'), 'up')
+    textSetup(document.querySelector('#heroHeaderText1'), 'upHero')
+    textSetup(document.querySelector('#heroHeaderText2'), 'upHero')
+    textSetup(document.querySelector('#heroHeaderText3'), 'upHero')
 
     textSetup(document.querySelector('#purchaseTextLine1'), 'up')
     textSetup(document.querySelector('#purchaseTextLine2'), 'up')
@@ -1109,7 +1114,7 @@ const main = () => {
         const spans = textAnimationDivs[e]
         for (let i = 0; i < spans.length; i++) {
             if (dir == 'upHero') {
-                gsap.to(spans[i], {duration: 1, delay: i * td, y: 0, opacity: 1, ease: 'back'})
+                gsap.to(spans[i], {duration: 0.7, delay: i * td, y: 0, opacity: 1, scaleY: 1})
                 // gsap.to(spans[i], {duration: 0.25, delay: i * td + 1, textShadow: '5px 0px 0px #878787'})
             }
             else if (dir == 'upHero1') {
@@ -1133,23 +1138,48 @@ const main = () => {
         }
     }
 
+    // Startup Animations
+    gsap.to(box1.rotation, {duration: 0, y: -Math.PI/6 + Math.PI})
+    gsap.to(box1.position, {duration: 0, y: 0 - 7})
+    gsap.to(box2.rotation, {duration: 0, y: Math.PI/12 + Math.PI})
+    gsap.to(box2.position, {duration: 0, y: 1 - 7})
+    gsap.to('.heroSubHeaderText', {duration: 0, opacity: 0})
+    gsap.to('.scrollCTACircle', {duration: 0, y: '-24rem'})
+    gsap.to('.scrollCTAText1', {duration: 0, opacity: 0})
+    gsap.to('.scrollCTAText2', {duration: 0, opacity: 0})
+
     const startupAnimations = () => {
+        // Scroll
+        gsap.to('.scrollCTACircle', {duration: 4.25, y: '0rem'})
+        gsap.to('.scrollCTAText1', {duration: 2, delay: 2.25, opacity: 1})
+        gsap.to('.scrollCTAText1', {duration: 2, delay: 5.25, opacity: 0})
+        gsap.to('.scrollCTAText2', {duration: 2, delay: 6.25, opacity: 1})
+
         // Text
         setTimeout(() => {
             animateText(0, 0.1, 'upHero')
             setTimeout(() => {
                 animateText(1, 0.1, 'upHero')
-            }, 5 * 0.05 * 1000)
+            }, 5 * 0.07 * 1000)
             setTimeout(() => {
                 animateText(2, 0.1, 'upHero')
-            }, 9 * 0.05 * 1000)
-        }, 1000)
+            }, 9 * 0.07 * 1000)
+        }, 700)
+
+        gsap.to('.heroSubHeaderText', {duration: 1, delay: 2.5, opacity: 1})
 
         // Blob
         gsap.fromTo(blob.scale, {x: 1.5, z: 1.5}, {duration: 2, x: 2, z: 2})
         gsap.fromTo(blob.rotation, {y: Math.PI/20}, {duration: 2, y: 0})
+
+        // Boxes
+        gsap.to(box1.rotation, {duration: 1.5, y:-Math.PI/6, ease: 'Power3.easeOut'})
+        gsap.to(box1.position, {duration: 1.5, y: 0, ease: 'Power3.easeOut'})
+        gsap.to(box2.rotation, {duration: 1.5, delay: 0.35, y:Math.PI/12, ease: 'Power3.easeOut'})
+        gsap.to(box2.position, {duration: 1.5, delay: 0.35, y: 1, ease: 'Power3.easeOut'})
     }
 
+    // Purchase Text Animations
     const purchaseTextGreys = document.querySelectorAll('.purchaseTextGrey')
     const purchaseTextDelays = [0.3,0.6,1.25,2.25,3.1]
     gsap.to('.purchaseLinks1', {duration: 0, opacity: 0, pointerEvents: 'none'})
@@ -1541,6 +1571,77 @@ const main = () => {
                 // markers: true,
             },
             y: -100 * 6/3,
+        })
+
+        // History Extras
+        gsap.fromTo('.hpbbanner', {y: '5rem'}, {
+            scrollTrigger: {
+                trigger: '.history1',
+                start: () => document.querySelector('.history1').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history1').clientHeight * 1 + ' top',
+                // toggleActions: "play none none reverse",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            y: '-5rem',
+        })
+
+        gsap.fromTo('.hpobanner', {y: '8rem'}, {
+            scrollTrigger: {
+                trigger: '.history1',
+                start: () => document.querySelector('.history1').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history1').clientHeight * 1 + ' top',
+                // toggleActions: "play none none reverse",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            y: '-8rem',
+        })
+
+        gsap.fromTo('.heblur', {y: '10rem'}, {
+            scrollTrigger: {
+                trigger: '.historySection',
+                start: () => document.querySelector('.historySection').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.historySection').clientHeight * 1 + ' top',
+                // toggleActions: "play none none reverse",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            y: '-7rem',
+        })
+
+        gsap.fromTo('.heo1', {y: '20rem'}, {
+            scrollTrigger: {
+                trigger: '.historySection',
+                start: () => document.querySelector('.historySection').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.historySection').clientHeight * 1 + ' top',
+                // toggleActions: "play none none reverse",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            y: '-10rem',
+        })
+
+        gsap.fromTo('.heo2', {y: '10rem'}, {
+            scrollTrigger: {
+                trigger: '.historySection',
+                start: () => document.querySelector('.historySection').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.historySection').clientHeight * 1 + ' top',
+                // toggleActions: "play none none reverse",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            y: '0rem',
         })
 
         // Photo Cards

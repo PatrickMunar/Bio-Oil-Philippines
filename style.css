@@ -11,8 +11,7 @@
 .noselect, img, * {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
+  -moz-user-select: none; /* Old versions of Firefox */ /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
  supported by Chrome, Edge, Opera and Firefox */
 }
@@ -42,7 +41,8 @@ div {
 /* width */
 ::-webkit-scrollbar {
   width: 1rem;
-  pointer-events: none;
+  -webkit-user-select: auto;
+          user-select: auto;
 }
 
 /* Track */
@@ -345,8 +345,7 @@ main {
   border-radius: 5rem;
   box-shadow: 0px 0px 10px 0px #878787;
   background-color: #fefefe;
-  -ms-scroll-chaining: none;
-      overscroll-behavior: contain;
+  overscroll-behavior: contain;
 }
 
 .modalContent {
@@ -858,9 +857,18 @@ nav {
   perspective: 1000px;
 }
 
-.productImage {
+.productChoiceFilter {
   position: absolute;
   z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3137254902), 1%, rgba(0, 0, 0, 0));
+  top: 0;
+}
+
+.productImage {
+  position: absolute;
+  z-index: -2;
   height: calc(100% + 10rem);
   top: 0;
 }
@@ -880,7 +888,7 @@ nav {
   align-items: center;
   width: 100%;
   color: #fdfdfd;
-  text-shadow: 0 0 7px #878787;
+  text-shadow: 0 0 4px #000000;
 }
 
 .productQuestion {
@@ -891,7 +899,7 @@ nav {
   align-items: center;
   width: 100%;
   color: #fdfdfd;
-  text-shadow: 0 0 7px #878787;
+  text-shadow: 0 0 4px #000000;
 }
 
 .versusSection {
@@ -1084,11 +1092,11 @@ nav {
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .historyBannerPhoto {
-  height: 100%;
+  height: calc(100% + 10rem);
 }
 
 .history1 {
@@ -1306,6 +1314,7 @@ nav {
   justify-content: flex-start;
   align-items: center;
   height: 100%;
+  z-index: 2;
 }
 
 .hpobanner {
@@ -1366,7 +1375,6 @@ nav {
   align-items: center;
   flex-direction: column;
   gap: 2.5rem;
-  padding-bottom: 5rem;
 }
 
 .purchaseTextLine {
@@ -1397,11 +1405,22 @@ nav {
 }
 
 .purchaseSMLogo {
-  height: 8rem;
+  height: 5rem;
 }
 
 .purchaseOLLogo {
-  height: 6rem;
+  height: 5rem;
+}
+
+.purchaseLinkButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 2rem;
+  padding-inline: 4rem;
+  border-radius: 100rem;
+  background-color: #fdfdfd;
+  box-shadow: inset 1px -1px 5px 0 rgba(0, 0, 0, 0.1019607843), -1px 1px 3px 0 rgba(0, 0, 0, 0.2274509804);
 }
 
 .purchaseLogo {
@@ -1417,6 +1436,7 @@ nav {
   justify-content: space-between;
   align-items: flex-start;
   perspective: 1000px;
+  z-index: -1;
 }
 
 #photoCardP1 {
@@ -1606,16 +1626,19 @@ footer {
   bottom: 0;
   z-index: 0;
   width: 100vw;
-  height: 60rem;
+  height: min(50vh, 60rem);
   background-image: linear-gradient(to top, #eb5f28, 70%, #eb9472);
-  padding-top: 20rem;
   pointer-events: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .footerContent {
   max-width: 50vw;
   padding-left: 10rem;
   color: #fdfdfd;
+  margin-top: 5rem;
 }
 
 .footerTMText {

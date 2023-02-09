@@ -1,5 +1,5 @@
 // GSAP Settings
-gsap.ticker.fps(144)
+gsap.ticker.fps(60)
 gsap.registerPlugin(ScrollTrigger)
 
 // Clear Scroll Memory
@@ -156,11 +156,11 @@ const main = () => {
     blob.scale.set(2,2,2)
     blob.enableUvs = false
     blob.enableColors = false
-    blob.frustumCulled = false
+    blob.frustumCulled = true
 
     blob.rotation.x = Math.PI/2
 
-    const blobCount = 15
+    const blobCount = 6
 
     const blobUp = new THREE.Group
     blobUp.position.set(-2,0,2)
@@ -225,7 +225,7 @@ const main = () => {
             })
         )
 
-        // Randomize Particle Position in a Circle
+        // Particle Positions
         const x = -2 + 0.2 * w
         const y = -2 + 0.2 * h
         const z = 0
@@ -248,6 +248,7 @@ const main = () => {
         }
     }
 
+    // Plane Pic
     const planePic = new THREE.Mesh(
         new THREE.PlaneGeometry(652 * 0.005, 591 * 0.005),
         new THREE.MeshBasicMaterial({
@@ -873,16 +874,15 @@ const main = () => {
     swipeCard(0)
 
     // Purchase Events
-    const purchaseLogos = document.querySelectorAll('.purchaseLogo')
-    const grayTime = 0.25
+    const purchaseLinkButtons = document.querySelectorAll('.purchaseLinkButton')
 
-    for (let i = 0; i < purchaseLogos.length; i++) {
-        purchaseLogos[i].addEventListener('pointerenter', () => {
-            gsap.to(purchaseLogos[i], {duration: grayTime})
+    for (let i = 0; i < purchaseLinkButtons.length; i++) {
+        purchaseLinkButtons[i].addEventListener('pointerenter', () => {
+            gsap.to(purchaseLinkButtons[i], {duration: 0.2, x: 2, y: -2, boxShadow: 'inset 1px -1px 5px 0 #0000001a, -3px 3px 3px 0 #0000003a'})
         })
 
-        purchaseLogos[i].addEventListener('pointerleave', () => {
-            gsap.to(purchaseLogos[i], {duration: grayTime})
+        purchaseLinkButtons[i].addEventListener('pointerleave', () => {
+            gsap.to(purchaseLinkButtons[i], {duration: 0.2, x: 0, y: 0, boxShadow: 'inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a'})
         })
     }
 
@@ -1191,9 +1191,9 @@ const main = () => {
     // Purchase Text Animations
     const purchaseTextGreys = document.querySelectorAll('.purchaseTextGrey')
     const purchaseTextDelays = [0.3,0.6,1.25,2.25,3.1]
-    gsap.to('.purchaseLinks1', {duration: 0, opacity: 0, pointerEvents: 'none'})
-    gsap.to('.purchaseLinks2', {duration: 0, opacity: 0, pointerEvents: 'none'})
-    gsap.to('.purchaseLinks3', {duration: 0, opacity: 0, pointerEvents: 'none'})
+    gsap.to('.purchaseLinks1', {duration: 0, opacity: 0, pointerEvents: 'none', boxShadow: 'inset -1px 1px 5px 0 #0000001a, 0px 0px 0px 0 #0000003a'})
+    gsap.to('.purchaseLinks2', {duration: 0, opacity: 0, pointerEvents: 'none', boxShadow: 'inset -1px 1px 5px 0 #0000001a, 0px 0px 0px 0 #0000003a'})
+    gsap.to('.purchaseLinks3', {duration: 0, opacity: 0, pointerEvents: 'none', boxShadow: 'inset -1px 1px 5px 0 #0000001a, 0px 0px 0px 0 #0000003a'})
     for (let i = 0; i < purchaseTextGreys.length; i++) {
         gsap.to(purchaseTextGreys[i], {duration: 0, opacity: 0})
     }
@@ -1202,9 +1202,15 @@ const main = () => {
         for (let i = 0; i < purchaseTextGreys.length; i++) {
             gsap.to(purchaseTextGreys[i], {duration: 1, delay: purchaseTextDelays[i], opacity: 1})
         }
-        gsap.to('.purchaseLinks1', {duration: 1, delay: 1.25, opacity: 1, pointerEvents: 'auto'})
-        gsap.to('.purchaseLinks2', {duration: 1, delay: 2, opacity: 1, pointerEvents: 'auto'})
-        gsap.to('.purchaseLinks3', {duration: 1, delay: 3, opacity: 1, pointerEvents: 'auto'})
+        gsap.to('.purchaseLinks1', {duration: 0.75, delay: 1.25, opacity: 1})
+        gsap.to('.purchaseLinks2', {duration: 0.75, delay: 2, opacity: 1})
+        gsap.to('.purchaseLinks3', {duration: 0.75, delay: 3, opacity: 1})
+        gsap.to('.purchaseLinks1', {duration: 0.75, delay: 2, boxShadow: 'inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a'})
+        gsap.to('.purchaseLinks2', {duration: 0.75, delay: 2.75, boxShadow: 'inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a'})
+        gsap.to('.purchaseLinks3', {duration: 0.75, delay: 3.75, boxShadow: 'inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a'})
+        gsap.to('.purchaseLinks1', {duration: 0, delay: 2.75, pointerEvents: 'auto'})
+        gsap.to('.purchaseLinks2', {duration: 0, delay: 3.5, pointerEvents: 'auto'})
+        gsap.to('.purchaseLinks3', {duration: 0, delay: 4.5, pointerEvents: 'auto'})
 
         animateText(3, 0.05, 'up')
         setTimeout(() => {
@@ -1241,7 +1247,7 @@ const main = () => {
             renderer.render(scene, camera)
         }
 
-        blobTime = elapsedTime * 0.15 + 2
+        blobTime = elapsedTime * 0.2 + 45
     }
 
     // tick()
@@ -1362,11 +1368,6 @@ const main = () => {
         // --------------------------------------
 
         const tick2 = () => {
-            // // Call tick again on the next frame
-            // setTimeout(() => {
-            //     window.requestAnimationFrame(tick2)
-            // }, 1000 / 30)
-
             // Render
             if (isModalOut == true) {
                 renderer.render(scene, camera)
@@ -1385,6 +1386,7 @@ const main = () => {
             controls.update()
         }
 
+
         // tick2()
         const tickMain = () => {
             elapsedTime = clock.getElapsedTime()
@@ -1399,7 +1401,7 @@ const main = () => {
                 }
                 
                 window.requestAnimationFrame(tickMain)
-            // }, 1000 / 200)
+            // }, 1000 / 60)
         }
 
         tickMain()
@@ -1655,6 +1657,175 @@ const main = () => {
                 // markers: true,
             },
             y: '0rem',
+        })
+
+        // History Popups
+        gsap.fromTo('.historyBanner1', {x: -document.querySelector('.historyBanner1').clientWidth}, {
+            scrollTrigger: {
+                trigger: '.history1',
+                start: () => document.querySelector('.history1').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history1').clientHeight * 1 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: 1,
+                // pin: true,
+                // markers: true,
+            },
+            x: 0,
+        })
+
+        gsap.fromTo('.historyBannerPhoto', {x: document.querySelector('.historyBanner1').clientWidth}, {
+            scrollTrigger: {
+                trigger: '.history1',
+                start: () => document.querySelector('.history1').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history1').clientHeight * 1 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: 1,
+                // pin: true,
+                // markers: true,
+            },
+            x: 0,
+        })
+
+        gsap.fromTo('.historyBannerPhoto', {y: '0rem'}, {
+            scrollTrigger: {
+                trigger: '.history1',
+                start: () => document.querySelector('.history1').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history1').clientHeight * 1 + ' top',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: 1,
+                // pin: true,
+                // markers: true,
+            },
+            y: '10rem',
+        })
+
+        gsap.fromTo('.historySectionExtraOrangeBorderBanner', {scale: 0}, {
+            scrollTrigger: {
+                trigger: '.history1',
+                start: () => document.querySelector('.history1').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history1').clientHeight * 1 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: 1,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
+        })
+
+        gsap.fromTo('.historySectionExtraOrangeBorder', {scale: 0}, {
+            scrollTrigger: {
+                trigger: '.history2',
+                start: () => document.querySelector('.history2').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history2').clientHeight * 1 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: 1,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
+        })
+
+        gsap.fromTo('.historySectionExtraOrangeBorder2', {scale: 0}, {
+            scrollTrigger: {
+                trigger: '.history3',
+                start: () => document.querySelector('.history3').clientHeight * 0.5 + ' bottom',
+                end: () => document.querySelector('.history3').clientHeight * 1.5 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: 1,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
+        })
+
+        gsap.fromTo('.historySectionExtraImageContainer1', {scale: 0.5}, {
+            scrollTrigger: {
+                trigger: '.history2',
+                start: () => document.querySelector('.history2').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history2').clientHeight * 1 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
+        })
+
+        gsap.fromTo('#historySectionExtraImage1', {scale: 2}, {
+            scrollTrigger: {
+                trigger: '.history2',
+                start: () => document.querySelector('.history2').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history2').clientHeight * 1 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
+        })
+
+        gsap.fromTo('.historySectionExtraImageContainer2', {scale: 0.5}, {
+            scrollTrigger: {
+                trigger: '.history2',
+                start: () => document.querySelector('.history2').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history2').clientHeight * 1 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
+        })
+
+        gsap.fromTo('#historySectionExtraImage2', {scale: 2}, {
+            scrollTrigger: {
+                trigger: '.history2',
+                start: () => document.querySelector('.history2').clientHeight * 0 + ' bottom',
+                end: () => document.querySelector('.history2').clientHeight * 1 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
+        })
+
+        gsap.fromTo('.historySectionExtraImageContainer3', {scale: 0.5}, {
+            scrollTrigger: {
+                trigger: '.history3',
+                start: () => document.querySelector('.history3').clientHeight * 0.5 + ' bottom',
+                end: () => document.querySelector('.history3').clientHeight * 1.5 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
+        })
+
+        gsap.fromTo('#historySectionExtraImage3', {scale: 2}, {
+            scrollTrigger: {
+                trigger: '.history3',
+                start: () => document.querySelector('.history3').clientHeight * 0.5 + ' bottom',
+                end: () => document.querySelector('.history3').clientHeight * 1.5 + ' bottom',
+                // toggleActions: "play none none none",
+                // ,
+                scrub: true,
+                // pin: true,
+                // markers: true,
+            },
+            scale: 1,
         })
 
         // Photo Cards

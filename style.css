@@ -329,8 +329,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7.1em !important;
-    height: 7.1em !important;
+    width: 7.2em !important;
+    height: 7.2em !important;
     border-radius: 50%;
     box-shadow: 1px 1px 5px 0px #878787;
     background-image: linear-gradient(to top left, #eb5f28, #eb9472);
@@ -342,8 +342,8 @@ main {
 @media screen and (max-width: 900px) {
   .modalCloseInner {
     position: absolute;
-    width: 6.1em !important;
-    height: 6.1em !important;
+    width: 6.2em !important;
+    height: 6.2em !important;
     border-radius: 50%;
     display: flex;
     justify-content: center;

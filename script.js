@@ -331,7 +331,7 @@ const main = () => {
     ]
 
     const logoBars = document.querySelectorAll('.logoBar')
-    gsap.to('.navToggle', {duration: navAnimationDuration, height: '7.1em', ease: 'Power1.easeOut'})
+    gsap.to('.navToggle', {duration: navAnimationDuration, height: '7.2em', ease: 'Power1.easeOut'})
 
     const navToggle = () => {
         if (isModalOut == false) {
@@ -343,7 +343,7 @@ const main = () => {
             }
             else {
                 isNavOut = false
-                gsap.to('.navToggle', {duration: navAnimationDuration, height: '7.1em', ease: 'Power1.easeOut'})
+                gsap.to('.navToggle', {duration: navAnimationDuration, height: '7.2em', ease: 'Power1.easeOut'})
                 gsap.to('nav', {duration: navAnimationDuration, width: 0, ease: 'Power1.easeOut'})
                 gsap.to('.navName', {duration: navAnimationDuration, width: navNameWidth, ease: 'Power1.easeOut'})
             }
@@ -1012,7 +1012,7 @@ const main = () => {
 
                 if (isNavOut == true) {
                     isNavOut = false
-                    gsap.to('.navToggle', {duration: navAnimationDuration, height: '7.1em', ease: 'Power1.easeOut'})
+                    gsap.to('.navToggle', {duration: navAnimationDuration, height: '7.2em', ease: 'Power1.easeOut'})
                     gsap.to('nav', {duration: navAnimationDuration, width: 0, ease: 'Power1.easeOut'})
                     gsap.to('.navName', {duration: navAnimationDuration, width: navNameWidth, ease: 'Power1.easeOut'})
                 }

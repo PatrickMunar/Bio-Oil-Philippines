@@ -58,7 +58,7 @@ const main = () => {
     // Sizes
     const sizes = {
         width: window.innerWidth,
-        height: document.querySelector('html').clientHeight
+        height: window.innerHeight
     }
 
     let cameraMaxY = -20
@@ -71,14 +71,12 @@ const main = () => {
         cameraMaxY = -50
     }
 
-    let prevWidth = sizes.width
-
     window.addEventListener('resize', () => {  
         prevWidth = window.innerWidth
 
         // Update sizes
         sizes.width = window.innerWidth
-        sizes.height = document.querySelector('html').clientHeight
+        sizes.height = window.innerHeight
 
         // Update camera
         camera.aspect = sizes.width / sizes.height

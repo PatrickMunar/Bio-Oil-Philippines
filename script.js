@@ -61,8 +61,6 @@ const main = () => {
         height: document.querySelector('html').clientHeight
     }
 
-    console.log(sizes.height, window.innerHeight)
-
     let cameraMaxY = -20
 
     // Responsive Variable Changes
@@ -304,7 +302,7 @@ const main = () => {
         antialias: true,
         alpha: true
     })
-    renderer.setSize(sizes.width, sizes.height)
+    renderer.setSize(sizes.width, 200)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.shadowMap.enabled = false
     renderer.shadowMap.type = THREE.PCFSoftShadowMap

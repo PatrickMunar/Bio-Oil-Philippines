@@ -69,19 +69,24 @@ const main = () => {
         cameraMaxY = -50
     }
 
+    let prevWidth = sizes.width
+
     window.addEventListener('resize', () => {  
-        // Update sizes
-        sizes.width = window.innerWidth
-        sizes.height = window.innerHeight
+        if (window.innerWidth != prevWidth) {
+            // Update sizes
+            sizes.width = window.innerWidth
+            sizes.height = window.innerHeight
+            prevWidth = sizes.width
 
-        // Update camera
-        camera.aspect = sizes.width / sizes.height
-        camera.position.z = 7 * (1920/1080)/(sizes.width/sizes.height)
-        camera.updateProjectionMatrix()
+            // Update camera
+            camera.aspect = sizes.width / sizes.height
+            camera.position.z = 7 * (1920/1080)/(sizes.width/sizes.height)
+            camera.updateProjectionMatrix()
 
-        // Update renderer
-        renderer.setSize(sizes.width, sizes.height)
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+            // Update renderer
+            renderer.setSize(sizes.width, sizes.height)
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        }
     })
 
     // Texture Loader

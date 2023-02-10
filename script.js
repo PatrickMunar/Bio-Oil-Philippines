@@ -61,6 +61,7 @@ const main = () => {
     }
 
     let prevWidth = sizes.width
+    let prevHeight = sizes.height
 
     window.addEventListener('resize', () => {    
         if (window.innerWidth != prevWidth) {
@@ -68,7 +69,7 @@ const main = () => {
 
             // Update sizes
             sizes.width = window.innerWidth
-            sizes.height = window.innerWidth * 1080/1920
+            sizes.height = window.innerHeight
 
             // Update camera
             camera.aspect = sizes.width / sizes.height
@@ -78,6 +79,11 @@ const main = () => {
             // Update renderer
             renderer.setSize(sizes.width, sizes.height)
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        }
+        else {
+            if (window.innerHeight != prevHeight) {
+                alert('changeHeight')
+            }
         }
     })
 

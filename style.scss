@@ -301,6 +301,7 @@ main {
     @media (orientation: Portrait) {
        /* Portrait */
        
+        // Product
         .productSection {
             flex-direction: column;
         }
@@ -314,6 +315,22 @@ main {
         .productImage {
             height: auto !important;
             width: calc(100% + 10rem) !important;
+        }
+
+        // Versus
+        .versusPointButton {
+            width: 12rem !important;
+            height: 12rem !important;
+        }
+
+        .versusPointOuter {
+            width: 16rem !important;
+            height: 16rem !important;
+        }
+        
+        .versusPointInner {
+            width: 10rem !important;
+            height: 10rem !important;
         }
 
     }
@@ -366,21 +383,6 @@ main {
             position: relative !important;
         }
 
-        .versusPointButton {
-            width: 12rem !important;
-            height: 12rem !important;
-        }
-
-        .versusPointOuter {
-            width: 16rem !important;
-            height: 16rem !important;
-        }
-        
-        .versusPointInner {
-            width: 10rem !important;
-            height: 10rem !important;
-        }
-
         #versusPoint1 {
             transform: none !important;
         }
@@ -398,8 +400,12 @@ main {
             justify-content: center !important;
         }
 
+        .historyTextContainer {
+            padding: 1rem;
+        }
+
         .history2Extra {
-            transform: translateX(20rem) translateY(-25vh);
+            transform: translateX(20rem) translateY(-20%) !important;
         }
         
         .historySectionExtraOrangeBorder {
@@ -427,12 +433,8 @@ main {
         }
 
         .historySectionExtraOrange {
-            position: absolute;
             width: 15rem !important;
             height: 15rem !important;
-            border-radius: 50%;
-            background-color: $mainOrange;
-            transform: translateX(-20rem) translateY(0rem);
         }
 
         // Purchase
@@ -452,15 +454,15 @@ main {
 
         .purchaseDrugStores {
             width: 100% !important;
-            justify-content: space-between !important;
-            gap: 0 !important;
+            justify-content: center !important;
+            gap: 2.5rem !important;
             padding-inline: 2.5rem !important;
         }
         
         .purchaseSupermarkets {
             width: 100% !important;
-            justify-content: space-between !important;
-            gap: 0 !important;
+            justify-content: center !important;
+            gap: 2.5rem !important;
             padding-inline: 2.5rem !important;
         }
 
@@ -482,6 +484,7 @@ main {
         }
 
         .photoSectionText {
+            padding-inline: 10rem !important;
             width: 100% !important;
         }
         
@@ -1523,6 +1526,7 @@ nav {
 }
 
 .historyTextContainer {
+    width: max(40vw, 40%);
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -1543,10 +1547,6 @@ nav {
     font-size: $bodyFontSize;
     padding-top: 1em;
     font-size: 2.5em;
-}
-
-.historyTextContainer {
-    width: max(40vw, 40%);
 }
 
 .historySectionOverlay {

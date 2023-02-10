@@ -1199,7 +1199,6 @@ nav {
   justify-content: space-between;
   align-items: flex-start;
   pointer-events: none;
-  border: 1px solid red;
   z-index: 100;
 }
 

@@ -6,8 +6,6 @@ window.history.scrollRestoration = 'manual'
 
 // Lenis
 const lenis = new Lenis({
-    wrapper: document.querySelector('html'), // element which has overflow
-    content: document.querySelector('body'), // usually wrapper's direct child
     duration: 1.5,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
     direction: 'vertical', // vertical, horizontal
@@ -44,7 +42,7 @@ requestAnimationFrame(raf)
 const main = () => {
 
     // Canvas
-        // Change '.webgl' with a canvas querySelector
+        // Change '.webgl' with a canvas querySelectorsizes.height = 
     const canvas = document.querySelector('.webgl')
 
     // Scene

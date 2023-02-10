@@ -70,7 +70,7 @@ div {
     position: fixed;
     background-color: $mainWhite;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     z-index: 9999999999;
     pointer-events: none;
 }
@@ -80,7 +80,7 @@ div {
     position: fixed;
     z-index: 100;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,10 +148,10 @@ html {
     background-color: $mainWhite;
     font-size: 10px;
     color: $mainGrey;
+    width: 100%;
+    height: 100svh;
     overflow-x: hidden;
     overflow-y: scroll;
-    width: 100%;
-    height: 50%;
     /* cursor: none; */
 }
 
@@ -170,7 +170,7 @@ body {
 .canvasOverlay {
     position: fixed;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -183,11 +183,10 @@ body {
     position: fixed;
     outline: none;
     box-sizing: border-box;
-    width: 100%;
+    width: 100vw;
+    height: 100svh;
     /* z-index: 100000000; */
     pointer-events: none;
-    top: 0;
-    border: 1px solid red;
 }
 
 main {
@@ -344,7 +343,7 @@ main {
     position: fixed;
     z-index: 50;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     backdrop-filter: blur(0px);
     justify-content: center;
     align-items: flex-start;
@@ -410,7 +409,7 @@ main {
 .modalContent {
     z-index: 1;
     width: 100%;
-    min-height: calc(100vh - 21.5rem);
+    min-height: calc(100svh - 21.5rem);
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -923,7 +922,7 @@ nav {
     position: relative;
     z-index: 3;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -972,7 +971,7 @@ nav {
 .productSection {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -987,7 +986,7 @@ nav {
 .productChoice {
     position: relative;
     width: calc((100vw - 20rem - 40rem)/2);
-    height: calc(100vh - 21.25rem);
+    height: calc(100svh - 21.25rem);
     border-radius: 5rem;
     cursor: pointer;
     display: flex;
@@ -1048,7 +1047,7 @@ nav {
 .versusSection {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     padding-inline: 10rem;
     display: flex;
     justify-content: center;
@@ -1193,25 +1192,25 @@ nav {
 #versusImageDiv1 {
     width: 45rem;
     height: 45rem;
-    transform: translateX(-35vw) translateY(20vh);
+    transform: translateX(-35vw) translateY(20svh);
 }
 
 #versusImageDiv2 {
     width: 70rem;
     height: 70rem;
-    transform: translateX(40vw) translateY(20vh);
+    transform: translateX(40vw) translateY(20svh);
 }
 
 #versusImageDiv3 {
     width: 25rem;
     height: 25rem;
-    transform: translateX(-25vw) translateY(-30vh);
+    transform: translateX(-25vw) translateY(-30svh);
 }
 
 #versusImageDiv4 {
     width: 32rem;
     height: 32rem;
-    transform: translateX(20vw) translateY(-42.5vh);
+    transform: translateX(20vw) translateY(-42.5svh);
 }
 
 // History Section
@@ -1766,7 +1765,7 @@ nav {
 
 // Blank Section
 .blankSection {
-    height: min(50vh, 60rem);
+    height: min(50svh, 60rem);
     pointer-events: none;
 }
 
@@ -1776,7 +1775,7 @@ footer {
     bottom: 0;
     z-index: 0;
     width: 100vw;
-    height: min(50vh, 60rem);
+    height: min(50svh, 60rem);
     background-image: linear-gradient(to top, $mainOrange, 70%,#eb9472);
     pointer-events: auto;
     display: flex;

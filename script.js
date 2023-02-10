@@ -302,7 +302,7 @@ const main = () => {
         antialias: true,
         alpha: true
     })
-    renderer.setSize(sizes.width, 200)
+    renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.shadowMap.enabled = false
     renderer.shadowMap.type = THREE.PCFSoftShadowMap

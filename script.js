@@ -1389,7 +1389,7 @@ const main = () => {
 
                 for (let i = 0; i < modalChartsContainers.length; i++) {
                     if (affectedChartsState[i] == 1) {
-                        dy[i] = modalChartsContainers[i].getBoundingClientRect().top - sizes.height
+                        dy[i] = modalChartsContainers[i].getBoundingClientRect().top - window.innerHeight
                         if (dy[i] <= -59 && modalChartPopupStates[i] == 0) {
                             modalChartPopupStates[i] = 1
                             fillModalChart(i)

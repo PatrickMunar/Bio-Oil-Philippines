@@ -58,8 +58,10 @@ const main = () => {
     // Sizes
     const sizes = {
         width: window.innerWidth,
-        height: window.innerHeight
+        height: document.querySelector('html').clientHeight
     }
+
+    console.log(sizes.height, window.innerHeight)
 
     let cameraMaxY = -20
 
@@ -73,13 +75,15 @@ const main = () => {
 
     let prevWidth = sizes.width
 
-    window.addEventListener('resize', () => {    
+    window.addEventListener('resize', () => {  
+        console.log(document.querySelector('html').clientHeight, window.innerHeight)
+
         if (window.innerWidth != prevWidth) {
             prevWidth = window.innerWidth
 
             // Update sizes
             sizes.width = window.innerWidth
-            sizes.height = window.innerHeight
+            sizes.height = document.querySelector('html').clientHeight
 
             // Update camera
             camera.aspect = sizes.width / sizes.height
@@ -220,7 +224,7 @@ const main = () => {
 
     const parameters = {
         size: 1,
-        aspect: window.innerWidth/window.innerHeight,
+        aspect: window.innerWidth/sizes.height,
         radius: 0.1,
         groupDiameter: 3
     }
@@ -398,10 +402,10 @@ const main = () => {
     const navTextAnimationDelay = 0.03
 
     const scrollDestinations = [
-        document.querySelector('.productSection').getBoundingClientRect().top - (window.innerHeight - document.querySelector('.productSection').clientHeight)/2,
+        document.querySelector('.productSection').getBoundingClientRect().top - (sizes.height - document.querySelector('.productSection').clientHeight)/2,
         document.querySelector('.historySection').getBoundingClientRect().top,
-        document.querySelector('.purchaseSection').getBoundingClientRect().top - (window.innerHeight - document.querySelector('.purchaseSection').clientHeight)/2,
-        document.querySelector('.photoSection').getBoundingClientRect().top - (window.innerHeight - document.querySelector('.photoSection').clientHeight) + document.querySelector('.bottomBorderSection').clientHeight
+        document.querySelector('.purchaseSection').getBoundingClientRect().top - (sizes.height - document.querySelector('.purchaseSection').clientHeight)/2,
+        document.querySelector('.photoSection').getBoundingClientRect().top - (sizes.height - document.querySelector('.photoSection').clientHeight) + document.querySelector('.bottomBorderSection').clientHeight
         ]
 
     let navClickedIndex = 5
@@ -651,23 +655,23 @@ const main = () => {
             // Pointer Events
             document.addEventListener('pointermove', (e) => {
                 mouse.x = e.clientX/window.innerWidth - 0.5
-                mouse.y = -(e.clientY/window.innerHeight - 0.5)
+                mouse.y = -(e.clientY/sizes.height - 0.5)
 
                 // Cursor Follower
-                gsap.to('.cursorFollower', {duration: 0.5, x: mouse.x * window.innerWidth, y: -mouse.y * window.innerHeight})
+                gsap.to('.cursorFollower', {duration: 0.5, x: mouse.x * window.innerWidth, y: -mouse.y * sizes.height})
 
                 if (isModalOut == true) {
                     // Modal Close
-                    // gsap.to('.modalClose', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/window.innerHeight})
+                    // gsap.to('.modalClose', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/sizes.height})
 
                     // Modal Flowers
-                    gsap.to('#modalContentPhotoLavender', {duration: 0, x: mouse.x * 5 - 5, y: -mouse.y *  2 * window.innerWidth/window.innerHeight, rotateZ: -mouse.x * 2 + 45})
-                    gsap.to('#modalContentPhotoChamomile', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/window.innerHeight, rotateZ: -mouse.x * 5 + 45})
-                    gsap.to('#modalContentPhotoCalendula', {duration: 0, x: mouse.x * 5 + 5, y: -mouse.y *  2 * window.innerWidth/window.innerHeight, rotateZ: -mouse.x * 2 + 135})
-                    gsap.to('#modalContentPhotoRosemary', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/window.innerHeight, rotateZ: -mouse.x * 5 + 225})
+                    gsap.to('#modalContentPhotoLavender', {duration: 0, x: mouse.x * 5 - 5, y: -mouse.y *  2 * window.innerWidth/sizes.height, rotateZ: -mouse.x * 2 + 45})
+                    gsap.to('#modalContentPhotoChamomile', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/sizes.height, rotateZ: -mouse.x * 5 + 45})
+                    gsap.to('#modalContentPhotoCalendula', {duration: 0, x: mouse.x * 5 + 5, y: -mouse.y *  2 * window.innerWidth/sizes.height, rotateZ: -mouse.x * 2 + 135})
+                    gsap.to('#modalContentPhotoRosemary', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/sizes.height, rotateZ: -mouse.x * 5 + 225})
 
                     // Charts
-                    // gsap.to('.modalContentChartsCenter', {duration: 0, rotateY: -mouse.x * 20, rotateX: -mouse.y * 20, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/window.innerHeight})
+                    // gsap.to('.modalContentChartsCenter', {duration: 0, rotateY: -mouse.x * 20, rotateX: -mouse.y * 20, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/sizes.height})
                 }
 
                 else {
@@ -689,16 +693,16 @@ const main = () => {
                         gsap.to(rLogo3D.rotation, {duration: 2, y: mouse.x * Math.PI/6, x: -mouse.y * Math.PI/6})
 
                         // Versus
-                        // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
-                        gsap.to('.versusImage', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
-                        // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/window.innerHeight})
+                        // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/sizes.height})
+                        gsap.to('.versusImage', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/sizes.height})
+                        // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/sizes.height})
 
                         // 3D --------------
                         if (scrollOnVersus == true) {
                             // Update Pointer Coordinates
                             pointer.set(
                                 ( e.clientX / window.innerWidth ) * 2 - 1,
-                                - ( e.clientY / window.innerHeight ) * 2 + 1,
+                                - ( e.clientY / sizes.height ) * 2 + 1,
                                 0.575
                             )
 
@@ -730,13 +734,13 @@ const main = () => {
                         
                     // Photo
                     if (scrollY >= scrollDestinations[1]) {
-                        gsap.to('.photo', {duration: 0, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/window.innerHeight})
+                        gsap.to('.photo', {duration: 0, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/sizes.height})
                         gsap.to('.photoCard', {duration: 0, rotateY: -mouse.x * 10, rotateX: -mouse.y * 10})
-                        gsap.to('.photoP', {duration: 0, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/window.innerHeight})
+                        gsap.to('.photoP', {duration: 0, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/sizes.height})
                         gsap.to('.photoCardP', {duration: 0, rotateY: -mouse.x * 5, rotateX: -mouse.y * 5})
                     }
                     
-                    deltaXY = (((mouse.x - prevX) * window.innerWidth/window.innerHeight)**2 + (mouse.y - prevY)**2)**0.5
+                    deltaXY = (((mouse.x - prevX) * window.innerWidth/sizes.height)**2 + (mouse.y - prevY)**2)**0.5
 
                     // Swipe
                     if (isPointerDown == true && isSwipeAnimating == false) {
@@ -759,13 +763,13 @@ const main = () => {
             // Pointer Events - Mobile
             document.addEventListener('touchmove', (e) => {
                 mouse.x = e.touches[0].clientX/window.innerWidth - 0.5
-                mouse.y = -(e.touches[0].clientY/window.innerHeight - 0.5)
+                mouse.y = -(e.touches[0].clientY/sizes.height - 0.5)
 
                 // 3D --------------
                 // Update Pointer Coordinates
                 pointer.set(
                     ( e.touches[0].clientX / window.innerWidth ) * 2 - 1,
-                    - ( e.touches[0].clientY / window.innerHeight ) * 2 + 1,
+                    - ( e.touches[0].clientY / sizes.height ) * 2 + 1,
                     0.575
                 )
 
@@ -793,20 +797,20 @@ const main = () => {
                 } 
 
                 // Cursor Follower
-                gsap.to('.cursorFollower', {duration: 0.5, x: mouse.x * window.innerWidth, y: -mouse.y * window.innerHeight})
+                gsap.to('.cursorFollower', {duration: 0.5, x: mouse.x * window.innerWidth, y: -mouse.y * sizes.height})
 
                 if (isModalOut == true) {
                     // Modal Close
-                    // gsap.to('.modalClose', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/window.innerHeight})
+                    // gsap.to('.modalClose', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/sizes.height})
 
                     // Modal Flowers
-                    gsap.to('#modalContentPhotoLavender', {duration: 0, x: mouse.x * 5 - 5, y: -mouse.y *  2 * window.innerWidth/window.innerHeight, rotateZ: -mouse.x * 2 + 45})
-                    gsap.to('#modalContentPhotoChamomile', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/window.innerHeight, rotateZ: -mouse.x * 5 + 45})
-                    gsap.to('#modalContentPhotoCalendula', {duration: 0, x: mouse.x * 5 + 5, y: -mouse.y *  2 * window.innerWidth/window.innerHeight, rotateZ: -mouse.x * 2 + 135})
-                    gsap.to('#modalContentPhotoRosemary', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/window.innerHeight, rotateZ: -mouse.x * 5 + 225})
+                    gsap.to('#modalContentPhotoLavender', {duration: 0, x: mouse.x * 5 - 5, y: -mouse.y *  2 * window.innerWidth/sizes.height, rotateZ: -mouse.x * 2 + 45})
+                    gsap.to('#modalContentPhotoChamomile', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/sizes.height, rotateZ: -mouse.x * 5 + 45})
+                    gsap.to('#modalContentPhotoCalendula', {duration: 0, x: mouse.x * 5 + 5, y: -mouse.y *  2 * window.innerWidth/sizes.height, rotateZ: -mouse.x * 2 + 135})
+                    gsap.to('#modalContentPhotoRosemary', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/sizes.height, rotateZ: -mouse.x * 5 + 225})
 
                     // Charts
-                    // gsap.to('.modalContentChartsCenter', {duration: 0, rotateY: -mouse.x * 20, rotateX: -mouse.y * 20, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/window.innerHeight})
+                    // gsap.to('.modalContentChartsCenter', {duration: 0, rotateY: -mouse.x * 20, rotateX: -mouse.y * 20, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/sizes.height})
                 }
 
                 else {
@@ -827,20 +831,20 @@ const main = () => {
                         // Logo
                         gsap.to(rLogo3D.rotation, {duration: 2, y: mouse.x * Math.PI/6, x: -mouse.y * Math.PI/6})
 
-                        // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
-                        gsap.to('.versusImage', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/window.innerHeight})
-                        // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/window.innerHeight})
+                        // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/sizes.height})
+                        gsap.to('.versusImage', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/sizes.height})
+                        // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/sizes.height})
                     }
                         
                     // Photo
                     if (scrollY >= scrollDestinations[1]) {
-                        gsap.to('.photo', {duration: 0, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/window.innerHeight})
+                        gsap.to('.photo', {duration: 0, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/sizes.height})
                         gsap.to('.photoCard', {duration: 0, rotateY: -mouse.x * 10, rotateX: -mouse.y * 10})
-                        gsap.to('.photoP', {duration: 0, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/window.innerHeight})
+                        gsap.to('.photoP', {duration: 0, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/sizes.height})
                         gsap.to('.photoCardP', {duration: 0, rotateY: -mouse.x * 5, rotateX: -mouse.y * 5})
                     }
                     
-                    deltaXY = (((mouse.x - prevX) * window.innerWidth/window.innerHeight)**2 + (mouse.y - prevY)**2)**0.5
+                    deltaXY = (((mouse.x - prevX) * window.innerWidth/sizes.height)**2 + (mouse.y - prevY)**2)**0.5
 
                     // Swipe
                     if (isPointerDown == true && isSwipeAnimating == false) {
@@ -866,7 +870,7 @@ const main = () => {
         for (let i = 0; i < cards.length; i++) {
             let swipeIndex = cardIndexArray[i] - 1
             if (swipeIndex < 0) {
-                gsap.to(cards[i], {duration: dt, delay: cardIndexArray[i] * dt * 0.5, zIndex: cards.length - swipeIndex, rotateY: 0, rotateZ: 2.5 * swipeIndex + (Math.random() - 0.5)*180, filter: 'brightness(' + 100 - 100 * swipeIndex + '%)', x: (window.innerWidth * swipeIndex * -(mouse.x-prevX) + 0) * swipeSpeedMiltiplier , y: window.innerHeight * swipeIndex * (mouse.y-prevY) * swipeSpeedMiltiplier , z: -100 * swipeIndex, ease: 'Power2.easeOut'})
+                gsap.to(cards[i], {duration: dt, delay: cardIndexArray[i] * dt * 0.5, zIndex: cards.length - swipeIndex, rotateY: 0, rotateZ: 2.5 * swipeIndex + (Math.random() - 0.5)*180, filter: 'brightness(' + 100 - 100 * swipeIndex + '%)', x: (window.innerWidth * swipeIndex * -(mouse.x-prevX) + 0) * swipeSpeedMiltiplier , y: sizes.height * swipeIndex * (mouse.y-prevY) * swipeSpeedMiltiplier , z: -100 * swipeIndex, ease: 'Power2.easeOut'})
                 gsap.to(cards[i], {duration: dt * 0.5, delay: cardIndexArray[i] * dt * 0.5 + dt, opacity: 0, ease: 'none'})
                 cardIndexArray[i] = cards.length
                 swipeIndex = cardIndexArray[i] - 1
@@ -1397,7 +1401,7 @@ const main = () => {
 
                 for (let i = 0; i < modalChartsContainers.length; i++) {
                     if (affectedChartsState[i] == 1) {
-                        dy[i] = modalChartsContainers[i].getBoundingClientRect().top - window.innerHeight
+                        dy[i] = modalChartsContainers[i].getBoundingClientRect().top - sizes.height
                         if (dy[i] <= -59 && modalChartPopupStates[i] == 0) {
                             modalChartPopupStates[i] = 1
                             fillModalChart(i)
@@ -1441,7 +1445,7 @@ const main = () => {
             scrollTrigger: {
                 trigger: '.heroSection',
                 start: () => document.querySelector('.heroSection').clientHeight * 0 + ' top',
-                end: () => window.innerHeight * 5 + ' top',
+                end: () => sizes.height * 5 + ' top',
                 // toggleActions: "play none none reverse",
                 // snap: 1,
                 scrub: true,

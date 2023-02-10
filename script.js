@@ -1288,7 +1288,6 @@ const main = () => {
         window.addEventListener('resize', () => {    
             if (window.innerWidth != prevWidth) {
                 prevWidth = window.innerWidth
-                alert('change')
 
                 // Update sizes
                 sizes.width = window.innerWidth

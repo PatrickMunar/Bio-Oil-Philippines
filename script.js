@@ -82,7 +82,7 @@ const main = () => {
 
         // Update camera
         camera.aspect = sizes.width / sizes.height
-        camera.position.set(0,0,7 * (1920/1080)/(sizes.width/sizes.height))
+        camera.position.z = 7 * (1920/1080)/(sizes.width/sizes.height)
         camera.updateProjectionMatrix()
 
         // Update renderer
@@ -1310,7 +1310,7 @@ const main = () => {
 
                 // Update camera
                 camera.aspect = sizes.width / sizes.height
-                camera.position.set(0,0,7 * (1920/1080)/(sizes.width/sizes.height))
+                camera.position.z = 7 * (1920/1080)/(sizes.width/sizes.height)
                 camera.updateProjectionMatrix()
 
                 // Update renderer

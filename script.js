@@ -6,6 +6,8 @@ window.history.scrollRestoration = 'manual'
 
 // Lenis
 const lenis = new Lenis({
+    wrapper: document.querySelector('html'), // element which has overflow
+    content: document.querySelector('body'), // usually wrapper's direct child
     duration: 1.5,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
     direction: 'vertical', // vertical, horizontal
@@ -20,6 +22,15 @@ const lenis = new Lenis({
 const modalLenis = new Lenis({
     wrapper: document.querySelector('.modalSection'), // element which has overflow
     content: document.querySelector('.modalPopup'), // usually wrapper's direct child
+    duration: 1.5,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+    direction: 'vertical', // vertical, horizontal
+    gestureDirection: 'vertical', // vertical, horizontal, both
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
 })
 
 const raf = (time) => {
@@ -61,7 +72,6 @@ const main = () => {
     }
 
     let prevWidth = sizes.width
-    let prevHeight = sizes.height
 
     window.addEventListener('resize', () => {    
         if (window.innerWidth != prevWidth) {

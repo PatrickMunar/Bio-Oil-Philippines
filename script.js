@@ -74,24 +74,20 @@ const main = () => {
     let prevWidth = sizes.width
 
     window.addEventListener('resize', () => {  
-        console.log(document.querySelector('html').clientHeight, window.innerHeight)
+        prevWidth = window.innerWidth
 
-        if (window.innerWidth != prevWidth) {
-            prevWidth = window.innerWidth
+        // Update sizes
+        sizes.width = window.innerWidth
+        sizes.height = document.querySelector('html').clientHeight
 
-            // Update sizes
-            sizes.width = window.innerWidth
-            sizes.height = document.querySelector('html').clientHeight
+        // Update camera
+        camera.aspect = sizes.width / sizes.height
+        camera.position.set(0,0,7 * (1920/1080)/(sizes.width/sizes.height))
+        camera.updateProjectionMatrix()
 
-            // Update camera
-            camera.aspect = sizes.width / sizes.height
-            camera.position.set(0,0,7 * (1920/1080)/(sizes.width/sizes.height))
-            camera.updateProjectionMatrix()
-
-            // Update renderer
-            renderer.setSize(sizes.width, sizes.height)
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        }
+        // Update renderer
+        renderer.setSize(sizes.width, sizes.height)
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
 
     // Texture Loader

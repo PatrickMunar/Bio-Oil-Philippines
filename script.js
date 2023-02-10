@@ -70,8 +70,6 @@ const main = () => {
     }
 
     window.addEventListener('resize', () => {  
-        prevWidth = window.innerWidth
-
         // Update sizes
         sizes.width = window.innerWidth
         sizes.height = window.innerHeight

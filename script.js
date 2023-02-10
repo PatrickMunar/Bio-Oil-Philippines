@@ -1849,20 +1849,22 @@ const main = () => {
         })
 
         // Photo Cards
-        gsap.fromTo('.photoCardSection', {y: 0, rotateZ: 0}, {
-            scrollTrigger: {
-                trigger: '.blankSection',
-                start: () => document.querySelector('.blankSection').clientHeight * 0 + ' bottom',
-                end: () => document.querySelector('.blankSection').clientHeight * 1 + ' bottom',
-                // toggleActions: "play none none reverse",
-                // ,
-                scrub: true
-                // pin: true,
-                // markers: true
-            },
-            y: document.querySelector('.blankSection').clientHeight * 0.5,
-            rotateZ: 10,
-        })
+        if (sizes.width > 700) {
+            gsap.fromTo('.photoCardSection', {y: 0, rotateZ: 0}, {
+                scrollTrigger: {
+                    trigger: '.blankSection',
+                    start: () => document.querySelector('.blankSection').clientHeight * 0 + ' bottom',
+                    end: () => document.querySelector('.blankSection').clientHeight * 1 + ' bottom',
+                    // toggleActions: "play none none reverse",
+                    // ,
+                    scrub: true
+                    // pin: true,
+                    // markers: true
+                },
+                y: document.querySelector('.blankSection').clientHeight * 0.5,
+                rotateZ: 10,
+            })
+        }
 
         // Footer
         gsap.fromTo('.footerBottomText', {y: 100}, {

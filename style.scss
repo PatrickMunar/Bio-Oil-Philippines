@@ -338,6 +338,241 @@ main {
     }
 }
 
+@media screen and (max-width: 700px) {
+
+    @media (orientation: Portrait) {
+       /* Portrait */
+
+        // Scroll
+        .scrollCTAContainer {
+            position: absolute;
+            height: 15rem;
+            width: 15rem;
+            border-radius: 50%;
+            bottom: 30rem !important;
+            right: 10rem !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        // Versus
+        .versusOverlay {
+            flex-direction: column !important;
+            gap: 30rem !important;
+        }
+
+        .versusPointContainer {
+            position: relative !important;
+        }
+
+        .versusPointButton {
+            width: 12rem !important;
+            height: 12rem !important;
+        }
+
+        .versusPointOuter {
+            width: 16rem !important;
+            height: 16rem !important;
+        }
+        
+        .versusPointInner {
+            width: 10rem !important;
+            height: 10rem !important;
+        }
+
+        #versusPoint1 {
+            transform: none !important;
+        }
+        
+        #versusPoint2 {
+            transform: none !important;
+        }
+        
+        #versusPoint3 {
+            transform: none !important;
+        }
+
+        // History
+        .historyBanner1 {
+            justify-content: center !important;
+        }
+
+        .history2Extra {
+            transform: translateX(20rem) translateY(-25vh);
+        }
+        
+        .historySectionExtraOrangeBorder {
+            opacity: 0 !important;
+        }
+
+        .historySectionExtraImageContainer1 {
+            opacity: 0 !important;
+        }
+
+        .historySectionExtraImageContainer2 {
+            margin-right: 5rem;
+        }
+
+        .history2 {
+            margin-top: 15rem !important;
+        }
+        
+        .history3 {
+            justify-content: flex-end !important;
+            margin-top: 15rem !important;
+            margin-inline: 0rem !important;
+            padding-left: 5rem !important;
+            padding-right: 15rem !important;
+        }
+
+        .historySectionExtraOrange {
+            position: absolute;
+            width: 15rem !important;
+            height: 15rem !important;
+            border-radius: 50%;
+            background-color: $mainOrange;
+            transform: translateX(-20rem) translateY(0rem);
+        }
+
+        // Purchase
+        .purchaseOverlayContainer {
+            opacity: 0 !important;
+        }
+
+        .purchaseSection {
+            padding-top: 12.5rem !important;
+            padding-bottom: 0 !important;
+        }
+
+        .purchaseText {
+            font-size: 4rem !important;
+            gap: 0rem !important;
+        }
+
+        .purchaseDrugStores {
+            width: 100% !important;
+            justify-content: space-between !important;
+            gap: 0 !important;
+            padding-inline: 2.5rem !important;
+        }
+        
+        .purchaseSupermarkets {
+            width: 100% !important;
+            justify-content: space-between !important;
+            gap: 0 !important;
+            padding-inline: 2.5rem !important;
+        }
+
+        .purchaseDSLogo {
+            height: 4rem !important;
+        }
+        
+        .purchaseSMLogo {
+            height: 4rem !important;
+        }
+        
+        .purchaseOLLogo {
+            height: 4rem !important;
+        }
+
+        // Photo
+        .photoSection {
+            flex-direction: column-reverse !important;
+        }
+
+        .photoSectionText {
+            width: 100% !important;
+        }
+        
+        .photoCardSection {
+            width: 100% !important;
+        }
+
+        .photoCard {
+            width: (45rem * $cardSizeMultiplier) !important;
+            height: (55rem * $cardSizeMultiplier) !important;
+        }
+        
+        .photoFrame {
+            width: (41rem * $cardSizeMultiplier) !important;
+            height: (41rem * $cardSizeMultiplier) !important;
+        }
+
+        .followLinkContainer {
+            font-size: 4rem !important;
+        }
+
+        // Footer
+        .footerContent {
+            max-width: 100% !important;
+        }
+
+        .footerBottomText {
+            font-size: 28rem !important;
+            bottom: 12rem !important;
+        }
+
+        .footerTMText {
+            font-size: 2.5rem !important;
+        }
+        
+        .footerLegalLinks {
+            font-size: 2rem !important;
+        }
+
+        .footerPlugText {
+            font-size: 2rem !important;
+        }
+
+        .footerPlug {
+            width: 20% !important;
+        }
+
+        // Modal
+        .modalContentApproval {
+            padding-top: 5rem !important;
+            flex-direction: column-reverse !important;
+        }
+        
+        .modalContentApprovalTextContainer {
+            width: 100% !important;
+        }
+
+        .modalContentApprovalImageContainer {
+            width: calc(100% + 5rem) !important;
+            transform: translateX(2.5rem) !important;
+        }
+
+        .modalContentCharts {
+            align-items: center !important;
+            padding-block: 5rem !important;
+            flex-direction: column !important;
+            gap: 5rem !important;
+        }
+
+        .modalContentChartsCard {
+            width: calc(100%) !important;
+        }
+
+        .modalContentApplyList {
+            flex-direction: column !important;
+        }
+        
+        .modalContentApplyListLeft, .modalContentApplyListRight {
+            width: 100% !important;
+        }
+    }
+      
+    @media (orientation: landscape) {
+        /* Landscape */
+
+    }
+
+    /* Responsive Common */
+    
+}
+
 // Modal Section
 .modalSection {
     position: fixed;
@@ -612,7 +847,7 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    box-shadow: inset 0 1px 10px 0 #0000005a;
+    box-shadow: inset 0 1px 3px 0 #0000005a;
 }
 
 .modalContentChartsCenter {
@@ -627,7 +862,7 @@ main {
     align-items: center;
     font-size: 4rem;
     color: $mainOrange;
-    box-shadow: 0 1px 10px 0 #0000005a;
+    box-shadow: 0 1px 3px 0 #0000005a;
 }
 
 .modalContentChartsCard {
@@ -1320,6 +1555,15 @@ nav {
     z-index: -1;
 }
 
+.history2Extra {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 .historySectionExtraOrangeBorder {
     position: absolute;
     width: 100rem;
@@ -1661,7 +1905,6 @@ nav {
     align-items: center;
     flex-direction: column;
     background-image: linear-gradient(to left, $mainOrange, #eb9472);
-    // background-color: $mainOrange;
     padding: (2rem * $cardSizeMultiplier);
     pointer-events: none;
     gap: 3rem;
@@ -1786,7 +2029,7 @@ footer {
 
 .footerContent {
     max-width: 50vw;
-    padding-left: 10rem;
+    padding-inline: 10rem;
     color: $mainWhite;
     margin-top: 5rem;
 }

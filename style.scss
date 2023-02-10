@@ -1311,6 +1311,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
 }
 
 .versusPointContainer {
@@ -1319,6 +1320,8 @@ nav {
     justify-content: space-between;
     align-items: flex-start;
     pointer-events: none;
+    border: 1px solid red;
+    z-index: 100;
 }
 
 .versusPointButton {

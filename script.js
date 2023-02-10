@@ -1283,10 +1283,13 @@ const main = () => {
             height: window.innerWidth * 1080/1920
         }
 
-        const prevWidth = sizes.width
+        let prevWidth = sizes.width
 
         window.addEventListener('resize', () => {    
             if (window.innerWidth != prevWidth) {
+                prevWidth = window.innerWidth
+                alert('change')
+
                 // Update sizes
                 sizes.width = window.innerWidth
                 sizes.height = window.innerWidth * 1080/1920

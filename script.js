@@ -1086,6 +1086,7 @@ const main = () => {
         for (let i = 0; i < modalCharts.length; i++) {
             gsap.to(modalCharts[i], {duration: 0, background: 'conic-gradient(#eb5f28 0% 0%, #eb5f2800 0%)'})
             modalChartPopupStates[i] = 0
+            modalChartCenters[i].innerText = '0%'
         }
     }
 

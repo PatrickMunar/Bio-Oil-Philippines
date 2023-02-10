@@ -1318,6 +1318,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    pointer-events: none;
 }
 
 .versusPointButton {
@@ -1331,6 +1332,7 @@ nav {
     box-shadow: -0.2rem 0.2rem 0.5rem 0.2rem #0000002a;
     background-image: linear-gradient(to bottom left, $mainWhite, 90%, $mainGrey);
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .versusPointOuter {
@@ -2127,7 +2129,7 @@ a {
 // Plug
 .footerPlug {
     position: relative;
-    width: 10%;
+    width: 20%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;

@@ -1,5 +1,4 @@
 // GSAP Settings
-gsap.ticker.fps(60)
 gsap.registerPlugin(ScrollTrigger)
 
 // Clear Scroll Memory
@@ -704,8 +703,8 @@ const main = () => {
 
                                     // Size Change
                                     gsap.to(particleGroup[i].scale, {duration: 0.1, x: 0, y: 0, z: 0})
-                                    gsap.to(particleGroup[i].scale, {duration: 1, delay: 0.1, x: 1, y: 1, z: 1})
-                                    gsap.to(particleGroup[i].position, {duration: 1, delay: 0.1, x: originalPositions[i][0], y: originalPositions[i][1]})
+                                    gsap.to(particleGroup[i].scale, {duration: 2, delay: 0.1, x: 1, y: 1, z: 1})
+                                    gsap.to(particleGroup[i].position, {duration: 2, delay: 0.1, x: originalPositions[i][0], y: originalPositions[i][1]})
                                 }
                             } 
                         }
@@ -771,8 +770,8 @@ const main = () => {
 
                         // Size Change
                         gsap.to(particleGroup[i].scale, {duration: 0.1, x: 0, y: 0, z: 0})
-                        gsap.to(particleGroup[i].scale, {duration: 1, delay: 0.1, x: 1, y: 1, z: 1})
-                        gsap.to(particleGroup[i].position, {duration: 1, delay: 0.1, x: originalPositions[i][0], y: originalPositions[i][1]})
+                        gsap.to(particleGroup[i].scale, {duration: 2, delay: 0.1, x: 1, y: 1, z: 1})
+                        gsap.to(particleGroup[i].position, {duration: 2, delay: 0.1, x: originalPositions[i][0], y: originalPositions[i][1]})
                     }
                 } 
 
@@ -983,6 +982,7 @@ const main = () => {
                 for (let j = 0; j < modalContents.length; j++) {
                     gsap.to(modalContents[j], {duration: 0, display: 'none'})
                 }
+
                 gsap.to(modalContents[i], {duration: 0, display: 'flex'})
                 gsap.to('.modalSection', {duration: 0, display: 'flex'})
                 gsap.to('html', {duration: 0, overflowY: 'hidden'})

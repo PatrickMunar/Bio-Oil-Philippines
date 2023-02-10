@@ -384,6 +384,9 @@ main {
 
 .closeSVG {
     position: absolute;
+}
+
+.closeSVGPath {
     fill: $mainWhite;
 }
 
@@ -536,20 +539,46 @@ main {
 .modalContentApproval {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 10%;
+    align-items: center;
+    gap: 5rem;
     width: 100%;
     font-size: 2.5rem;
     line-height: 5rem;
     padding-top: 15rem;
 }
 
-.modalContentApprovalaDivLeft {
+.modalContentApprovalTextContainer {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.modalContentApprovalText1 {
+    width: 100%;
     text-align: left;
 }
 
-.modalContentEApprovalDivRight {
+.modalContentApprovalText2 {
+    width: 100%;
     text-align: right;
+}
+
+.modalContentApprovalImageContainer {
+    width: calc(50% + 5rem);
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    transform: translateX(5rem);
+    border-radius: 100rem 0 0 100rem;
+}
+
+.modalContentApprovalImage {
+    width: 100%;
 }
 
 .modalContentCharts {
@@ -557,7 +586,7 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
-    padding-top: 10rem;
+    padding-block: 10rem;
 }
 
 .modalContentChartsContainer {
@@ -579,6 +608,7 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    box-shadow: inset 0 1px 10px 0 #0000005a;
 }
 
 .modalContentChartsCenter {
@@ -586,7 +616,6 @@ main {
     z-index: 1;
     width: calc(75%);
     height: calc(75%);
-    box-shadow: inset 0 0 2px 0px #00000020;
     border-radius: 50%;
     background-color: $mainWhite;
     display: flex;
@@ -594,6 +623,7 @@ main {
     align-items: center;
     font-size: 4rem;
     color: $mainOrange;
+    box-shadow: 0 1px 10px 0 #0000005a;
 }
 
 .modalContentChartsCard {
@@ -610,6 +640,50 @@ main {
     padding-inline: 10rem;
     text-align: center;
     font-size: 2.2rem;
+}
+
+.modalContentApply {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.modalContentApplyHeader {
+    font-size: 7rem;
+    font-family: Main;
+    color: $mainOrange;
+    margin-bottom: 2.5rem;
+}
+
+.modalContentApplyList {
+    position: relative;
+    width: 100%;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modalContentApplyListLeft, .modalContentApplyListRight {
+    position: relative;
+    width: 50%;
+}
+
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: $mainOrange; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 2rem; /* Also needed for space (tweak if needed) */
+  margin-left: 0.5rem; /* Also needed for space (tweak if needed) */
 }
 
 .orbitCanvas {

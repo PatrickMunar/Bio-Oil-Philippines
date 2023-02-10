@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Fonts */
 @font-face {
   font-family: Main;
@@ -332,6 +333,9 @@ main {
 
 .closeSVG {
   position: absolute;
+}
+
+.closeSVGPath {
   fill: #fdfdfd;
 }
 
@@ -484,20 +488,46 @@ main {
 .modalContentApproval {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 10%;
+  align-items: center;
+  gap: 5rem;
   width: 100%;
   font-size: 2.5rem;
   line-height: 5rem;
   padding-top: 15rem;
 }
 
-.modalContentApprovalaDivLeft {
+.modalContentApprovalTextContainer {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.modalContentApprovalText1 {
+  width: 100%;
   text-align: left;
 }
 
-.modalContentEApprovalDivRight {
+.modalContentApprovalText2 {
+  width: 100%;
   text-align: right;
+}
+
+.modalContentApprovalImageContainer {
+  width: calc(50% + 5rem);
+  height: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  transform: translateX(5rem);
+  border-radius: 100rem 0 0 100rem;
+}
+
+.modalContentApprovalImage {
+  width: 100%;
 }
 
 .modalContentCharts {
@@ -505,7 +535,7 @@ main {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-  padding-top: 10rem;
+  padding-block: 10rem;
 }
 
 .modalContentChartsContainer {
@@ -527,6 +557,7 @@ main {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  box-shadow: inset 0 1px 10px 0 rgba(0, 0, 0, 0.3529411765);
 }
 
 .modalContentChartsCenter {
@@ -534,7 +565,6 @@ main {
   z-index: 1;
   width: 75%;
   height: 75%;
-  box-shadow: inset 0 0 2px 0px rgba(0, 0, 0, 0.1254901961);
   border-radius: 50%;
   background-color: #fdfdfd;
   display: flex;
@@ -542,6 +572,7 @@ main {
   align-items: center;
   font-size: 4rem;
   color: #eb5f28;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3529411765);
 }
 
 .modalContentChartsCard {
@@ -558,6 +589,50 @@ main {
   padding-inline: 10rem;
   text-align: center;
   font-size: 2.2rem;
+}
+
+.modalContentApply {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.modalContentApplyHeader {
+  font-size: 7rem;
+  font-family: Main;
+  color: #eb5f28;
+  margin-bottom: 2.5rem;
+}
+
+.modalContentApplyList {
+  position: relative;
+  width: 100%;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modalContentApplyListLeft, .modalContentApplyListRight {
+  position: relative;
+  width: 50%;
+}
+
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "•"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #eb5f28; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 2rem; /* Also needed for space (tweak if needed) */
+  margin-left: 0.5rem; /* Also needed for space (tweak if needed) */
 }
 
 .orbitCanvas {

@@ -15,12 +15,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://unpkg.com/three@0.147.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://unpkg.com/three@0.147.0/examples/js/objects/MarchingCubes.js"></script>
+    <!-- <script src="https://unpkg.com/three@0.147.0/examples/js/shaders/CopyShader.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/Pass.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/ShaderPass.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/EffectComposer.js"></script>
-    <script src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/RenderPass.js"></script>  
-    <script src="https://unpkg.com/three@0.147.0/examples/js/objects/MarchingCubes.js"></script>
+    <script src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/RenderPass.js"></script>   -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
@@ -87,8 +87,8 @@
         <!-- Modal Close -->
         <div class="modalClose">
             <div class="modalCloseInner">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                    <path d="M24 26.1 13.5 36.6q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.05 0-.6.45-1.05L21.9 24 11.4 13.5q-.45-.45-.45-1.05 0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45L24 21.9l10.5-10.5q.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05L26.1 24l10.5 10.5q.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45-.6 0-1.05-.45Z" class="closeSVG"/>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="closeSVG">
+                    <path d="M24 26.1 13.5 36.6q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.05 0-.6.45-1.05L21.9 24 11.4 13.5q-.45-.45-.45-1.05 0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45L24 21.9l10.5-10.5q.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05L26.1 24l10.5 10.5q.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45-.6 0-1.05-.45Z" class="closeSVGPath"/>
                 </svg>
             </div>
         </div>
@@ -195,15 +195,15 @@
 
                 <div class="modalContentFeatures">
                     <div class="modalContentFeatureDiv">
-                        Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
+                        <t class="mainFont">+</t> Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
                     </div>
                   
                     <div class="modalContentFeatureDiv">
-                        Bio‑Oil Skincare Oil contains the breakthrough ingredient <t class="orangeFont">PurCellin Oil™</t> which <t class="orangeFont">ensures excellent skin absorption</t>.
+                        <t class="mainFont">+</t> Bio‑Oil Skincare Oil contains the breakthrough ingredient <t class="orangeFont">PurCellin Oil™</t> which <t class="orangeFont">ensures excellent skin absorption</t>.
                     </div>
 
                     <div class="modalContentFeatureDiv">
-                        Light and non-greasy.
+                        <t class="mainFont">+</t> Light and non-greasy.
                     </div>
                 </div>
 
@@ -234,12 +234,18 @@
                 </div>
 
                 <div class="modalContentApproval">
-                    <div class="modalContentApprovalaDivLeft">
-                        Bio‑Oil has undergone safety assessments in accordance with the <t class="orangeFont">Regulation of the European Parliament</t> and of the <t class="orangeFont">Council on Cosmetic Products</t>.
+                    <div class="modalContentApprovalTextContainer">
+                        <div class="modalContentApprovalText1">
+                            Bio‑Oil has undergone safety assessments in accordance with the <t class="orangeFont">Regulation of the European Parliament</t> and of the <t class="orangeFont">Council on Cosmetic Products</t>.
+                        </div>
+                       
+                        <div class="modalContentApprovalText2">
+                            The toxicological profile, chemical structure, level of inclusion and total level of daily exposure of each ingredient used has been assessed and <t class="orangeFont">deemed safe for use - including for use by pregnant women.</t>
+                        </div>
                     </div>
 
-                    <div class="modalContentEApprovalDivRight">
-                        The toxicological profile, chemical structure, level of inclusion and total level of daily exposure of each ingredient used has been assessed and <t class="orangeFont">deemed safe for use - including for use by pregnant women.</t>
+                    <div class="modalContentApprovalImageContainer">
+                        <img src="./images/Stretch3.jpg" alt="" class="modalContentApprovalImage">
                     </div>
                 </div>
 
@@ -285,6 +291,24 @@
                     </div>
 
                 </div>
+
+                <div class="modalContentApply">
+                    <div class="modalContentApplyHeader">How to Apply</div>
+                    <div class="modalContentApplyList">
+                        <div class="modalContentApplyListLeft">
+                            <ul>
+                                <li>Massage the oil into the skin using a gentle circular motion</li>
+                                <li>Apply twice a day for a minimum of 3 months</li>
+                            </ul>
+                        </div>
+                        <div class="modalContentApplyListRight">
+                            <ul>
+                                <li>Apply all over the body, including the face</li>
+                                <li>Do not apply the oil to broken skin or an open wound</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 
             </div>
 
@@ -306,15 +330,15 @@
 
                 <div class="modalContentFeatures">
                     <div class="modalContentFeatureDiv">
-                        Specifically designed and proven to <t class="orangeFont">improve skin dryness</t>.
+                        <t class="mainFont">+</t> Specifically designed and proven to <t class="orangeFont">improve skin dryness</t>.
                     </div>
                   
                     <div class="modalContentFeatureDiv">
-                        <t class="orangeFont">Absorbs easily into the skin</t> leaving it feeling immediately moisturised.
+                        <t class="mainFont">+</t> <t class="orangeFont">Absorbs easily into the skin</t> leaving it feeling immediately moisturised.
                     </div>
 
                     <div class="modalContentFeatureDiv">
-                        Easy to apply.
+                        <t class="mainFont">+</t> Easy to apply.
                     </div>
                 </div>
 
@@ -340,6 +364,22 @@
                         <div class="modalContentExtraPhotoDiv">
                             <img src="./images/Rosemary.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoRosemary">
                         </div>
+                    </div>
+                </div>
+
+                <div class="modalContentApproval">
+                    <div class="modalContentApprovalTextContainer">
+                        <div class="modalContentApprovalText1">
+                            Bio‑Oil has undergone safety assessments in accordance with the <t class="orangeFont">Regulation of the European Parliament</t> and of the <t class="orangeFont">Council on Cosmetic Products</t>.
+                        </div>
+                       
+                        <div class="modalContentApprovalText2">
+                            The toxicological profile, chemical structure, level of inclusion and total level of daily exposure of each ingredient used has been assessed and <t class="orangeFont">deemed safe for use - including for use by pregnant women.</t>
+                        </div>
+                    </div>
+
+                    <div class="modalContentApprovalImageContainer">
+                        <img src="./images/Dry3.jpg" alt="" class="modalContentApprovalImage">
                     </div>
                 </div>
 
@@ -371,6 +411,24 @@
                         </div>
                     </div>
 
+                </div>
+
+                <div class="modalContentApply">
+                    <div class="modalContentApplyHeader">How to Apply</div>
+                    <div class="modalContentApplyList">
+                        <div class="modalContentApplyListLeft">
+                            <ul>
+                                <li>Apply a small amount of gel to dry skin</li>
+                                <li>You only need a small amount of gel per application</li>
+                            </ul>
+                        </div>
+                        <div class="modalContentApplyListRight">
+                            <ul>
+                                <li>Re-apply gel as required</li>
+                                <li>Do not apply the gel to broken skin or an open wound</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
             </div>

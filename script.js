@@ -195,14 +195,14 @@ const main = () => {
         blobUp.scale.set(1,1,1)
     }
     else {
-        yValues.box1 = 5
-        yValues.box2 = -5
-        yValues.box1set = 12
-        yValues.box2set = -12
+        yValues.box1 = 4
+        yValues.box2 = -4
+        yValues.box1set = 11
+        yValues.box2set = -11
         box1.position.set(0, 5, 1)
         box2.position.set(0, -5, 0)
         blobUp.position.set(0,0,2)
-        blobUp.scale.set(2,2,2)
+        blobUp.scale.set(1.5,1.5,1.5)
     }
 
     gsap.to(blob.scale, {duration: 0, x: 1.5, z: 1.5})

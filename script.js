@@ -42,7 +42,7 @@ requestAnimationFrame(raf)
 const main = () => {
 
     // Canvas
-        // Change '.webgl' with a canvas querySelectorsizes.height = 
+        // Change '.webgl' with a canvas querySelector
     const canvas = document.querySelector('.webgl')
 
     // Scene
@@ -72,7 +72,7 @@ const main = () => {
     let prevWidth = sizes.width
 
     window.addEventListener('resize', () => {  
-        if (window.innerWidth != prevWidth) {
+        // if (window.innerWidth != prevWidth) {
             // Update sizes
             sizes.width = window.innerWidth
             sizes.height = window.innerHeight
@@ -86,7 +86,7 @@ const main = () => {
             // Update renderer
             renderer.setSize(sizes.width, sizes.height)
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        }
+        // }
     })
 
     // Texture Loader

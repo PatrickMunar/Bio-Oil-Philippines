@@ -69,14 +69,14 @@ const main = () => {
         cameraMaxY = -50
     }
 
-    let prevWidth = sizes.width
+    let prevHeight = sizes.height
 
     window.addEventListener('resize', () => {  
-        // if (window.innerWidth != prevWidth) {
+        if (window.innerHeight > prevHeight) {
             // Update sizes
             sizes.width = window.innerWidth
             sizes.height = window.innerHeight
-            prevWidth = sizes.width
+            prevHeight = sizes.height
 
             // Update camera
             camera.aspect = sizes.width / sizes.height
@@ -86,7 +86,7 @@ const main = () => {
             // Update renderer
             renderer.setSize(sizes.width, sizes.height)
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        // }
+        }
     })
 
     // Texture Loader

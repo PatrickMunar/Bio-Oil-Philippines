@@ -518,6 +518,17 @@ main {
   .modalContentApplyListLeft, .modalContentApplyListRight {
     width: 100% !important;
   }
+  .modalContentFeatures {
+    width: 100% !important;
+    position: relative !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-block: 2.5rem !important;
+    gap: 2.5rem !important;
+  }
+  .modalContentExtra {
+    padding-top: 2.5rem !important;
+  }
 }
 @media screen and (max-width: 700px) and (orientation: landscape) {
   /* Landscape */
@@ -2004,16 +2015,19 @@ footer {
 .mainFont {
   font-family: Main;
   color: #eb5f28;
+  line-height: 100%;
 }
 
 .mainFontWhite {
   font-family: Main;
   color: #fdfdfd;
+  line-height: 100%;
 }
 
 .mainFontGrey {
   font-family: Main;
   color: #878787;
+  line-height: 100%;
 }
 
 .orangeFont {

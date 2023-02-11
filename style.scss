@@ -374,6 +374,7 @@ main {
         padding-block: 1.5em !important;
     }
 
+    // Modal
     .modalClose {
         position: fixed;
         top: 2.5rem;
@@ -405,7 +406,6 @@ main {
     .closeSVG {
         transform: scale(0.6) !important;
     }
-    
 }
 
 @media screen and (max-width: 700px) {
@@ -617,6 +617,19 @@ main {
         
         .modalContentApplyListLeft, .modalContentApplyListRight {
             width: 100% !important;
+        }
+
+        .modalContentFeatures {
+            width: 100% !important;
+            position: relative !important;
+            padding-top: 0 !important;
+            padding-right: 0 !important;
+            padding-block: 2.5rem !important;
+            gap: 2.5rem !important;
+        }
+
+        .modalContentExtra {
+            padding-top: 2.5rem !important;
         }
     }
       
@@ -2130,16 +2143,19 @@ footer {
 .mainFont {
     font-family: Main;
     color: $mainOrange;
+    line-height: 100%;
 }
 
 .mainFontWhite {
     font-family: Main;
     color: $mainWhite;
+    line-height: 100%;
 }
 
 .mainFontGrey {
     font-family: Main;
     color: $mainGrey;
+    line-height: 100%;
 }
 
 .orangeFont {

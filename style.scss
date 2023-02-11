@@ -184,7 +184,7 @@ body {
     outline: none;
     box-sizing: border-box;
     width: 100vw;
-    height: 100svh;
+    height: 100vh;
     /* z-index: 100000000; */
     pointer-events: none;
 }
@@ -647,7 +647,7 @@ main {
     position: fixed;
     z-index: 50;
     width: 100vw;
-    height: 100svh;
+    height: 100vh;
     backdrop-filter: blur(0px);
     justify-content: center;
     align-items: flex-start;

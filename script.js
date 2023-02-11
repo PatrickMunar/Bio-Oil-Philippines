@@ -144,13 +144,11 @@ const main = () => {
     const box1 = new THREE.Mesh(new THREE.BoxGeometry(1,2,1), boxM)
     box1.scale.set(scale, scale, scale)
     scene.add(box1)
-    box1.position.set(0.75, 0, 1)
     box1.rotation.set(-Math.PI/24, -Math.PI/6, -Math.PI/12)
 
     const box2 = new THREE.Mesh(new THREE.BoxGeometry(1,2,1), boxM)
     box2.scale.set(scale, scale, scale)
     scene.add(box2)
-    box2.position.set(4, 1, 0)
     box2.rotation.set(Math.PI/24, Math.PI/12, Math.PI/12)
 
     // Blob
@@ -176,9 +174,36 @@ const main = () => {
     const blobCount = 6
 
     const blobUp = new THREE.Group
-    blobUp.position.set(-2,0,2)
     blobUp.add(blob)
     scene.add(blobUp)
+
+    const yValues = {
+        box1: 0,
+        box2: 0,
+        box1set: 0,
+        box2set: 0,
+    }
+
+    if (sizes.width > 900) {
+        yValues.box1 = 0
+        yValues.box2 = 1
+        yValues.box1set = -7
+        yValues.box2set = -6
+        box1.position.set(0.75, 0, 1)
+        box2.position.set(4, 1, 0)
+        blobUp.position.set(-2,0,2)
+        blobUp.scale.set(1,1,1)
+    }
+    else {
+        yValues.box1 = 5
+        yValues.box2 = -5
+        yValues.box1set = 12
+        yValues.box2set = -12
+        box1.position.set(0, 5, 1)
+        box2.position.set(0, -5, 0)
+        blobUp.position.set(0,0,2)
+        blobUp.scale.set(2,2,2)
+    }
 
     gsap.to(blob.scale, {duration: 0, x: 1.5, z: 1.5})
     gsap.to(blob.rotation, {duration: 0, y: Math.PI/20})
@@ -277,6 +302,16 @@ const main = () => {
     versusGroup.add(planePic)
     scene.add(versusGroup)
     versusGroup.position.set(0,cameraMaxY * 7.5 / 12,0)
+
+    // Sphere
+    const sphere = new THREE.Mesh(new THREE.SphereGeometry(1,32,32), blobM)
+    sphere.position.z = -1
+    versusGroup.add(sphere)
+
+    if (sizes.width <= 900) {
+        versusGroup.scale.set(1.5,1.5,1.5)
+        logo3D.scale.set(1.5,1.5,1.5)
+    }
 
     // ----------------------------------------------------------------
 
@@ -1169,9 +1204,9 @@ const main = () => {
 
     // Startup Animations
     gsap.to(box1.rotation, {duration: 0, y: -Math.PI/6 + Math.PI})
-    gsap.to(box1.position, {duration: 0, y: 0 - 7})
+    gsap.to(box1.position, {duration: 0, y: yValues.box1set})
     gsap.to(box2.rotation, {duration: 0, y: Math.PI/12 + Math.PI})
-    gsap.to(box2.position, {duration: 0, y: 1 - 7})
+    gsap.to(box2.position, {duration: 0, y: yValues.box2set})
     gsap.to('.heroSubHeaderText', {duration: 0, opacity: 0})
     gsap.to('.scrollCTACircle', {duration: 0, y: '-24rem'})
     gsap.to('.scrollCTAText1', {duration: 0, opacity: 0})
@@ -1203,9 +1238,9 @@ const main = () => {
 
         // Boxes
         gsap.to(box1.rotation, {duration: 1.5, y:-Math.PI/6, ease: 'Power3.easeOut'})
-        gsap.to(box1.position, {duration: 1.5, y: 0, ease: 'Power3.easeOut'})
+        gsap.to(box1.position, {duration: 1.5, y: yValues.box1, ease: 'Power3.easeOut'})
         gsap.to(box2.rotation, {duration: 1.5, delay: 0.35, y:Math.PI/12, ease: 'Power3.easeOut'})
-        gsap.to(box2.position, {duration: 1.5, delay: 0.35, y: 1, ease: 'Power3.easeOut'})
+        gsap.to(box2.position, {duration: 1.5, delay: 0.35, y: yValues.box2, ease: 'Power3.easeOut'})
     }
 
     // Purchase Text Animations

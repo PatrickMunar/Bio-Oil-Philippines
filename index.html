@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Title & Favicon -->
     <title>Bio-Oil Philippines - Test Site</title>
 
     <!-- Custom Plain CSS -->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
 
     <!-- GSAP & Three.js CDN -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/objects/MarchingCubes.js"></script>
@@ -22,7 +22,12 @@
     <script src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/EffectComposer.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/RenderPass.js"></script>   -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+      integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
 
@@ -32,823 +37,1194 @@
     <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Playfair+Display:wght@700&family=Unica+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Playfair+Display:wght@700&family=Unica+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- Loading Page -->
     <div class="loadingPage"></div>
 
     <!-- Cursor Follower -->
     <div class="cursorFollowerContainer">
-        <div class="cursorFollower">
-            <div class="cursorText">
-                Lavender
-            </div>
-            <div class="cursorText">
-                Chamomile
-            </div>
-            <div class="cursorText">
-                Calendula
-            </div>
-            <div class="cursorText">
-                Rosemary
-            </div>
+      <div class="cursorFollower">
+        <div class="cursorText">Lavender</div>
+        <div class="cursorText">Chamomile</div>
+        <div class="cursorText">Calendula</div>
+        <div class="cursorText">Rosemary</div>
 
-            <div class="cursorSVGContainer">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="cursorSVG"><path class="cursorSVGPath" d="M24 31.5q3.55 0 6.025-2.475Q32.5 26.55 32.5 23q0-3.55-2.475-6.025Q27.55 14.5 24 14.5q-3.55 0-6.025 2.475Q15.5 19.45 15.5 23q0 3.55 2.475 6.025Q20.45 31.5 24 31.5Zm0-2.9q-2.35 0-3.975-1.625T18.4 23q0-2.35 1.625-3.975T24 17.4q2.35 0 3.975 1.625T29.6 23q0 2.35-1.625 3.975T24 28.6Zm0 9.4q-7.3 0-13.2-4.15Q4.9 29.7 2 23q2.9-6.7 8.8-10.85Q16.7 8 24 8q7.3 0 13.2 4.15Q43.1 16.3 46 23q-2.9 6.7-8.8 10.85Q31.3 38 24 38Zm0-15Zm0 12q6.05 0 11.125-3.275T42.85 23q-2.65-5.45-7.725-8.725Q30.05 11 24 11t-11.125 3.275Q7.8 17.55 5.1 23q2.7 5.45 7.775 8.725Q17.95 35 24 35Z"/></svg>
-                <div class="cursorSVGSlide">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="cursorSVG"><path class="cursorSVGPath" d="m24 42-9-9 2.2-2.2 6.8 6.8 6.8-6.8L33 33Zm-6.8-24.6L15 15.2l9-9 9 9-2.2 2.2-6.8-6.8Z"/></svg>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="cursorSVG"><path class="cursorSVGPath" d="M17.85 39.65 15.7 37.5l4-4.05q-6.8-.75-11.25-3.3T4 23.7q0-3.95 5.825-6.725Q15.65 14.2 24 14.2q8.4 0 14.2 2.775Q44 19.75 44 23.7q0 2.95-3.2 5.2t-8.5 3.5v-3.25q4-1 6.35-2.6Q41 24.95 41 23.7q0-1.6-4.175-4.05Q32.65 17.2 24 17.2q-8.6 0-12.8 2.45Q7 22.1 7 23.7q0 2.25 2.875 3.875t9.975 2.975L15.7 26.5l2.15-2.15 7.65 7.6Z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="cursorSVG"><path class="cursorSVGPath" d="M11 44q-1.2 0-2.1-.9Q8 42.2 8 41V15q0-1.2.9-2.1.9-.9 2.1-.9h5.5v-.5q0-3.15 2.175-5.325Q20.85 4 24 4q3.15 0 5.325 2.175Q31.5 8.35 31.5 11.5v.5H37q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h26V15h-5.5v4.5q0 .65-.425 1.075Q30.65 21 30 21q-.65 0-1.075-.425-.425-.425-.425-1.075V15h-9v4.5q0 .65-.425 1.075Q18.65 21 18 21q-.65 0-1.075-.425-.425-.425-.425-1.075V15H11v26Zm8.5-29h9v-.5q0-1.9-1.3-3.2Q25.9 7 24 7q-1.9 0-3.2 1.3-1.3 1.3-1.3 3.2ZM11 41V15v26Z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="cursorSVG">
-                    <path class="cursorSVGPath" d="M4 13.1V3.3h2.45v5.1q3.65-3.15 8.125-4.775Q19.05 2 23.9 2t9.375 1.625Q37.8 5.25 41.5 8.4V3.3H44v9.8h-9.55v-2.45h6q-3.45-3-7.7-4.7-4.25-1.7-8.85-1.7-4.55 0-8.75 1.7t-7.65 4.7h6v2.45ZM21.1 46q-.85 0-1.6-.325-.75-.325-1.3-.875L7.9 34.5l2.8-2.9q.7-.7 1.575-1.075T14.1 30.4l3.9.9V15q0-2.1 1.45-3.55Q20.9 10 23 10q2.1 0 3.55 1.45Q28 12.9 28 15v9h1.3q.25 0 .475.05.225.05.475.15l7.35 3.3q1.2.55 1.775 1.775.575 1.225.325 2.525l-1.8 10.9q-.25 1.45-1.4 2.375T33.9 46Zm-.4-3h14.05l2.15-12.45-9.15-4.15H25V15q0-.9-.55-1.45Q23.9 13 23 13q-.9 0-1.45.55Q21 14.1 21 15v19.95l-7.7-1.65-1.15 1.15Zm0 0h14.05Z"/>
-                </svg>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cursorSVG">
-                    <path class="cursorSVGPath" d="M12.002 21.041C9.54195 21.041 9.25195 21.028 8.29195 20.986C7.54332 20.9614 6.80439 20.8092 6.10695 20.536C4.90026 20.0664 3.94609 19.1119 3.47695 17.905C3.21426 17.205 3.07257 16.4655 3.05795 15.718C3.00195 14.76 3.00195 14.446 3.00195 12.005C3.00195 9.538 3.01495 9.25 3.05795 8.295C3.07289 7.54853 3.21457 6.81001 3.47695 6.111C3.94558 4.90253 4.9013 3.94718 6.10995 3.479C6.8086 3.21521 7.5473 3.07315 8.29395 3.059C9.24895 3.005 9.56295 3.005 12.002 3.005C14.482 3.005 14.767 3.018 15.712 3.059C16.4605 3.07327 17.2012 3.21531 17.902 3.479C19.1103 3.94771 20.0658 4.90288 20.535 6.111C20.8021 6.8202 20.9445 7.57026 20.956 8.328C21.012 9.286 21.012 9.59901 21.012 12.039C21.012 14.479 20.998 14.799 20.956 15.746C20.9411 16.4942 20.799 17.2344 20.536 17.935C20.0656 19.1427 19.11 20.0976 17.902 20.567C17.2022 20.8292 16.4631 20.9709 15.716 20.986C14.761 21.041 14.448 21.041 12.002 21.041ZM11.968 4.588C9.52195 4.588 9.26795 4.6 8.31295 4.643C7.74294 4.65056 7.17843 4.75575 6.64395 4.954C5.85471 5.25601 5.23018 5.878 4.92495 6.666C4.72517 7.2063 4.61996 7.77698 4.61395 8.353C4.56095 9.322 4.56095 9.576 4.56095 12.005C4.56095 14.405 4.56995 14.696 4.61395 15.659C4.62291 16.2292 4.72805 16.7938 4.92495 17.329C5.23063 18.1165 5.85505 18.738 6.64395 19.04C7.17807 19.2396 7.7428 19.3448 8.31295 19.351C9.28095 19.407 9.53595 19.407 11.968 19.407C14.421 19.407 14.675 19.395 15.622 19.351C16.1924 19.3441 16.7573 19.2389 17.292 19.04C18.0764 18.7354 18.6969 18.1153 19.002 17.331C19.2014 16.7903 19.3065 16.2193 19.313 15.643H19.324C19.367 14.687 19.367 14.432 19.367 11.989C19.367 9.54601 19.356 9.289 19.313 8.334C19.304 7.76446 19.1988 7.20052 19.002 6.666C18.6976 5.88058 18.077 5.2593 17.292 4.954C16.7574 4.75475 16.1924 4.64953 15.622 4.643C14.655 4.588 14.402 4.588 11.968 4.588ZM12.002 16.624C10.1319 16.6252 8.44537 15.4997 7.72882 13.7725C7.01226 12.0452 7.40686 10.0563 8.72858 8.73347C10.0503 7.4106 12.0388 7.01428 13.7667 7.72934C15.4946 8.4444 16.6215 10.13 16.622 12C16.6192 14.5511 14.553 16.619 12.002 16.624ZM12.002 8.998C10.3451 8.998 9.00195 10.3412 9.00195 11.998C9.00195 13.6549 10.3451 14.998 12.002 14.998C13.6588 14.998 15.002 13.6549 15.002 11.998C14.9981 10.3427 13.6572 9.00185 12.002 8.998ZM16.802 8.28501C16.2074 8.2828 15.7269 7.79959 15.728 7.20501C15.7291 6.61043 16.2114 6.12901 16.806 6.12901C17.4005 6.12901 17.8828 6.61042 17.884 7.205C17.8842 7.49187 17.7702 7.76703 17.5672 7.96968C17.3642 8.17234 17.0888 8.2858 16.802 8.28501Z" fill="#2E3A59"/>
-                </svg>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cursorSVG">
-                    <path class="cursorSVGPath" d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z" fill="#2E3A59"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="cursorSVG">
-                    <path class="cursorSVGPath" d="M7 40q-1.2 0-2.1-.9Q4 38.2 4 37V11q0-1.2.9-2.1Q5.8 8 7 8h34q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm34-26.25-16.2 10.6q-.2.1-.375.175-.175.075-.425.075t-.425-.075q-.175-.075-.375-.175L7 13.75V37h34ZM24 21.9 40.8 11H7.25ZM7 13.75v.35-1.975.025V11v1.15-.05 2-.35V37Z"/>
-                </svg>
-            </div>
+        <div class="cursorSVGContainer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            class="cursorSVG"
+          >
+            <path
+              class="cursorSVGPath"
+              d="M24 31.5q3.55 0 6.025-2.475Q32.5 26.55 32.5 23q0-3.55-2.475-6.025Q27.55 14.5 24 14.5q-3.55 0-6.025 2.475Q15.5 19.45 15.5 23q0 3.55 2.475 6.025Q20.45 31.5 24 31.5Zm0-2.9q-2.35 0-3.975-1.625T18.4 23q0-2.35 1.625-3.975T24 17.4q2.35 0 3.975 1.625T29.6 23q0 2.35-1.625 3.975T24 28.6Zm0 9.4q-7.3 0-13.2-4.15Q4.9 29.7 2 23q2.9-6.7 8.8-10.85Q16.7 8 24 8q7.3 0 13.2 4.15Q43.1 16.3 46 23q-2.9 6.7-8.8 10.85Q31.3 38 24 38Zm0-15Zm0 12q6.05 0 11.125-3.275T42.85 23q-2.65-5.45-7.725-8.725Q30.05 11 24 11t-11.125 3.275Q7.8 17.55 5.1 23q2.7 5.45 7.775 8.725Q17.95 35 24 35Z"
+            />
+          </svg>
+          <div class="cursorSVGSlide">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="48"
+              width="48"
+              class="cursorSVG"
+            >
+              <path
+                class="cursorSVGPath"
+                d="m24 42-9-9 2.2-2.2 6.8 6.8 6.8-6.8L33 33Zm-6.8-24.6L15 15.2l9-9 9 9-2.2 2.2-6.8-6.8Z"
+              />
+            </svg>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            class="cursorSVG"
+          >
+            <path
+              class="cursorSVGPath"
+              d="M17.85 39.65 15.7 37.5l4-4.05q-6.8-.75-11.25-3.3T4 23.7q0-3.95 5.825-6.725Q15.65 14.2 24 14.2q8.4 0 14.2 2.775Q44 19.75 44 23.7q0 2.95-3.2 5.2t-8.5 3.5v-3.25q4-1 6.35-2.6Q41 24.95 41 23.7q0-1.6-4.175-4.05Q32.65 17.2 24 17.2q-8.6 0-12.8 2.45Q7 22.1 7 23.7q0 2.25 2.875 3.875t9.975 2.975L15.7 26.5l2.15-2.15 7.65 7.6Z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            class="cursorSVG"
+          >
+            <path
+              class="cursorSVGPath"
+              d="M11 44q-1.2 0-2.1-.9Q8 42.2 8 41V15q0-1.2.9-2.1.9-.9 2.1-.9h5.5v-.5q0-3.15 2.175-5.325Q20.85 4 24 4q3.15 0 5.325 2.175Q31.5 8.35 31.5 11.5v.5H37q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h26V15h-5.5v4.5q0 .65-.425 1.075Q30.65 21 30 21q-.65 0-1.075-.425-.425-.425-.425-1.075V15h-9v4.5q0 .65-.425 1.075Q18.65 21 18 21q-.65 0-1.075-.425-.425-.425-.425-1.075V15H11v26Zm8.5-29h9v-.5q0-1.9-1.3-3.2Q25.9 7 24 7q-1.9 0-3.2 1.3-1.3 1.3-1.3 3.2ZM11 41V15v26Z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            class="cursorSVG"
+          >
+            <path
+              class="cursorSVGPath"
+              d="M4 13.1V3.3h2.45v5.1q3.65-3.15 8.125-4.775Q19.05 2 23.9 2t9.375 1.625Q37.8 5.25 41.5 8.4V3.3H44v9.8h-9.55v-2.45h6q-3.45-3-7.7-4.7-4.25-1.7-8.85-1.7-4.55 0-8.75 1.7t-7.65 4.7h6v2.45ZM21.1 46q-.85 0-1.6-.325-.75-.325-1.3-.875L7.9 34.5l2.8-2.9q.7-.7 1.575-1.075T14.1 30.4l3.9.9V15q0-2.1 1.45-3.55Q20.9 10 23 10q2.1 0 3.55 1.45Q28 12.9 28 15v9h1.3q.25 0 .475.05.225.05.475.15l7.35 3.3q1.2.55 1.775 1.775.575 1.225.325 2.525l-1.8 10.9q-.25 1.45-1.4 2.375T33.9 46Zm-.4-3h14.05l2.15-12.45-9.15-4.15H25V15q0-.9-.55-1.45Q23.9 13 23 13q-.9 0-1.45.55Q21 14.1 21 15v19.95l-7.7-1.65-1.15 1.15Zm0 0h14.05Z"
+            />
+          </svg>
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="cursorSVG"
+          >
+            <path
+              class="cursorSVGPath"
+              d="M12.002 21.041C9.54195 21.041 9.25195 21.028 8.29195 20.986C7.54332 20.9614 6.80439 20.8092 6.10695 20.536C4.90026 20.0664 3.94609 19.1119 3.47695 17.905C3.21426 17.205 3.07257 16.4655 3.05795 15.718C3.00195 14.76 3.00195 14.446 3.00195 12.005C3.00195 9.538 3.01495 9.25 3.05795 8.295C3.07289 7.54853 3.21457 6.81001 3.47695 6.111C3.94558 4.90253 4.9013 3.94718 6.10995 3.479C6.8086 3.21521 7.5473 3.07315 8.29395 3.059C9.24895 3.005 9.56295 3.005 12.002 3.005C14.482 3.005 14.767 3.018 15.712 3.059C16.4605 3.07327 17.2012 3.21531 17.902 3.479C19.1103 3.94771 20.0658 4.90288 20.535 6.111C20.8021 6.8202 20.9445 7.57026 20.956 8.328C21.012 9.286 21.012 9.59901 21.012 12.039C21.012 14.479 20.998 14.799 20.956 15.746C20.9411 16.4942 20.799 17.2344 20.536 17.935C20.0656 19.1427 19.11 20.0976 17.902 20.567C17.2022 20.8292 16.4631 20.9709 15.716 20.986C14.761 21.041 14.448 21.041 12.002 21.041ZM11.968 4.588C9.52195 4.588 9.26795 4.6 8.31295 4.643C7.74294 4.65056 7.17843 4.75575 6.64395 4.954C5.85471 5.25601 5.23018 5.878 4.92495 6.666C4.72517 7.2063 4.61996 7.77698 4.61395 8.353C4.56095 9.322 4.56095 9.576 4.56095 12.005C4.56095 14.405 4.56995 14.696 4.61395 15.659C4.62291 16.2292 4.72805 16.7938 4.92495 17.329C5.23063 18.1165 5.85505 18.738 6.64395 19.04C7.17807 19.2396 7.7428 19.3448 8.31295 19.351C9.28095 19.407 9.53595 19.407 11.968 19.407C14.421 19.407 14.675 19.395 15.622 19.351C16.1924 19.3441 16.7573 19.2389 17.292 19.04C18.0764 18.7354 18.6969 18.1153 19.002 17.331C19.2014 16.7903 19.3065 16.2193 19.313 15.643H19.324C19.367 14.687 19.367 14.432 19.367 11.989C19.367 9.54601 19.356 9.289 19.313 8.334C19.304 7.76446 19.1988 7.20052 19.002 6.666C18.6976 5.88058 18.077 5.2593 17.292 4.954C16.7574 4.75475 16.1924 4.64953 15.622 4.643C14.655 4.588 14.402 4.588 11.968 4.588ZM12.002 16.624C10.1319 16.6252 8.44537 15.4997 7.72882 13.7725C7.01226 12.0452 7.40686 10.0563 8.72858 8.73347C10.0503 7.4106 12.0388 7.01428 13.7667 7.72934C15.4946 8.4444 16.6215 10.13 16.622 12C16.6192 14.5511 14.553 16.619 12.002 16.624ZM12.002 8.998C10.3451 8.998 9.00195 10.3412 9.00195 11.998C9.00195 13.6549 10.3451 14.998 12.002 14.998C13.6588 14.998 15.002 13.6549 15.002 11.998C14.9981 10.3427 13.6572 9.00185 12.002 8.998ZM16.802 8.28501C16.2074 8.2828 15.7269 7.79959 15.728 7.20501C15.7291 6.61043 16.2114 6.12901 16.806 6.12901C17.4005 6.12901 17.8828 6.61042 17.884 7.205C17.8842 7.49187 17.7702 7.76703 17.5672 7.96968C17.3642 8.17234 17.0888 8.2858 16.802 8.28501Z"
+              fill="#2E3A59"
+            />
+          </svg>
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="cursorSVG"
+          >
+            <path
+              class="cursorSVGPath"
+              d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z"
+              fill="#2E3A59"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            class="cursorSVG"
+          >
+            <path
+              class="cursorSVGPath"
+              d="M7 40q-1.2 0-2.1-.9Q4 38.2 4 37V11q0-1.2.9-2.1Q5.8 8 7 8h34q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm34-26.25-16.2 10.6q-.2.1-.375.175-.175.075-.425.075t-.425-.075q-.175-.075-.375-.175L7 13.75V37h34ZM24 21.9 40.8 11H7.25ZM7 13.75v.35-1.975.025V11v1.15-.05 2-.35V37Z"
+            />
+          </svg>
         </div>
+      </div>
     </div>
 
     <!-- Nav -->
     <section class="navSection">
+      <!-- Modal Close -->
+      <div class="modalClose">
+        <div class="modalCloseInner">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            class="closeSVG"
+          >
+            <path
+              d="M24 26.1 13.5 36.6q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.05 0-.6.45-1.05L21.9 24 11.4 13.5q-.45-.45-.45-1.05 0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45L24 21.9l10.5-10.5q.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05L26.1 24l10.5 10.5q.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45-.6 0-1.05-.45Z"
+              class="closeSVGPath"
+            />
+          </svg>
+        </div>
+      </div>
 
-        <!-- Modal Close -->
-        <div class="modalClose">
-            <div class="modalCloseInner">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="closeSVG">
-                    <path d="M24 26.1 13.5 36.6q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.05 0-.6.45-1.05L21.9 24 11.4 13.5q-.45-.45-.45-1.05 0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45L24 21.9l10.5-10.5q.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05L26.1 24l10.5 10.5q.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45-.6 0-1.05-.45Z" class="closeSVGPath"/>
-                </svg>
-            </div>
+      <!-- Nav Toggle -->
+      <div class="navToggle" tabindex="0">
+        <div class="navName">
+          <div class="navNameText">Bio-Oil</div>
         </div>
 
-        <!-- Nav Toggle -->
-        <div class="navToggle" tabindex="0">
-            
-            <div class="navName">
-                <div class="navNameText">Bio-Oil</div>
-            </div>
-
-            <div class="navLogo">
-                <div class="logoImage">
-                    <div class="logoBar logoBarGroup1" id="logoBar1"></div>
-                    <div class="logoBar logoBarGroup1" id="logoBar2"></div>
-                    <div class="logoBar logoBarGroup1" id="logoBar3"></div>
-                    <div class="logoBar logoBarGroup1" id="logoBar4"></div>
-                    <div class="logoBar logoBarGroup2" id="logoBar5"></div>
-                    <div class="logoBar logoBarGroup2" id="logoBar6"></div>
-                    <div class="logoBar logoBarGroup2" id="logoBar7"></div>
-                    <div class="logoBar logoBarGroup2" id="logoBar8"></div>
-                    <div class="logoBar logoBarGroup3" id="logoBar9"></div>
-                    <div class="logoBar logoBarGroup3" id="logoBar10"></div>
-                    <div class="logoBar logoBarGroup3" id="logoBar11"></div>
-                    <div class="logoBar logoBarGroup3" id="logoBar12"></div>
-                </div>
-            </div>
-
-            <nav>
-                <div class="navChoice" id="navChoice1" tabindex="0">
-                    <span class="navChoiceLetter1">P</span>
-                    <span class="navChoiceLetter1">R</span>
-                    <span class="navChoiceLetter1">O</span>
-                    <span class="navChoiceLetter1">D</span>
-                    <span class="navChoiceLetter1">U</span>
-                    <span class="navChoiceLetter1">C</span>
-                    <span class="navChoiceLetter1">T</span>
-                    <span class="navChoiceLetter1">S</span>
-
-                    <div class="navChoiceDot"></div>
-                </div>
-                <div class="navChoice" id="navChoice2" tabindex="0">
-                    <span class="navChoiceLetter2">H</span>
-                    <span class="navChoiceLetter2">I</span>
-                    <span class="navChoiceLetter2">S</span>
-                    <span class="navChoiceLetter2">T</span>
-                    <span class="navChoiceLetter2">O</span>
-                    <span class="navChoiceLetter2">R</span>
-                    <span class="navChoiceLetter2">Y</span>
-
-                    <div class="navChoiceDot"></div>
-                </div>
-                <div class="navChoice" id="navChoice3" tabindex="0">
-                    <span class="navChoiceLetter3">P</span>
-                    <span class="navChoiceLetter3">U</span>
-                    <span class="navChoiceLetter3">R</span>
-                    <span class="navChoiceLetter3">C</span>
-                    <span class="navChoiceLetter3">H</span>
-                    <span class="navChoiceLetter3">A</span>
-                    <span class="navChoiceLetter3">S</span>
-                    <span class="navChoiceLetter3">E</span>
-
-                    <div class="navChoiceDot"></div>
-                </div>
-                <div class="navChoice" id="navChoiceLast" tabindex="0">
-                    <span class="navChoiceLetter4">C</span>
-                    <span class="navChoiceLetter4">O</span>
-                    <span class="navChoiceLetter4">N</span>
-                    <span class="navChoiceLetter4">T</span>
-                    <span class="navChoiceLetter4">A</span>
-                    <span class="navChoiceLetter4">C</span>
-                    <span class="navChoiceLetter4">T</span>
-                    <span class="navChoiceLetter4">S</span>
-
-                    <div class="navChoiceDot"></div>
-                </div>
-            </nav>
-
+        <div class="navLogo">
+          <div class="logoImage">
+            <div class="logoBar logoBarGroup1" id="logoBar1"></div>
+            <div class="logoBar logoBarGroup1" id="logoBar2"></div>
+            <div class="logoBar logoBarGroup1" id="logoBar3"></div>
+            <div class="logoBar logoBarGroup1" id="logoBar4"></div>
+            <div class="logoBar logoBarGroup2" id="logoBar5"></div>
+            <div class="logoBar logoBarGroup2" id="logoBar6"></div>
+            <div class="logoBar logoBarGroup2" id="logoBar7"></div>
+            <div class="logoBar logoBarGroup2" id="logoBar8"></div>
+            <div class="logoBar logoBarGroup3" id="logoBar9"></div>
+            <div class="logoBar logoBarGroup3" id="logoBar10"></div>
+            <div class="logoBar logoBarGroup3" id="logoBar11"></div>
+            <div class="logoBar logoBarGroup3" id="logoBar12"></div>
+          </div>
         </div>
+
+        <nav>
+          <div class="navChoice" id="navChoice1" tabindex="0">
+            <span class="navChoiceLetter1">P</span>
+            <span class="navChoiceLetter1">R</span>
+            <span class="navChoiceLetter1">O</span>
+            <span class="navChoiceLetter1">D</span>
+            <span class="navChoiceLetter1">U</span>
+            <span class="navChoiceLetter1">C</span>
+            <span class="navChoiceLetter1">T</span>
+            <span class="navChoiceLetter1">S</span>
+
+            <div class="navChoiceDot"></div>
+          </div>
+          <div class="navChoice" id="navChoice2" tabindex="0">
+            <span class="navChoiceLetter2">H</span>
+            <span class="navChoiceLetter2">I</span>
+            <span class="navChoiceLetter2">S</span>
+            <span class="navChoiceLetter2">T</span>
+            <span class="navChoiceLetter2">O</span>
+            <span class="navChoiceLetter2">R</span>
+            <span class="navChoiceLetter2">Y</span>
+
+            <div class="navChoiceDot"></div>
+          </div>
+          <div class="navChoice" id="navChoice3" tabindex="0">
+            <span class="navChoiceLetter3">P</span>
+            <span class="navChoiceLetter3">U</span>
+            <span class="navChoiceLetter3">R</span>
+            <span class="navChoiceLetter3">C</span>
+            <span class="navChoiceLetter3">H</span>
+            <span class="navChoiceLetter3">A</span>
+            <span class="navChoiceLetter3">S</span>
+            <span class="navChoiceLetter3">E</span>
+
+            <div class="navChoiceDot"></div>
+          </div>
+          <div class="navChoice" id="navChoiceLast" tabindex="0">
+            <span class="navChoiceLetter4">C</span>
+            <span class="navChoiceLetter4">O</span>
+            <span class="navChoiceLetter4">N</span>
+            <span class="navChoiceLetter4">T</span>
+            <span class="navChoiceLetter4">A</span>
+            <span class="navChoiceLetter4">C</span>
+            <span class="navChoiceLetter4">T</span>
+            <span class="navChoiceLetter4">S</span>
+
+            <div class="navChoiceDot"></div>
+          </div>
+        </nav>
+      </div>
     </section>
-
 
     <!-- Product Modal Section -->
     <div class="modalSection" data-lenis-prevent>
+      <!-- Modal Popup -->
+      <div class="modalPopup">
+        <!-- Skincare -->
+        <div class="modalContent">
+          <div class="modalContentHeader">
+            <t class="mainFont">Bio-Oil</t><br />
+            <t>Skincare Oil</t>
+          </div>
 
-        <!-- Modal Popup -->
-        <div class="modalPopup">
+          <div class="modalContentDescription">
+            Bio-Oil Skincare Oil is a specialist skincare product formulated to
+            help <t class="orangeFont">improve the appearance of scars</t>,
+            <t class="orangeFont">stretch marks</t> and
+            <t class="orangeFont">uneven skin tone</t>.
+          </div>
 
-            <!-- Skincare -->
-            <div class="modalContent">
+          <div class="modalContentSizes">
+            <t class="sizesText">Available sizes:</t><br /><t class="orangeFont"
+              >25 mL</t
+            ><br />50 mL<br />125 mL<br />200 mL
+          </div>
 
-                <div class="modalContentHeader">
-                    <t class="mainFont">Bio-Oil</t><br/>
-                    <t>Skincare Oil</t>
-                </div>
-
-                <div class="modalContentDescription">
-                    Bio-Oil Skincare Oil is a specialist skincare product formulated to help <t class="orangeFont">improve the appearance of scars</t>, <t class="orangeFont">stretch marks</t> and <t class="orangeFont">uneven skin tone</t>.
-                </div>
-
-                <div class="modalContentSizes">
-                    <t class="sizesText">Available sizes:</t><br/><t class="orangeFont">25 mL</t><br/>50 mL<br/>125 mL<br/>200 mL
-                </div>
-
-                <div class="modalContentFeatures">
-                    <div class="modalContentFeatureDiv">
-                        <t class="mainFont">+</t> Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
-                    </div>
-                  
-                    <div class="modalContentFeatureDiv">
-                        <t class="mainFont">+</t> Bio‑Oil Skincare Oil contains the breakthrough ingredient <t class="orangeFont">PurCellin Oil™</t> which <t class="orangeFont">ensures excellent skin absorption</t>.
-                    </div>
-
-                    <div class="modalContentFeatureDiv">
-                        <t class="mainFont">+</t> Light and non-greasy.
-                    </div>
-                </div>
-
-                <div class="modalContentExtra">
-                    <div class="modalContentExtraDiv">
-                        The Bio‑Oil formulation is a <t class="orangeFont">combination of plant extracts<br/>and vitamins suspended in an oil base</t>.
-                    </div>
-
-                    <div class="modalContentExtraDiv">
-                        The addition of <t class="orangeFont">PurCellin Oil™ changes the formulation’s overall consistency</t>,<br/>making it light and non-greasy;
-                        therefore, allowing for all the goodness contained in the vitamins<br/>and plant extracts to be absorbed into the skin.
-                    </div>
-
-                    <div class="modalContentExtraOverlay">
-                        <div class="modalContentExtraPhotoDiv">
-                            <img src="./images/Lavender.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoLavender">
-                        </div>
-                        <div class="modalContentExtraPhotoDiv">
-                            <img src="./images/Chamomile.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoChamomile">
-                        </div>
-                        <div class="modalContentExtraPhotoDiv">
-                            <img src="./images/Calendula.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoCalendula">
-                        </div>
-                        <div class="modalContentExtraPhotoDiv">
-                            <img src="./images/Rosemary.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoRosemary">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modalContentApproval">
-                    <div class="modalContentApprovalTextContainer">
-                        <div class="modalContentApprovalText1">
-                            Bio‑Oil has undergone safety assessments in accordance with the <t class="orangeFont">Regulation of the European Parliament</t> and of the <t class="orangeFont">Council on Cosmetic Products</t>.
-                        </div>
-                       
-                        <div class="modalContentApprovalText2">
-                            The toxicological profile, chemical structure, level of inclusion and total level of daily exposure of each ingredient used has been assessed and <t class="orangeFont">deemed safe for use - including for use by pregnant women.</t>
-                        </div>
-                    </div>
-
-                    <div class="modalContentApprovalImageContainer">
-                        <img src="./images/Stretch3.jpg" alt="" class="modalContentApprovalImage">
-                    </div>
-                </div>
-
-                <div class="modalContentCharts">
-
-                    <div class="modalContentChartsCard">
-                        <div class="modalContentChartsContainer">
-                            <div class="modalContentChartsFill"></div>
-                            <div class="modalContentChartsCenter">
-                                0%
-                            </div>
-                        </div>
-
-                        <div class="modalContentChartsText">
-                            of subjects showed an <t class="orangeFont">improvement in the appearance of their scars</t> after 8 weeks. (proDERM, 2010)
-                        </div>
-                    </div>
-
-                    <div class="modalContentChartsCard">
-                        <div class="modalContentChartsContainer">
-                            <div class="modalContentChartsFill"></div>
-                            <div class="modalContentChartsCenter">
-                                0%
-                            </div>
-                        </div>
-
-                        <div class="modalContentChartsText">
-                            of subjects showed an <t class="orangeFont">improvement in the appearance of existing stretch marks</t> after 8 weeks. (proDERM, 2010)
-                        </div>
-                    </div>
-
-                    <div class="modalContentChartsCard">
-                        <div class="modalContentChartsContainer">
-                            <div class="modalContentChartsFill"></div>
-                            <div class="modalContentChartsCenter">
-                                0%
-                            </div>
-                        </div>
-
-                        <div class="modalContentChartsText">
-                            of participants showed an <t class="orangeFont">improvement in the appearance of uneven skin tone</t> after 6 weeks. (MEDUNSA, 2005)
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="modalContentApply">
-                    <div class="modalContentApplyHeader">How to Apply</div>
-                    <div class="modalContentApplyList">
-                        <div class="modalContentApplyListLeft">
-                            <ul>
-                                <li>Massage the oil into the skin using a gentle circular motion</li>
-                                <li>Apply twice a day for a minimum of 3 months</li>
-                            </ul>
-                        </div>
-                        <div class="modalContentApplyListRight">
-                            <ul>
-                                <li>Apply all over the body, including the face</li>
-                                <li>Do not apply the oil to broken skin or an open wound</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
+          <div class="modalContentFeatures">
+            <div class="modalContentFeatureDiv">
+              <t class="mainFont">+</t> Oil, being
+              <t class="orangeFont">oxygen-free</t>, allows the suspended plant
+              extracts and vitamins to retain their potency.
             </div>
 
-            <!-- Dry Skin -->
-            <div class="modalContent">
-
-                <div class="modalContentHeader">
-                    <t class="mainFont">Bio-Oil</t><br/>
-                    <t>Dry Skin Gel</t>
-                </div>
-
-                <div class="modalContentDescription">
-                    Bio-Oil Dry Skin Gel is formulated to care for dry skin. It improves on existing dry skin technologies by replacing in-active water with oil, resulting in a product that is <t class="orangeFont">100% active in treating dry skin</t>.
-                </div>
-
-                <div class="modalContentSizes">
-                    <t class="sizesText">Available sizes:</t><br/><t class="orangeFont">50 mL</t>
-                </div>
-
-                <div class="modalContentFeatures">
-                    <div class="modalContentFeatureDiv">
-                        <t class="mainFont">+</t> Specifically designed and proven to <t class="orangeFont">improve skin dryness</t>.
-                    </div>
-                  
-                    <div class="modalContentFeatureDiv">
-                        <t class="mainFont">+</t> <t class="orangeFont">Absorbs easily into the skin</t> leaving it feeling immediately moisturised.
-                    </div>
-
-                    <div class="modalContentFeatureDiv">
-                        <t class="mainFont">+</t> Easy to apply.
-                    </div>
-                </div>
-
-                 <div class="modalContentExtra">
-                    <div class="modalContentExtraDiv">
-                        The Bio‑Oil formulation is delivered in a <t class="orangeFont">breakthrough<br/>new gel format</t>.
-                    </div>
-
-                    <div class="modalContentExtraDiv">
-                        Bio-Oil Dry Skin Gel is an oil-based gel moisturiser<br/>that contains only 3% water, 13% humectants and 84% oil to both <t class="orangeFont">hydrate and<br/>protect the skin from moisture loss</t>.
-                    </div>
-
-                    <div class="modalContentExtraOverlay" id="modalContentExtraOverlayFlip">
-                        <div class="modalContentExtraPhotoDiv">
-                            <img src="./images/Lavender.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoLavender">
-                        </div>
-                        <div class="modalContentExtraPhotoDiv">
-                            <img src="./images/Chamomile.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoChamomile">
-                        </div>
-                        <div class="modalContentExtraPhotoDiv">
-                            <img src="./images/Calendula.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoCalendula">
-                        </div>
-                        <div class="modalContentExtraPhotoDiv">
-                            <img src="./images/Rosemary.png" alt="" class="modalContentPlantPhoto" id="modalContentPhotoRosemary">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modalContentApproval">
-                    <div class="modalContentApprovalTextContainer">
-                        <div class="modalContentApprovalText1">
-                            Bio‑Oil has undergone safety assessments in accordance with the <t class="orangeFont">Regulation of the European Parliament</t> and of the <t class="orangeFont">Council on Cosmetic Products</t>.
-                        </div>
-                       
-                        <div class="modalContentApprovalText2">
-                            The toxicological profile, chemical structure, level of inclusion and total level of daily exposure of each ingredient used has been assessed and <t class="orangeFont">deemed safe for use - including for use by pregnant women.</t>
-                        </div>
-                    </div>
-
-                    <div class="modalContentApprovalImageContainer">
-                        <img src="./images/Dry3.jpg" alt="" class="modalContentApprovalImage">
-                    </div>
-                </div>
-
-                <div class="modalContentCharts">
-
-                    <div class="modalContentChartsCard">
-                        <div class="modalContentChartsContainer">
-                            <div class="modalContentChartsFill"></div>
-                            <div class="modalContentChartsCenter">
-                                0%
-                            </div>
-                        </div>
-
-                        <div class="modalContentChartsText">
-                            of participants agreed that <t class="orangeFont">‘the product leaves skin feeling immediately moisturized’</t>. (Ayton Global Research, 2017)
-                        </div>
-                    </div>
-
-                    <div class="modalContentChartsCard">
-                        <div class="modalContentChartsContainer">
-                            <div class="modalContentChartsFill"></div>
-                            <div class="modalContentChartsCenter">
-                                0%
-                            </div>
-                        </div>
-
-                        <div class="modalContentChartsText">
-                            of participants agreed that <t class="orangeFont">‘their dry skin improved over the course of the two-week period’</t>. (Ayton Global Research, 2017)
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="modalContentApply">
-                    <div class="modalContentApplyHeader">How to Apply</div>
-                    <div class="modalContentApplyList">
-                        <div class="modalContentApplyListLeft">
-                            <ul>
-                                <li>Apply a small amount of gel to dry skin</li>
-                                <li>Use a small amount of gel per application</li>
-                            </ul>
-                        </div>
-                        <div class="modalContentApplyListRight">
-                            <ul>
-                                <li>Re-apply gel as required</li>
-                                <li>Do not apply the gel to broken skin or an open wound</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="modalContentFeatureDiv">
+              <t class="mainFont">+</t> Bio‑Oil Skincare Oil contains the
+              breakthrough ingredient
+              <t class="orangeFont">PurCellin Oil™</t> which
+              <t class="orangeFont">ensures excellent skin absorption</t>.
             </div>
 
-            <canvas class="orbitCanvas cursorChoice"></canvas>
+            <div class="modalContentFeatureDiv">
+              <t class="mainFont">+</t> Light and non-greasy.
+            </div>
+          </div>
 
+          <div class="modalContentExtra">
+            <div class="modalContentExtraDiv">
+              The Bio‑Oil formulation is a
+              <t class="orangeFont"
+                >combination of plant extracts<br />and vitamins suspended in an
+                oil base</t
+              >.
+            </div>
+
+            <div class="modalContentExtraDiv">
+              The addition of
+              <t class="orangeFont"
+                >PurCellin Oil™ changes the formulation’s overall consistency</t
+              >,<br />making it light and non-greasy; therefore, allowing for
+              all the goodness contained in the vitamins<br />and plant extracts
+              to be absorbed into the skin.
+            </div>
+
+            <div class="modalContentExtraOverlay">
+              <div class="modalContentExtraPhotoDiv">
+                <img
+                  src="./images/Lavender.png"
+                  alt=""
+                  class="modalContentPlantPhoto"
+                  id="modalContentPhotoLavender"
+                />
+              </div>
+              <div class="modalContentExtraPhotoDiv">
+                <img
+                  src="./images/Chamomile.png"
+                  alt=""
+                  class="modalContentPlantPhoto"
+                  id="modalContentPhotoChamomile"
+                />
+              </div>
+              <div class="modalContentExtraPhotoDiv">
+                <img
+                  src="./images/Calendula.png"
+                  alt=""
+                  class="modalContentPlantPhoto"
+                  id="modalContentPhotoCalendula"
+                />
+              </div>
+              <div class="modalContentExtraPhotoDiv">
+                <img
+                  src="./images/Rosemary.png"
+                  alt=""
+                  class="modalContentPlantPhoto"
+                  id="modalContentPhotoRosemary"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="modalContentApproval">
+            <div class="modalContentApprovalTextContainer">
+              <div class="modalContentApprovalText1">
+                Bio‑Oil has undergone safety assessments in accordance with the
+                <t class="orangeFont">Regulation of the European Parliament</t>
+                and of the
+                <t class="orangeFont">Council on Cosmetic Products</t>.
+              </div>
+
+              <div class="modalContentApprovalText2">
+                The toxicological profile, chemical structure, level of
+                inclusion and total level of daily exposure of each ingredient
+                used has been assessed and
+                <t class="orangeFont"
+                  >deemed safe for use - including for use by pregnant women.</t
+                >
+              </div>
+            </div>
+
+            <div class="modalContentApprovalImageContainer">
+              <img
+                src="./images/Stretch3.jpg"
+                alt=""
+                class="modalContentApprovalImage"
+              />
+            </div>
+          </div>
+
+          <div class="modalContentCharts">
+            <div class="modalContentChartsCard">
+              <div class="modalContentChartsContainer">
+                <div class="modalContentChartsFill"></div>
+                <div class="modalContentChartsCenter">0%</div>
+              </div>
+
+              <div class="modalContentChartsText">
+                of subjects showed an
+                <t class="orangeFont"
+                  >improvement in the appearance of their scars</t
+                >
+                after 8 weeks. (proDERM, 2010)
+              </div>
+            </div>
+
+            <div class="modalContentChartsCard">
+              <div class="modalContentChartsContainer">
+                <div class="modalContentChartsFill"></div>
+                <div class="modalContentChartsCenter">0%</div>
+              </div>
+
+              <div class="modalContentChartsText">
+                of subjects showed an
+                <t class="orangeFont"
+                  >improvement in the appearance of existing stretch marks</t
+                >
+                after 8 weeks. (proDERM, 2010)
+              </div>
+            </div>
+
+            <div class="modalContentChartsCard">
+              <div class="modalContentChartsContainer">
+                <div class="modalContentChartsFill"></div>
+                <div class="modalContentChartsCenter">0%</div>
+              </div>
+
+              <div class="modalContentChartsText">
+                of participants showed an
+                <t class="orangeFont"
+                  >improvement in the appearance of uneven skin tone</t
+                >
+                after 6 weeks. (MEDUNSA, 2005)
+              </div>
+            </div>
+          </div>
+
+          <div class="modalContentApply">
+            <div class="modalContentApplyHeader">How to Apply</div>
+            <div class="modalContentApplyList">
+              <div class="modalContentApplyListLeft">
+                <ul>
+                  <li>
+                    Massage the oil into the skin using a gentle circular motion
+                  </li>
+                  <li>Apply twice a day for a minimum of 3 months</li>
+                </ul>
+              </div>
+              <div class="modalContentApplyListRight">
+                <ul>
+                  <li>Apply all over the body, including the face</li>
+                  <li>Do not apply the oil to broken skin or an open wound</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
 
-    </div>
+        <!-- Dry Skin -->
+        <div class="modalContent">
+          <div class="modalContentHeader">
+            <t class="mainFont">Bio-Oil</t><br />
+            <t>Dry Skin Gel</t>
+          </div>
 
+          <div class="modalContentDescription">
+            Bio-Oil Dry Skin Gel is formulated to care for dry skin. It improves
+            on existing dry skin technologies by replacing in-active water with
+            oil, resulting in a product that is
+            <t class="orangeFont">100% active in treating dry skin</t>.
+          </div>
+
+          <div class="modalContentSizes">
+            <t class="sizesText">Available sizes:</t><br /><t class="orangeFont"
+              >50 mL</t
+            >
+          </div>
+
+          <div class="modalContentFeatures">
+            <div class="modalContentFeatureDiv">
+              <t class="mainFont">+</t> Specifically designed and proven to
+              <t class="orangeFont">improve skin dryness</t>.
+            </div>
+
+            <div class="modalContentFeatureDiv">
+              <t class="mainFont">+</t>
+              <t class="orangeFont">Absorbs easily into the skin</t> leaving it
+              feeling immediately moisturised.
+            </div>
+
+            <div class="modalContentFeatureDiv">
+              <t class="mainFont">+</t> Easy to apply.
+            </div>
+          </div>
+
+          <div class="modalContentExtra">
+            <div class="modalContentExtraDiv">
+              The Bio‑Oil formulation is delivered in a
+              <t class="orangeFont">breakthrough<br />new gel format</t>.
+            </div>
+
+            <div class="modalContentExtraDiv">
+              Bio-Oil Dry Skin Gel is an oil-based gel moisturiser<br />that
+              contains only 3% water, 13% humectants and 84% oil to both
+              <t class="orangeFont"
+                >hydrate and<br />protect the skin from moisture loss</t
+              >.
+            </div>
+
+            <div
+              class="modalContentExtraOverlay"
+              id="modalContentExtraOverlayFlip"
+            >
+              <div class="modalContentExtraPhotoDiv">
+                <img
+                  src="./images/Lavender.png"
+                  alt=""
+                  class="modalContentPlantPhoto"
+                  id="modalContentPhotoLavender"
+                />
+              </div>
+              <div class="modalContentExtraPhotoDiv">
+                <img
+                  src="./images/Chamomile.png"
+                  alt=""
+                  class="modalContentPlantPhoto"
+                  id="modalContentPhotoChamomile"
+                />
+              </div>
+              <div class="modalContentExtraPhotoDiv">
+                <img
+                  src="./images/Calendula.png"
+                  alt=""
+                  class="modalContentPlantPhoto"
+                  id="modalContentPhotoCalendula"
+                />
+              </div>
+              <div class="modalContentExtraPhotoDiv">
+                <img
+                  src="./images/Rosemary.png"
+                  alt=""
+                  class="modalContentPlantPhoto"
+                  id="modalContentPhotoRosemary"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="modalContentApproval">
+            <div class="modalContentApprovalTextContainer">
+              <div class="modalContentApprovalText1">
+                Bio‑Oil has undergone safety assessments in accordance with the
+                <t class="orangeFont">Regulation of the European Parliament</t>
+                and of the
+                <t class="orangeFont">Council on Cosmetic Products</t>.
+              </div>
+
+              <div class="modalContentApprovalText2">
+                The toxicological profile, chemical structure, level of
+                inclusion and total level of daily exposure of each ingredient
+                used has been assessed and
+                <t class="orangeFont"
+                  >deemed safe for use - including for use by pregnant women.</t
+                >
+              </div>
+            </div>
+
+            <div class="modalContentApprovalImageContainer">
+              <img
+                src="./images/Dry3.jpg"
+                alt=""
+                class="modalContentApprovalImage"
+              />
+            </div>
+          </div>
+
+          <div class="modalContentCharts">
+            <div class="modalContentChartsCard">
+              <div class="modalContentChartsContainer">
+                <div class="modalContentChartsFill"></div>
+                <div class="modalContentChartsCenter">0%</div>
+              </div>
+
+              <div class="modalContentChartsText">
+                of participants agreed that
+                <t class="orangeFont"
+                  >‘the product leaves skin feeling immediately moisturized’</t
+                >. (Ayton Global Research, 2017)
+              </div>
+            </div>
+
+            <div class="modalContentChartsCard">
+              <div class="modalContentChartsContainer">
+                <div class="modalContentChartsFill"></div>
+                <div class="modalContentChartsCenter">0%</div>
+              </div>
+
+              <div class="modalContentChartsText">
+                of participants agreed that
+                <t class="orangeFont"
+                  >‘their dry skin improved over the course of the two-week
+                  period’</t
+                >. (Ayton Global Research, 2017)
+              </div>
+            </div>
+          </div>
+
+          <div class="modalContentApply">
+            <div class="modalContentApplyHeader">How to Apply</div>
+            <div class="modalContentApplyList">
+              <div class="modalContentApplyListLeft">
+                <ul>
+                  <li>Apply a small amount of gel to dry skin</li>
+                  <li>Use a small amount of gel per application</li>
+                </ul>
+              </div>
+              <div class="modalContentApplyListRight">
+                <ul>
+                  <li>Re-apply gel as required</li>
+                  <li>Do not apply the gel to broken skin or an open wound</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <canvas class="orbitCanvas cursorChoice"></canvas>
+      </div>
+    </div>
 
     <!-- Main Body Card Section -->
     <section class="bodyCardSection">
+      <!-- Main -->
+      <main>
+        <!-- Three.js Canvas -->
+        <canvas class="webgl"></canvas>
 
-        <!-- Main -->
-        <main>
-            <!-- Three.js Canvas -->
-            <canvas class="webgl"></canvas>
+        <!-- Hero Section -->
+        <section class="heroSection">
+          <div class="heroHeaderText noselect" id="heroHeaderText1">SpOil</div>
+          <div class="heroHeaderText noselect" id="heroHeaderText2">your</div>
+          <div class="heroHeaderText noselect" id="heroHeaderText3">skin</div>
+          <div class="heroSubHeaderText">
+            <div class="heroSubHeaderText1">
+              <t>Harness the <t class="bold">power of oil</t> with </t>
+            </div>
+            <div class="heroSubHeaderText2">
+              the <t class="mainFont subHeaderParallax">Bio-Oil</t>
+              <t class="orangeFont subHeaderParallax"
+                >Specialist Skincare Range</t
+              >
+            </div>
+          </div>
 
-            <!-- Hero Section -->
-            <section class="heroSection">
-                <div class="heroHeaderText noselect" id="heroHeaderText1">SpOil</div>
-                <div class="heroHeaderText noselect" id="heroHeaderText2">your</div>
-                <div class="heroHeaderText noselect" id="heroHeaderText3">skin</div>
-                <div class="heroSubHeaderText">
-                    <div class="heroSubHeaderText1">
-                        <t>Harness the <t class="bold">power of oil</t> with </t>
-                    </div>
-                    <div class="heroSubHeaderText2">
-                        the <t class="mainFont subHeaderParallax">Bio-Oil</t> <t class="orangeFont subHeaderParallax">Specialist Skincare Range</t>
-                    </div>
+          <!-- Scroll CTA -->
+          <div class="scrollCTAContainer">
+            <div class="scrollCTA">
+              <t class="scrollCTAText1"> LEARN<br />MORE </t>
+              <t class="scrollCTAText2"> SCROLL </t>
+            </div>
+            <div class="scrollCTAArrow">
+              <div class="scrollCTACircle"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Product Section -->
+        <section class="productSection">
+          <div
+            class="productChoice cursorChoice"
+            id="skincareChoice"
+            tabindex="0"
+          >
+            <div class="productQuestion">Scars & Stretch Marks?</div>
+
+            <img src="./images/Stretch1.jpg" alt="" class="productImage" />
+            <div class="productChoiceFilter"></div>
+
+            <div class="productName">
+              <t class="mainFontWhite">Bio-Oil</t>&nbsp;Skincare Oil
+            </div>
+          </div>
+
+          <div
+            class="productChoice cursorChoice"
+            id="dryskinChoice"
+            tabindex="0"
+          >
+            <div class="productQuestion">Dry Skin?</div>
+
+            <img src="./images/Dry1.jpg" alt="" class="productImage" />
+            <div class="productChoiceFilter"></div>
+
+            <div class="productName">
+              <t class="mainFontWhite">Bio-Oil</t>&nbsp;Dry Skin Gel
+            </div>
+          </div>
+        </section>
+
+        <!-- Versus Section -->
+        <section class="versusSection">
+          <div class="versusHeader">
+            The <br />
+            <t class="powerText bold">Power</t> <br />
+            <t class="italic ofText">of</t> <t class="mainFont">Oil</t>
+          </div>
+
+          <div class="versusOverlay">
+            <!-- Images -->
+            <div class="versusImageContainer">
+              <div class="versusImageParallaxDiv" id="versusImageParallaxDiv1">
+                <div class="versusImageDiv" id="versusImageDiv1">
+                  <img
+                    src="./images/Random3.png"
+                    alt=""
+                    class="versusImage versusImageW"
+                  />
                 </div>
+              </div>
 
-                <!-- Scroll CTA -->
-                <div class="scrollCTAContainer">
-                    <div class="scrollCTA">
-                        <t class="scrollCTAText1">
-                            LEARN<br/>MORE
-                        </t>
-                        <t class="scrollCTAText2">
-                            SCROLL
-                        </t>
-                    </div>
-                    <div class="scrollCTAArrow">
-                        <div class="scrollCTACircle"></div>
-                    </div>
+              <div class="versusImageParallaxDiv" id="versusImageParallaxDiv2">
+                <div class="versusImageDiv" id="versusImageDiv2">
+                  <img
+                    src="./images/Random4.jpg"
+                    alt=""
+                    class="versusImage versusImageW"
+                  />
                 </div>
-            </section>
-            
-            <!-- Product Section -->
-            <section class="productSection">
-                <div class="productChoice cursorChoice" id="skincareChoice" tabindex="0">
-                    <div class="productQuestion">
-                        Scars & Stretch Marks?
-                    </div>
+              </div>
 
-                    <img src="./images/Stretch1.jpg" alt="" class="productImage">
-                    <div class="productChoiceFilter"></div>
-
-                    <div class="productName">
-                        <t class="mainFontWhite">Bio-Oil</t>&nbsp;Skincare Oil
-                    </div>
+              <div class="versusImageParallaxDiv" id="versusImageParallaxDiv3">
+                <div class="versusImageDiv" id="versusImageDiv3">
+                  <img
+                    src="./images/Random2.jpg"
+                    alt=""
+                    class="versusImage versusImageH"
+                  />
                 </div>
+              </div>
 
-                <div class="productChoice cursorChoice" id="dryskinChoice" tabindex="0">
-                    <div class="productQuestion">
-                        Dry Skin?
-                    </div>
-
-                    <img src="./images/Dry1.jpg" alt="" class="productImage">
-                    <div class="productChoiceFilter"></div>
-
-                    <div class="productName">
-                        <t class="mainFontWhite">Bio-Oil</t>&nbsp;Dry Skin Gel
-                    </div>
+              <div class="versusImageParallaxDiv" id="versusImageParallaxDiv4">
+                <div class="versusImageDiv" id="versusImageDiv4">
+                  <img
+                    src="./images/Random1.jpg"
+                    alt=""
+                    class="versusImage versusImageH"
+                  />
                 </div>
-            </section>
+              </div>
+            </div>
 
-            <!-- Versus Section -->
-            <section class="versusSection">
-                <div class="versusHeader">
-                    The <br/> <t class="powerText  bold">Power</t> <br/> <t class="italic ofText">of</t> <t class="mainFont">Oil</t>
+            <!-- Cards -->
+            <div class="versusPointContainer" id="versusPoint1">
+              <div class="versusPointButton" tabindex="0">
+                <div class="versusPointOuter"></div>
+
+                <div class="versusPointInner">+</div>
+              </div>
+
+              <div class="versusPointBody" id="versusBody1">
+                <t class="versusPointBodyText">
+                  Oil, being <t class="orangeFont">oxygen-free</t>, allows the
+                  suspended plant extracts and vitamins to retain their potency.
+                </t>
+              </div>
+            </div>
+
+            <div class="versusPointContainer" id="versusPoint2">
+              <div class="versusPointButton" tabindex="0">
+                <div class="versusPointOuter"></div>
+
+                <div class="versusPointInner">+</div>
+              </div>
+
+              <div class="versusPointBody" id="versusBody2">
+                <t class="versusPointBodyText">
+                  Oil, being <t class="orangeFont">oxygen-free</t>, allows the
+                  suspended plant extracts and vitamins to retain their potency.
+                </t>
+              </div>
+            </div>
+
+            <div class="versusPointContainer" id="versusPoint3">
+              <div class="versusPointButton" tabindex="0">
+                <div class="versusPointOuter"></div>
+
+                <div class="versusPointInner">+</div>
+              </div>
+
+              <div class="versusPointBody" id="versusBody3">
+                <t class="versusPointBodyText">
+                  Oil, being <t class="orangeFont">oxygen-free</t>, allows the
+                  suspended plant extracts and vitamins to retain their potency.
+                </t>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="historySection">
+          <div class="historySectionOverlay">
+            <div class="history2Extra">
+              <div class="historySectionExtraOrangeBorder"></div>
+              <div class="heblur">
+                <div class="historySectionExtraBlur"></div>
+              </div>
+              <div class="historySectionExtraImageContainer1">
+                <img
+                  src="./images/Stretch5.jpg"
+                  alt=""
+                  class="historySectionExtraImage"
+                  id="historySectionExtraImage1"
+                />
+              </div>
+              <div class="historySectionExtraImageContainer2">
+                <img
+                  src="./images/Combo1.jpg"
+                  alt=""
+                  class="historySectionExtraImage"
+                  id="historySectionExtraImage2"
+                />
+              </div>
+              <div class="heo1">
+                <div class="historySectionExtraOrange"></div>
+              </div>
+            </div>
+            <div class="historySectionExtraImageContainer3">
+              <img
+                src="./images/Dry2.jpg"
+                alt=""
+                class="historySectionExtraImage"
+                id="historySectionExtraImage3"
+              />
+            </div>
+            <div class="historySectionExtraOrangeBorder2"></div>
+            <div class="heo2">
+              <div class="historySectionExtraOrange2"></div>
+            </div>
+          </div>
+
+          <div class="history1">
+            <div class="historySectionExtraOrangeBorderBanner"></div>
+            <div class="hpbbanner">
+              <div class="historySectionExtraBlurBanner"></div>
+            </div>
+            <div class="hpobanner">
+              <div class="historySectionExtraOrangeBanner"></div>
+            </div>
+
+            <div class="historyBanner1">
+              <img
+                src="./images/banner1.webp"
+                alt=""
+                class="historyBannerPhoto"
+              />
+            </div>
+
+            <div class="historyTextContainer">
+              <div class="historyYear">1987</div>
+              <div class="historyTitle">From Humble Beginnings</div>
+              <div class="historyBody">
+                Bio-Oil pioneered using oil to help improve the appearance of
+                scars and stretch marks at a time when almost every product on
+                the shelf was either a cream or a lotion. Today, Bio-Oil is the
+                world's leading scar and stretch mark product and continues to
+                research and develop skincare products using oil to deliver
+                superior product performance.
+              </div>
+            </div>
+          </div>
+
+          <div class="history2">
+            <div class="historyTextContainer">
+              <div class="historyYear">2013</div>
+              <div class="historyTitle">Bio-Oil Comes to the Philippines</div>
+              <div class="historyBody">
+                Bio-Oil hits the shelves all across the nation under the
+                distribution of Aspen Philippines Inc. Since then, you can
+                purchase the Bio-Oil skincare range over-the-counter in leading
+                pharmacies and supermarkets, or you can get them through your
+                favorite online shopping platforms.
+              </div>
+            </div>
+          </div>
+
+          <div class="history3">
+            <div class="historyTextContainer">
+              <div class="historyYear">2020</div>
+              <div class="historyTitle">Two is Better than One</div>
+              <div class="historyBody">
+                Bio-Oil becomes an umbrella skincare brand as its pioneering
+                product is renamed Bio-Oil Skincare Oil. This is in time to
+                launch their newest product that is specifically designed for
+                dry skin - Bio-Oil Dry Skin Gel.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Purchase Section -->
+        <section class="purchaseSection">
+          <!-- Purchase Overlay -->
+          <div class="purchaseOverlayContainer">
+            <div class="photoCardP noselect" id="photoCardP1">
+              <div class="photoFrameP">
+                <img
+                  src="./images/purchase1.jpg"
+                  alt="Photo"
+                  class="photoP"
+                  draggable="false"
+                />
+              </div>
+              <div class="photoCaptionP noselect">
+                Add to cart this travel-size Bio-Oil Skincare Oil. Available in
+                Watsons & LifePal Pharmacy in Lazada & Shopee.
+              </div>
+            </div>
+
+            <div class="photoCardP noselect" id="photoCardP2">
+              <div class="photoFrameP">
+                <img
+                  src="./images/purchase2.jpg"
+                  alt="Photo"
+                  class="photoP"
+                  draggable="false"
+                />
+              </div>
+              <div class="photoCaptionP noselect">
+                Need your Bio-Oil? Bio-Oil Skin Care Oil 25ml. Small and handy
+                for women on the go! Bio-Oil is available at Mercury, Watsons,
+                and LifePal Pharmacy in Lazada & Shopee.
+              </div>
+            </div>
+          </div>
+
+          <!-- Purchase Text -->
+          <div class="purchaseText">
+            <div class="purchaseTextLine">
+              <t class="mainFont" id="purchaseTextLine1">Bio-Oil </t>&nbsp;<t
+                class="purchaseTextGrey"
+                >products are available</t
+              >
+            </div>
+            <div class="purchaseTextLine">
+              <t class="purchaseTextGrey">in a range of sizes in</t>&nbsp;<t
+                class="mainFont"
+                id="purchaseTextLine2"
+                >leading&nbsp;drugstores</t
+              ><t class="purchaseTextGrey">,</t>
+            </div>
+            <div class="purchaseTextLine">
+              <t class="mainFont" id="purchaseTextLine3">supermarkets</t
+              >&nbsp;<t class="purchaseTextGrey">&</t>&nbsp;<t
+                class="mainFont"
+                id="purchaseTextLine4"
+                >online&nbsp;stores</t
+              >&nbsp;<t class="purchaseTextGrey">nationwide.</t>
+            </div>
+          </div>
+
+          <div class="purchaseDrugStores">
+            <a
+              href="#link"
+              class="purchaseLinks1 purchaseLinkButton cursorChoice"
+            >
+              <img
+                src="./images/MercuryDrug.png"
+                alt="Mercury Drug"
+                class="purchaseDSLogo purchaseLogo"
+              />
+            </a>
+            <a
+              href="#link"
+              class="purchaseLinks1 purchaseLinkButton cursorChoice"
+            >
+              <img
+                src="./images/SouthStar.png"
+                alt="South Star"
+                class="purchaseDSLogo purchaseLogo"
+              />
+            </a>
+            <a
+              href="#link"
+              class="purchaseLinks1 purchaseLinkButton cursorChoice"
+            >
+              <img
+                src="./images/Watsons.png"
+                alt="Watsons"
+                class="purchaseDSLogo purchaseLogo"
+              />
+            </a>
+          </div>
+
+          <div class="purchaseSupermarkets">
+            <a
+              href="#link"
+              class="purchaseLinks2 purchaseLinkButton cursorChoice"
+            >
+              <img
+                src="./images/Landers.png"
+                alt="Landers"
+                class="purchaseSMLogo purchaseLogo"
+              />
+            </a>
+            <a
+              href="#link"
+              class="purchaseLinks2 purchaseLinkButton cursorChoice"
+            >
+              <img
+                src="./images/SnR.png"
+                alt="SnR"
+                class="purchaseSMLogo purchaseLogo"
+              />
+            </a>
+            <a
+              href="#link"
+              class="purchaseLinks3 purchaseLinkButton cursorChoice"
+            >
+              <img
+                src="./images/Lazada.png"
+                alt="Lazada"
+                class="purchaseOLLogo purchaseLogo"
+              />
+            </a>
+            <a
+              href="#link"
+              class="purchaseLinks3 purchaseLinkButton cursorChoice"
+            >
+              <img
+                src="./images/Shopee.png"
+                alt="Shopee"
+                class="purchaseOLLogo purchaseLogo"
+              />
+            </a>
+          </div>
+        </section>
+
+        <!-- Photo Section -->
+        <section class="photoSection">
+          <div class="photoSectionText noselect">
+            <div class="photoSectionHeader">
+              Add <t class="mainFont">Bio-Oil</t> to your daily routine<t
+                class="orangeFont"
+                >.</t
+              >
+            </div>
+
+            <div class="followLinkDiv">
+              <a href="#link" class="followLinkOuter">
+                <div class="followLinkContainer">
+                  <div class="followLinkText">Follow Us</div>
+                  <div class="followLinkArrow">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="48"
+                      width="48"
+                      class="linkArrowSVG"
+                    >
+                      <path
+                        d="M33 15.1 13.45 34.65q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.075t.45-1.075L30.9 13H13.5q-.65 0-1.075-.425Q12 12.15 12 11.5q0-.65.425-1.075Q12.85 10 13.5 10h21q.65 0 1.075.425Q36 10.85 36 11.5v21q0 .65-.425 1.075Q35.15 34 34.5 34q-.65 0-1.075-.425Q33 33.15 33 32.5Z"
+                        class="linkArrowPath"
+                      />
+                    </svg>
+
+                    <svg
+                      width="48"
+                      height="48"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="linkIconSVG"
+                    >
+                      <path
+                        class="linkArrowPath"
+                        d="M12.002 21.041C9.54195 21.041 9.25195 21.028 8.29195 20.986C7.54332 20.9614 6.80439 20.8092 6.10695 20.536C4.90026 20.0664 3.94609 19.1119 3.47695 17.905C3.21426 17.205 3.07257 16.4655 3.05795 15.718C3.00195 14.76 3.00195 14.446 3.00195 12.005C3.00195 9.538 3.01495 9.25 3.05795 8.295C3.07289 7.54853 3.21457 6.81001 3.47695 6.111C3.94558 4.90253 4.9013 3.94718 6.10995 3.479C6.8086 3.21521 7.5473 3.07315 8.29395 3.059C9.24895 3.005 9.56295 3.005 12.002 3.005C14.482 3.005 14.767 3.018 15.712 3.059C16.4605 3.07327 17.2012 3.21531 17.902 3.479C19.1103 3.94771 20.0658 4.90288 20.535 6.111C20.8021 6.8202 20.9445 7.57026 20.956 8.328C21.012 9.286 21.012 9.59901 21.012 12.039C21.012 14.479 20.998 14.799 20.956 15.746C20.9411 16.4942 20.799 17.2344 20.536 17.935C20.0656 19.1427 19.11 20.0976 17.902 20.567C17.2022 20.8292 16.4631 20.9709 15.716 20.986C14.761 21.041 14.448 21.041 12.002 21.041ZM11.968 4.588C9.52195 4.588 9.26795 4.6 8.31295 4.643C7.74294 4.65056 7.17843 4.75575 6.64395 4.954C5.85471 5.25601 5.23018 5.878 4.92495 6.666C4.72517 7.2063 4.61996 7.77698 4.61395 8.353C4.56095 9.322 4.56095 9.576 4.56095 12.005C4.56095 14.405 4.56995 14.696 4.61395 15.659C4.62291 16.2292 4.72805 16.7938 4.92495 17.329C5.23063 18.1165 5.85505 18.738 6.64395 19.04C7.17807 19.2396 7.7428 19.3448 8.31295 19.351C9.28095 19.407 9.53595 19.407 11.968 19.407C14.421 19.407 14.675 19.395 15.622 19.351C16.1924 19.3441 16.7573 19.2389 17.292 19.04C18.0764 18.7354 18.6969 18.1153 19.002 17.331C19.2014 16.7903 19.3065 16.2193 19.313 15.643H19.324C19.367 14.687 19.367 14.432 19.367 11.989C19.367 9.54601 19.356 9.289 19.313 8.334C19.304 7.76446 19.1988 7.20052 19.002 6.666C18.6976 5.88058 18.077 5.2593 17.292 4.954C16.7574 4.75475 16.1924 4.64953 15.622 4.643C14.655 4.588 14.402 4.588 11.968 4.588ZM12.002 16.624C10.1319 16.6252 8.44537 15.4997 7.72882 13.7725C7.01226 12.0452 7.40686 10.0563 8.72858 8.73347C10.0503 7.4106 12.0388 7.01428 13.7667 7.72934C15.4946 8.4444 16.6215 10.13 16.622 12C16.6192 14.5511 14.553 16.619 12.002 16.624ZM12.002 8.998C10.3451 8.998 9.00195 10.3412 9.00195 11.998C9.00195 13.6549 10.3451 14.998 12.002 14.998C13.6588 14.998 15.002 13.6549 15.002 11.998C14.9981 10.3427 13.6572 9.00185 12.002 8.998ZM16.802 8.28501C16.2074 8.2828 15.7269 7.79959 15.728 7.20501C15.7291 6.61043 16.2114 6.12901 16.806 6.12901C17.4005 6.12901 17.8828 6.61042 17.884 7.205C17.8842 7.49187 17.7702 7.76703 17.5672 7.96968C17.3642 8.17234 17.0888 8.2858 16.802 8.28501Z"
+                        fill="#2E3A59"
+                      />
+                    </svg>
+                  </div>
                 </div>
+              </a>
 
-                <div class="versusOverlay">
-                    <!-- Images -->
-                    <div class="versusImageContainer">
-                        <div class="versusImageParallaxDiv" id="versusImageParallaxDiv1">
-                            <div class="versusImageDiv" id="versusImageDiv1">
-                                <img src="./images/Random3.png" alt="" class="versusImage versusImageW">
-                            </div>
-                        </div>
+              <a href="#link" class="followLinkOuter">
+                <div class="followLinkContainer">
+                  <div class="followLinkText">Join the Community</div>
+                  <div class="followLinkArrow">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="48"
+                      width="48"
+                      class="linkArrowSVG"
+                    >
+                      <path
+                        d="M33 15.1 13.45 34.65q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.075t.45-1.075L30.9 13H13.5q-.65 0-1.075-.425Q12 12.15 12 11.5q0-.65.425-1.075Q12.85 10 13.5 10h21q.65 0 1.075.425Q36 10.85 36 11.5v21q0 .65-.425 1.075Q35.15 34 34.5 34q-.65 0-1.075-.425Q33 33.15 33 32.5Z"
+                        class="linkArrowPath"
+                      />
+                    </svg>
 
-                        <div class="versusImageParallaxDiv" id="versusImageParallaxDiv2">
-                            <div class="versusImageDiv" id="versusImageDiv2">
-                                <img src="./images/Random4.jpg" alt="" class="versusImage versusImageW">
-                            </div>
-                        </div>
-
-                        <div class="versusImageParallaxDiv" id="versusImageParallaxDiv3">
-                            <div class="versusImageDiv" id="versusImageDiv3">
-                                <img src="./images/Random2.jpg" alt="" class="versusImage versusImageH">
-                            </div>
-                        </div>
-
-                        <div class="versusImageParallaxDiv" id="versusImageParallaxDiv4">
-                            <div class="versusImageDiv" id="versusImageDiv4">
-                                <img src="./images/Random1.jpg" alt="" class="versusImage versusImageH">
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                    <!-- Cards -->
-                    <div class="versusPointContainer" id="versusPoint1">
-                        <div class="versusPointButton" tabindex="0">
-                            <div class="versusPointOuter"></div>
-
-                            <div class="versusPointInner">
-                                +
-                            </div>
-                        </div>
-
-                        <div class="versusPointBody" id="versusBody1">
-                            <t class="versusPointBodyText">
-                                Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
-                            </t>
-                        </div>
-                    </div>
-
-                    <div class="versusPointContainer" id="versusPoint2">
-                        <div class="versusPointButton" tabindex="0">
-                            <div class="versusPointOuter"></div>
-
-                            <div class="versusPointInner">
-                                +
-                            </div>
-                        </div>
-
-                        <div class="versusPointBody" id="versusBody2">
-                            <t class="versusPointBodyText">
-                                Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
-                            </t>
-                        </div>
-                    </div>
-
-                    <div class="versusPointContainer" id="versusPoint3">
-                        <div class="versusPointButton" tabindex="0">
-                            <div class="versusPointOuter"></div>
-
-                            <div class="versusPointInner">
-                                +
-                            </div>
-                        </div>
-
-                        <div class="versusPointBody" id="versusBody3">
-                            <t class="versusPointBodyText">
-                                Oil, being <t class="orangeFont">oxygen-free</t>, allows the suspended plant extracts and vitamins to retain their potency.
-                            </t>
-                        </div>
-                    </div>
+                    <svg
+                      width="48"
+                      height="48"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="linkIconSVG"
+                    >
+                      <path
+                        class="linkArrowPath"
+                        d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z"
+                        fill="#2E3A59"
+                      />
+                    </svg>
+                  </div>
                 </div>
-            </section>
+              </a>
 
-            <!-- History Section -->
-            <section class="historySection">
-                <div class="historySectionOverlay">
-                    <div class="history2Extra">
-                        <div class="historySectionExtraOrangeBorder"></div>
-                        <div class="heblur">
-                            <div class="historySectionExtraBlur"></div>
-                        </div>
-                        <div class="historySectionExtraImageContainer1">
-                            <img src="./images/Stretch5.jpg" alt="" class="historySectionExtraImage" id="historySectionExtraImage1">
-                        </div>
-                        <div class="historySectionExtraImageContainer2">
-                            <img src="./images/Combo1.jpg" alt="" class="historySectionExtraImage" id="historySectionExtraImage2">
-                        </div>
-                        <div class="heo1">
-                            <div class="historySectionExtraOrange"></div>
-                        </div>
-                    </div>
-                    <div class="historySectionExtraImageContainer3">
-                        <img src="./images/Dry2.jpg" alt="" class="historySectionExtraImage" id="historySectionExtraImage3">
-                    </div>
-                    <div class="historySectionExtraOrangeBorder2"></div>
-                    <div class="heo2">
-                        <div class="historySectionExtraOrange2"></div>
-                    </div>
+              <a href="#link" class="followLinkOuter">
+                <div class="followLinkContainer">
+                  <div class="followLinkText">Get in Touch</div>
+                  <div class="followLinkArrow">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="48"
+                      width="48"
+                      class="linkArrowSVG"
+                    >
+                      <path
+                        d="M33 15.1 13.45 34.65q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.075t.45-1.075L30.9 13H13.5q-.65 0-1.075-.425Q12 12.15 12 11.5q0-.65.425-1.075Q12.85 10 13.5 10h21q.65 0 1.075.425Q36 10.85 36 11.5v21q0 .65-.425 1.075Q35.15 34 34.5 34q-.65 0-1.075-.425Q33 33.15 33 32.5Z"
+                        class="linkArrowPath"
+                      />
+                    </svg>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="48"
+                      width="48"
+                      class="linkIconSVG"
+                    >
+                      <path
+                        class="linkArrowPath"
+                        d="M7 40q-1.2 0-2.1-.9Q4 38.2 4 37V11q0-1.2.9-2.1Q5.8 8 7 8h34q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm34-26.25-16.2 10.6q-.2.1-.375.175-.175.075-.425.075t-.425-.075q-.175-.075-.375-.175L7 13.75V37h34ZM24 21.9 40.8 11H7.25ZM7 13.75v.35-1.975.025V11v1.15-.05 2-.35V37Z"
+                      />
+                    </svg>
+                  </div>
                 </div>
+              </a>
+            </div>
+          </div>
 
-                <div class="history1">
-                    <div class="historySectionExtraOrangeBorderBanner"></div>
-                    <div class="hpbbanner">
-                        <div class="historySectionExtraBlurBanner"></div>
-                    </div>
-                    <div class="hpobanner">
-                        <div class="historySectionExtraOrangeBanner"></div>
-                    </div>
+          <div class="photoCardSection cursorChoice">
+            <div class="photoCard noselect">
+              <div class="photoFrame">
+                <img
+                  src="./images/photo1.jpg"
+                  alt="Photo"
+                  class="photo"
+                  draggable="false"
+                />
+              </div>
+              <div class="photoCaption noselect">
+                Bio-Oil Skincare Oil helps improve the appearance of stretch
+                marks. During pregnancy, apply Bio-Oil twice daily from the
+                start of second trimester.
+              </div>
+            </div>
 
-                    <div class="historyBanner1">
-                        <img src="./images/banner1.webp" alt="" class="historyBannerPhoto">
-                    </div>
+            <div class="photoCard noselect">
+              <div class="photoFrame">
+                <img
+                  src="./images/photo1.jpg"
+                  alt="Photo"
+                  class="photo"
+                  draggable="false"
+                />
+              </div>
+              <div class="photoCaption noselect">
+                Bio-Oil Skincare Oil helps improve the appearance of stretch
+                marks. During pregnancy, apply Bio-Oil twice daily from the
+                start of second trimester.
+              </div>
+            </div>
 
-                    <div class="historyTextContainer">
-                        <div class="historyYear">1987</div>
-                        <div class="historyTitle">From Humble Beginnings</div>
-                        <div class="historyBody">
-                            Bio-Oil pioneered using oil to help improve the appearance of scars and stretch marks at a time when almost every product on the shelf was either a cream or a lotion. Today, Bio-Oil is the world's leading scar and stretch mark product and continues to research and develop skincare products using oil to deliver superior product performance.
-                        </div>
-                    </div>
-                </div>
+            <div class="photoCard noselect">
+              <div class="photoFrame">
+                <img
+                  src="./images/photo1.jpg"
+                  alt="Photo"
+                  class="photo"
+                  draggable="false"
+                />
+              </div>
+              <div class="photoCaption noselect">
+                Bio-Oil Skincare Oil helps improve the appearance of stretch
+                marks. During pregnancy, apply Bio-Oil twice daily from the
+                start of second trimester.
+              </div>
+            </div>
 
-                <div class="history2">
-                    <div class="historyTextContainer">
-                        <div class="historyYear">2013</div>
-                        <div class="historyTitle">Bio-Oil Comes to the Philippines</div>
-                        <div class="historyBody">
-                            Bio-Oil hits the shelves all across the nation under the distribution of Aspen Philippines Inc. Since then, you can purchase the Bio-Oil skincare range over-the-counter in leading pharmacies and supermarkets, or you can get them through your favorite online shopping platforms.
-                        </div>
-                    </div>
-                </div>
+            <div class="photoCard noselect">
+              <div class="photoFrame">
+                <img
+                  src="./images/photo1.jpg"
+                  alt="Photo"
+                  class="photo"
+                  draggable="false"
+                />
+              </div>
+              <div class="photoCaption noselect">
+                Bio-Oil Skincare Oil helps improve the appearance of stretch
+                marks. During pregnancy, apply Bio-Oil twice daily from the
+                start of second trimester.
+              </div>
+            </div>
 
-                <div class="history3">
-                    <div class="historyTextContainer">
-                        <div class="historyYear">2020</div>
-                        <div class="historyTitle">Two is Better than One</div>
-                        <div class="historyBody">
-                            Bio-Oil becomes an umbrella skincare brand as its pioneering product is renamed Bio-Oil Skincare Oil. This is in time to launch their newest product that is specifically designed for dry skin - Bio-Oil Dry Skin Gel.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Purchase Section -->
-            <section class="purchaseSection">
-                
-                <!-- Purchase Overlay -->
-                <div class="purchaseOverlayContainer">
-                    <div class="photoCardP noselect" id="photoCardP1">
-                        <div class="photoFrameP">
-                            <img src="./images/purchase1.jpg" alt="Photo" class="photoP" draggable="false">
-                        </div>
-                        <div class="photoCaptionP noselect">
-                            Add to cart this travel-size Bio-Oil Skincare Oil. Available in Watsons & LifePal Pharmacy in Lazada & Shopee.
-                        </div>
-                    </div>
-
-                    <div class="photoCardP noselect" id="photoCardP2">
-                        <div class="photoFrameP">
-                            <img src="./images/purchase2.jpg" alt="Photo" class="photoP" draggable="false">
-                        </div>
-                        <div class="photoCaptionP noselect">
-                            Need your Bio-Oil?
-                            Bio-Oil Skin Care Oil 25ml. Small and handy for women on the go!
-                            Bio-Oil is available at Mercury, Watsons, and LifePal Pharmacy in Lazada & Shopee.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Purchase Text -->
-                <div class="purchaseText">
-                    <div class="purchaseTextLine">
-                        <t class="mainFont" id="purchaseTextLine1">Bio-Oil </t>&nbsp;<t class="purchaseTextGrey">products are available</t>
-                    </div>
-                    <div class="purchaseTextLine">
-                        <t class="purchaseTextGrey">in a range of sizes in</t>&nbsp;<t class="mainFont" id="purchaseTextLine2">leading&nbsp;drugstores</t><t class="purchaseTextGrey">,</t>
-                    </div>
-                    <div class="purchaseTextLine">
-                        <t class="mainFont" id="purchaseTextLine3">supermarkets</t>&nbsp;<t class="purchaseTextGrey">&</t>&nbsp;<t class="mainFont" id="purchaseTextLine4">online&nbsp;stores</t>&nbsp;<t class="purchaseTextGrey">nationwide.</t>
-                    </div>
-                </div>
-
-                <div class="purchaseDrugStores">
-                    <a href="#link" class="purchaseLinks1 purchaseLinkButton cursorChoice">
-                        <img src="./images/MercuryDrug.png" alt="Mercury Drug" class="purchaseDSLogo purchaseLogo">
-                    </a>
-                    <a href="#link" class="purchaseLinks1 purchaseLinkButton cursorChoice">
-                        <img src="./images/SouthStar.png" alt="South Star" class="purchaseDSLogo purchaseLogo">
-                    </a>
-                    <a href="#link" class="purchaseLinks1 purchaseLinkButton cursorChoice">
-                        <img src="./images/Watsons.png" alt="Watsons" class="purchaseDSLogo purchaseLogo">
-                    </a>
-                </div>
-
-                <div class="purchaseSupermarkets">
-                    <a href="#link" class="purchaseLinks2 purchaseLinkButton cursorChoice">
-                        <img src="./images/Landers.png" alt="Landers" class="purchaseSMLogo purchaseLogo">
-                    </a>
-                    <a href="#link" class="purchaseLinks2 purchaseLinkButton cursorChoice">
-                        <img src="./images/SnR.png" alt="SnR" class="purchaseSMLogo purchaseLogo">
-                    </a>
-                    <a href="#link" class="purchaseLinks3 purchaseLinkButton cursorChoice">
-                        <img src="./images/Lazada.png" alt="Lazada" class="purchaseOLLogo purchaseLogo">
-                    </a>
-                    <a href="#link" class="purchaseLinks3 purchaseLinkButton cursorChoice">
-                        <img src="./images/Shopee.png" alt="Shopee" class="purchaseOLLogo purchaseLogo">
-                    </a>
-                </div>
-
-            </section>
-
-            <!-- Photo Section -->
-            <section class="photoSection">
-                <div class="photoSectionText noselect">
-                    <div class="photoSectionHeader">
-                        Add <t class="mainFont">Bio-Oil</t> to your daily routine<t class="orangeFont">.</t>
-                    </div>
-
-                    <div class="followLinkDiv">
-                        <a href="#link" class="followLinkOuter">
-                            <div class="followLinkContainer">
-                                <div class="followLinkText">
-                                    Follow Us
-                                </div>
-                                <div class="followLinkArrow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="linkArrowSVG">
-                                        <path d="M33 15.1 13.45 34.65q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.075t.45-1.075L30.9 13H13.5q-.65 0-1.075-.425Q12 12.15 12 11.5q0-.65.425-1.075Q12.85 10 13.5 10h21q.65 0 1.075.425Q36 10.85 36 11.5v21q0 .65-.425 1.075Q35.15 34 34.5 34q-.65 0-1.075-.425Q33 33.15 33 32.5Z" class="linkArrowPath"/>
-                                    </svg>
-
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="linkIconSVG">
-                                        <path class="linkArrowPath" d="M12.002 21.041C9.54195 21.041 9.25195 21.028 8.29195 20.986C7.54332 20.9614 6.80439 20.8092 6.10695 20.536C4.90026 20.0664 3.94609 19.1119 3.47695 17.905C3.21426 17.205 3.07257 16.4655 3.05795 15.718C3.00195 14.76 3.00195 14.446 3.00195 12.005C3.00195 9.538 3.01495 9.25 3.05795 8.295C3.07289 7.54853 3.21457 6.81001 3.47695 6.111C3.94558 4.90253 4.9013 3.94718 6.10995 3.479C6.8086 3.21521 7.5473 3.07315 8.29395 3.059C9.24895 3.005 9.56295 3.005 12.002 3.005C14.482 3.005 14.767 3.018 15.712 3.059C16.4605 3.07327 17.2012 3.21531 17.902 3.479C19.1103 3.94771 20.0658 4.90288 20.535 6.111C20.8021 6.8202 20.9445 7.57026 20.956 8.328C21.012 9.286 21.012 9.59901 21.012 12.039C21.012 14.479 20.998 14.799 20.956 15.746C20.9411 16.4942 20.799 17.2344 20.536 17.935C20.0656 19.1427 19.11 20.0976 17.902 20.567C17.2022 20.8292 16.4631 20.9709 15.716 20.986C14.761 21.041 14.448 21.041 12.002 21.041ZM11.968 4.588C9.52195 4.588 9.26795 4.6 8.31295 4.643C7.74294 4.65056 7.17843 4.75575 6.64395 4.954C5.85471 5.25601 5.23018 5.878 4.92495 6.666C4.72517 7.2063 4.61996 7.77698 4.61395 8.353C4.56095 9.322 4.56095 9.576 4.56095 12.005C4.56095 14.405 4.56995 14.696 4.61395 15.659C4.62291 16.2292 4.72805 16.7938 4.92495 17.329C5.23063 18.1165 5.85505 18.738 6.64395 19.04C7.17807 19.2396 7.7428 19.3448 8.31295 19.351C9.28095 19.407 9.53595 19.407 11.968 19.407C14.421 19.407 14.675 19.395 15.622 19.351C16.1924 19.3441 16.7573 19.2389 17.292 19.04C18.0764 18.7354 18.6969 18.1153 19.002 17.331C19.2014 16.7903 19.3065 16.2193 19.313 15.643H19.324C19.367 14.687 19.367 14.432 19.367 11.989C19.367 9.54601 19.356 9.289 19.313 8.334C19.304 7.76446 19.1988 7.20052 19.002 6.666C18.6976 5.88058 18.077 5.2593 17.292 4.954C16.7574 4.75475 16.1924 4.64953 15.622 4.643C14.655 4.588 14.402 4.588 11.968 4.588ZM12.002 16.624C10.1319 16.6252 8.44537 15.4997 7.72882 13.7725C7.01226 12.0452 7.40686 10.0563 8.72858 8.73347C10.0503 7.4106 12.0388 7.01428 13.7667 7.72934C15.4946 8.4444 16.6215 10.13 16.622 12C16.6192 14.5511 14.553 16.619 12.002 16.624ZM12.002 8.998C10.3451 8.998 9.00195 10.3412 9.00195 11.998C9.00195 13.6549 10.3451 14.998 12.002 14.998C13.6588 14.998 15.002 13.6549 15.002 11.998C14.9981 10.3427 13.6572 9.00185 12.002 8.998ZM16.802 8.28501C16.2074 8.2828 15.7269 7.79959 15.728 7.20501C15.7291 6.61043 16.2114 6.12901 16.806 6.12901C17.4005 6.12901 17.8828 6.61042 17.884 7.205C17.8842 7.49187 17.7702 7.76703 17.5672 7.96968C17.3642 8.17234 17.0888 8.2858 16.802 8.28501Z" fill="#2E3A59"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-            
-                        <a href="#link" class="followLinkOuter">
-                            <div class="followLinkContainer">
-                                <div class="followLinkText">
-                                    Join the Community
-                                </div>
-                                <div class="followLinkArrow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="linkArrowSVG">
-                                        <path d="M33 15.1 13.45 34.65q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.075t.45-1.075L30.9 13H13.5q-.65 0-1.075-.425Q12 12.15 12 11.5q0-.65.425-1.075Q12.85 10 13.5 10h21q.65 0 1.075.425Q36 10.85 36 11.5v21q0 .65-.425 1.075Q35.15 34 34.5 34q-.65 0-1.075-.425Q33 33.15 33 32.5Z" class="linkArrowPath"/>
-                                    </svg>
-
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="linkIconSVG">
-                                        <path class="linkArrowPath" d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z" fill="#2E3A59"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="#link" class="followLinkOuter">
-                            <div class="followLinkContainer">
-                                <div class="followLinkText">
-                                    Get in Touch
-                                </div>
-                                <div class="followLinkArrow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="linkArrowSVG">
-                                        <path d="M33 15.1 13.45 34.65q-.45.45-1.05.45-.6 0-1.05-.45-.45-.45-.45-1.075t.45-1.075L30.9 13H13.5q-.65 0-1.075-.425Q12 12.15 12 11.5q0-.65.425-1.075Q12.85 10 13.5 10h21q.65 0 1.075.425Q36 10.85 36 11.5v21q0 .65-.425 1.075Q35.15 34 34.5 34q-.65 0-1.075-.425Q33 33.15 33 32.5Z" class="linkArrowPath"/>
-                                    </svg>
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="linkIconSVG">
-                                        <path class="linkArrowPath" d="M7 40q-1.2 0-2.1-.9Q4 38.2 4 37V11q0-1.2.9-2.1Q5.8 8 7 8h34q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm34-26.25-16.2 10.6q-.2.1-.375.175-.175.075-.425.075t-.425-.075q-.175-.075-.375-.175L7 13.75V37h34ZM24 21.9 40.8 11H7.25ZM7 13.75v.35-1.975.025V11v1.15-.05 2-.35V37Z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="photoCardSection cursorChoice">
-                    <div class="photoCard noselect">
-                        <div class="photoFrame">
-                            <img src="./images/photo1.jpg" alt="Photo" class="photo" draggable="false">
-                        </div>
-                        <div class="photoCaption noselect">
-                            Bio-Oil Skincare Oil helps improve the appearance of stretch marks. During pregnancy, apply Bio-Oil twice daily from the start of second trimester.
-                        </div>
-                    </div>
-
-                    <div class="photoCard noselect">
-                        <div class="photoFrame">
-                            <img src="./images/photo1.jpg" alt="Photo" class="photo" draggable="false">
-                        </div>
-                        <div class="photoCaption noselect">
-                            Bio-Oil Skincare Oil helps improve the appearance of stretch marks. During pregnancy, apply Bio-Oil twice daily from the start of second trimester.
-                        </div>
-                    </div>
-
-                    <div class="photoCard noselect">
-                        <div class="photoFrame">
-                            <img src="./images/photo1.jpg" alt="Photo" class="photo" draggable="false">
-                        </div>
-                        <div class="photoCaption noselect">
-                            Bio-Oil Skincare Oil helps improve the appearance of stretch marks. During pregnancy, apply Bio-Oil twice daily from the start of second trimester.
-                        </div>
-                    </div>
-
-                    <div class="photoCard noselect">
-                        <div class="photoFrame">
-                            <img src="./images/photo1.jpg" alt="Photo" class="photo" draggable="false">
-                        </div>
-                        <div class="photoCaption noselect">
-                            Bio-Oil Skincare Oil helps improve the appearance of stretch marks. During pregnancy, apply Bio-Oil twice daily from the start of second trimester.
-                        </div>
-                    </div>
-            
-                    <div class="photoCard noselect">
-                        <div class="photoFrame">
-                            <img src="./images/photo1.jpg" alt="Photo" class="photo" draggable="false">
-                        </div>
-                        <div class="photoCaption noselect">
-                            Bio-Oil Skincare Oil helps improve the appearance of stretch marks. During pregnancy, apply Bio-Oil twice daily from the start of second trimester.
-                        </div>
-                    </div>
-                    
-                </div>
-                
-            </section>
-    
-        </main>
-
+            <div class="photoCard noselect">
+              <div class="photoFrame">
+                <img
+                  src="./images/photo1.jpg"
+                  alt="Photo"
+                  class="photo"
+                  draggable="false"
+                />
+              </div>
+              <div class="photoCaption noselect">
+                Bio-Oil Skincare Oil helps improve the appearance of stretch
+                marks. During pregnancy, apply Bio-Oil twice daily from the
+                start of second trimester.
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </section>
-          
+
     <!-- Bottom Border Section -->
     <section class="bottomBorderSection">
-        <div class="bottomBorder"></div>
+      <div class="bottomBorder"></div>
     </section>
 
     <!-- Blank Section -->
@@ -856,51 +1232,269 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footerContent">
-            <div class="footerTMText">© 2023 Aspen Philippines Inc. All Rights Reserved.</div>
-            <div class="footerTMText">All product names, logos, brands, trademarks and registered trademarks are property of their respective owners.</div>
-            <div class="footerLegalLinksContainer">
-                <a href="#link" class="footerLegalLinks">Privacy Policy</a>
-                <a href="#link" class="footerLegalLinks">Terms of Use</a>
-                <a href="#link" class="footerLegalLinks">Disclaimer</a>
-            </div>
-            <a href="https://bznzcard.patrickmunar.com/" class="footerPlug">
-                <div class="footerPlugText">
-                    <div>Website by &nbsp;</div>
-                </div>
-                <div class="footerPlugLogo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="108.098" height="83.098" viewBox="0 0 108.098 83.098" id="logoSVG">
-                        <g id="Logo" transform="translate(54.137 -812.753)">
-                          <path id="Path_1" class="logoSVGPath" data-name="Path 1" d="M-48.232,893.658l46.464-46.465L-5.3,843.658l-46.464,46.464Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_2" class="logoSVGPath" data-name="Path 2" d="M26.768,868.658,0,895.425l-23.232-23.232,3.536-3.535L0,888.354l23.232-23.232L46.465,841.89,25,820.425l-19.7,19.7-3.536-3.536L25,813.354,53.535,841.89Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_3" class="logoSVGPath" data-name="Path 3" d="M-53.535,841.89-25,813.354" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_4" class="logoSVGPath" data-name="Path 4" d="M0,838.354l-25-25" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_5" class="logoSVGPath" data-name="Path 5" d="M-46.465,841.89-25,820.425" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_6" class="logoSVGPath" data-name="Path 6" d="M0,845.425l-25-25" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_7" class="logoSVGPath" data-name="Path 7" d="M51.768,890.122l-3.536,3.536L26.768,872.193l3.536-3.535Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_8" class="logoSVGPath" data-name="Path 8" d="M-3.536,841.89,0,845.425" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_9" class="logoSVGPath" data-name="Path 9" d="M0,838.354l3.536,3.536" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_10" class="logoSVGPath" data-name="Path 10" d="M25,863.354l-3.535,3.536" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_11" class="logoSVGPath" data-name="Path 11" d="M28.535,866.89,25,870.425" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_12" class="logoSVGPath" data-name="Path 12" d="M23.232,861.586,19.7,865.122" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_13" class="logoSVGPath" data-name="Path 13" d="M23.232,861.586,0,838.354" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_14" class="logoSVGPath" data-name="Path 14" d="M19.7,865.122,0,845.425" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_15" class="logoSVGPath" data-name="Path 15" d="M-25,870.425l3.535-3.535" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_16" class="logoSVGPath" data-name="Path 16" d="M-28.535,866.89-25,863.354" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_17" class="logoSVGPath" data-name="Path 17" d="M-30.3,865.122l3.536-3.536" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_18" class="logoSVGPath" data-name="Path 18" d="M-26.768,861.586l-19.7-19.7" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                          <path id="Path_19" class="logoSVGPath" data-name="Path 19" d="M-30.3,865.122-53.535,841.89" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85" fill-rule="evenodd"/>
-                        </g>
-                    </svg>
-                </div>
-            </a>
+      <div class="footerContent">
+        <div class="footerTMText">
+          © 2023 Aspen Philippines Inc. All Rights Reserved.
         </div>
-        <div class="footerBottomText noselect">
-            Bio-Oil
+        <div class="footerTMText">
+          All product names, logos, brands, trademarks and registered trademarks
+          are property of their respective owners.
         </div>
+        <div class="footerLegalLinksContainer">
+          <a href="#link" class="footerLegalLinks">Privacy Policy</a>
+          <a href="#link" class="footerLegalLinks">Terms of Use</a>
+          <a href="#link" class="footerLegalLinks">Disclaimer</a>
+        </div>
+        <a href="https://bznzcard.patrickmunar.com/" class="footerPlug">
+          <div class="footerPlugText">
+            <div>Website by &nbsp;</div>
+          </div>
+          <div class="footerPlugLogo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="108.098"
+              height="83.098"
+              viewBox="0 0 108.098 83.098"
+              id="logoSVG"
+            >
+              <g id="Logo" transform="translate(54.137 -812.753)">
+                <path
+                  id="Path_1"
+                  class="logoSVGPath"
+                  data-name="Path 1"
+                  d="M-48.232,893.658l46.464-46.465L-5.3,843.658l-46.464,46.464Z"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_2"
+                  class="logoSVGPath"
+                  data-name="Path 2"
+                  d="M26.768,868.658,0,895.425l-23.232-23.232,3.536-3.535L0,888.354l23.232-23.232L46.465,841.89,25,820.425l-19.7,19.7-3.536-3.536L25,813.354,53.535,841.89Z"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_3"
+                  class="logoSVGPath"
+                  data-name="Path 3"
+                  d="M-53.535,841.89-25,813.354"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_4"
+                  class="logoSVGPath"
+                  data-name="Path 4"
+                  d="M0,838.354l-25-25"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_5"
+                  class="logoSVGPath"
+                  data-name="Path 5"
+                  d="M-46.465,841.89-25,820.425"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_6"
+                  class="logoSVGPath"
+                  data-name="Path 6"
+                  d="M0,845.425l-25-25"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_7"
+                  class="logoSVGPath"
+                  data-name="Path 7"
+                  d="M51.768,890.122l-3.536,3.536L26.768,872.193l3.536-3.535Z"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_8"
+                  class="logoSVGPath"
+                  data-name="Path 8"
+                  d="M-3.536,841.89,0,845.425"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_9"
+                  class="logoSVGPath"
+                  data-name="Path 9"
+                  d="M0,838.354l3.536,3.536"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_10"
+                  class="logoSVGPath"
+                  data-name="Path 10"
+                  d="M25,863.354l-3.535,3.536"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_11"
+                  class="logoSVGPath"
+                  data-name="Path 11"
+                  d="M28.535,866.89,25,870.425"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_12"
+                  class="logoSVGPath"
+                  data-name="Path 12"
+                  d="M23.232,861.586,19.7,865.122"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_13"
+                  class="logoSVGPath"
+                  data-name="Path 13"
+                  d="M23.232,861.586,0,838.354"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_14"
+                  class="logoSVGPath"
+                  data-name="Path 14"
+                  d="M19.7,865.122,0,845.425"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_15"
+                  class="logoSVGPath"
+                  data-name="Path 15"
+                  d="M-25,870.425l3.535-3.535"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_16"
+                  class="logoSVGPath"
+                  data-name="Path 16"
+                  d="M-28.535,866.89-25,863.354"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_17"
+                  class="logoSVGPath"
+                  data-name="Path 17"
+                  d="M-30.3,865.122l3.536-3.536"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_18"
+                  class="logoSVGPath"
+                  data-name="Path 18"
+                  d="M-26.768,861.586l-19.7-19.7"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+                <path
+                  id="Path_19"
+                  class="logoSVGPath"
+                  data-name="Path 19"
+                  d="M-30.3,865.122-53.535,841.89"
+                  fill="none"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.85"
+                  fill-rule="evenodd"
+                />
+              </g>
+            </svg>
+          </div>
+        </a>
+      </div>
+      <div class="footerBottomText noselect">Bio-Oil</div>
     </footer>
 
     <!-- JavaScript -->
     <script type="module" src="./script.js"></script>
-</body>
+  </body>
 </html>

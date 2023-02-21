@@ -12,24 +12,26 @@ $widthRatio: 1;
 /* Fonts */
 
 @font-face {
-    font-family: Main;
-    src: url('./fonts/Helvetica.otf');
+  font-family: Main;
+  src: url("./fonts/Helvetica.otf");
 }
 
 @font-face {
-    font-family: DMSans;
-    src: url('./fonts/DMSans-Regular.ttf');
+  font-family: DMSans;
+  src: url("./fonts/DMSans-Regular.ttf");
 }
 
 /* No Select */
 
-.noselect, img, * {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
+.noselect,
+img,
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                         supported by Chrome, Edge, Opera and Firefox */
 }
 
@@ -40,161 +42,162 @@ select,
 a,
 svg,
 div {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 *::selection {
-    background-color: $mainOrange;
-    color: $mainWhite;
-    text-shadow: none;
+  background-color: $mainOrange;
+  color: $mainWhite;
+  text-shadow: none;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 1rem;
-    user-select: auto;
+  // width: 1rem;
+  width: 0;
+  user-select: auto;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: $mainWhite; 
+  background: $mainWhite;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(to top, $mainOrange, #eb9472);
+  background-image: linear-gradient(to top, $mainOrange, #eb9472);
 }
 
 /* Loading Page */
 .loadingPage {
-    position: fixed;
-    background-color: $mainWhite;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999999999;
-    pointer-events: none;
+  position: fixed;
+  background-color: $mainWhite;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999999999;
+  pointer-events: none;
 }
 
 // Curosr Follower
 .cursorFollowerContainer {
-    position: fixed;
-    z-index: 100;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    z-index: 200;
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 200;
 }
 
 .cursorFollower {
-    position: absolute;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background-color: $mainOrange;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid $mainOrange;
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: $mainOrange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $mainOrange;
 }
 
 .cursorText {
-    position: absolute;
-    transform: translateY(-3rem);
-    color: $mainWhite;
-    background-color: $mainOrange;
-    padding-block: 0.5rem;
-    padding-inline: 1rem;
-    font-size: 1.6rem;
-    border-radius: 100rem;
+  position: absolute;
+  transform: translateY(-3rem);
+  color: $mainWhite;
+  background-color: $mainOrange;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  font-size: 1.6rem;
+  border-radius: 100rem;
 }
 
 .cursorSVGContainer {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cursorSVG {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
 }
 
 .cursorSVGPath {
-    fill: $mainOrange;
+  fill: $mainOrange;
 }
 
 .cursorSVGSlide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotateZ(90deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateZ(90deg);
 }
 
 /* Defaults */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    background-color: $mainWhite;
-    font-size: 10px;
-    color: $mainGrey;
-    width: 100%;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    /* cursor: none; */
+  background-color: $mainWhite;
+  font-size: 10px;
+  color: $mainGrey;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* cursor: none; */
 }
 
 body {
-    background-color: $mainWhite;
-    box-sizing: border-box;
-    z-index: 100;
-    font-size: 10px;
-    box-sizing: border-box;
-    width: 100vw;
-    overflow-x: hidden;
-    font-family: DMSans;
-    background-color: #eb9472;
+  background-color: $mainWhite;
+  box-sizing: border-box;
+  z-index: 100;
+  font-size: 10px;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: DMSans;
+  background-color: #eb9472;
 }
 
 .canvasOverlay {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* z-index: 100000000; */
-    z-index: 0;
-    pointer-events: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* z-index: 100000000; */
+  z-index: 0;
+  pointer-events: none;
 }
 
 .webgl {
-    position: fixed;
-    outline: none;
-    box-sizing: border-box;
-    width: 100vw;
-    height: 100vh;
-    /* z-index: 100000000; */
-    pointer-events: none;
+  position: fixed;
+  outline: none;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  /* z-index: 100000000; */
+  pointer-events: none;
 }
 
 main {
-    background-color: $mainWhite;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 0 5rem 1rem #0000002a;
-    border-radius: 0 0 5rem 5rem;
+  background-color: $mainWhite;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 5rem 1rem #0000002a;
+  border-radius: 0 0 5rem 5rem;
 }
 
 /* Responsive */
@@ -202,783 +205,764 @@ main {
 /* Max-Width 1080px */
 
 @media screen and (max-width: 1800px) {
-    html {
-        font-size: 8px;
-    }
+  html {
+    font-size: 8px;
+  }
 
-    @media (orientation: Portrait) {
-       /* Portrait */
+  @media (orientation: Portrait) {
+    /* Portrait */
+  }
 
-    }
-      
-    @media (orientation: landscape) {
-        /* Landscape */
+  @media (orientation: landscape) {
+    /* Landscape */
+  }
 
-    }
-
-    /* Responsive Common */
-
+  /* Responsive Common */
 }
 
 @media screen and (max-width: 1550px) {
-    html {
-        font-size: 7px;
-    }
+  html {
+    font-size: 7px;
+  }
 
-    @media (orientation: Portrait) {
-       /* Portrait */
+  @media (orientation: Portrait) {
+    /* Portrait */
+  }
 
-    }
-      
-    @media (orientation: landscape) {
-        /* Landscape */
+  @media (orientation: landscape) {
+    /* Landscape */
+  }
 
-    }
-
-    /* Responsive Common */
-
+  /* Responsive Common */
 }
 
 @media screen and (max-width: 1350px) {
-    html {
-        font-size: 6px;
-    }
+  html {
+    font-size: 6px;
+  }
 
-    @media (orientation: Portrait) {
-       /* Portrait */
+  @media (orientation: Portrait) {
+    /* Portrait */
+  }
 
-    }
-      
-    @media (orientation: landscape) {
-        /* Landscape */
+  @media (orientation: landscape) {
+    /* Landscape */
+  }
 
-    }
-
-    /* Responsive Common */
-
+  /* Responsive Common */
 }
 
 @media screen and (max-width: 1150px) {
-    html {
-        font-size: 5px;
-    }
+  html {
+    font-size: 5px;
+  }
 
-    @media (orientation: Portrait) {
-       /* Portrait */
+  @media (orientation: Portrait) {
+    /* Portrait */
+  }
 
-    }
-      
-    @media (orientation: landscape) {
-        /* Landscape */
+  @media (orientation: landscape) {
+    /* Landscape */
+  }
 
-    }
-
-    /* Responsive Common */
-
+  /* Responsive Common */
 }
 
 @media screen and (max-width: 950px) {
-    html {
-        font-size: 4px;
-    }
+  html {
+    font-size: 4px;
+  }
 
-    @media (orientation: Portrait) {
-       /* Portrait */
+  @media (orientation: Portrait) {
+    /* Portrait */
+  }
 
-    }
-      
-    @media (orientation: landscape) {
-        /* Landscape */
+  @media (orientation: landscape) {
+    /* Landscape */
+  }
 
-    }
-
-    /* Responsive Common */
-
+  /* Responsive Common */
 }
 
 @media screen and (max-width: 900px) {
+  @media (orientation: Portrait) {
+    /* Portrait */
 
-    @media (orientation: Portrait) {
-       /* Portrait */
-       
-        // Product
-        .productSection {
-            flex-direction: column;
-        }
-
-        .productChoice {
-            gap: 10rem !important;
-            width: calc(100vw - 20rem) !important;
-            height: calc(70vh / 2) !important;
-        }
-
-        .productImage {
-            height: auto !important;
-            width: calc(100% + 10rem) !important;
-        }
-
-        // Versus
-        .versusPointButton {
-            width: 12rem !important;
-            height: 12rem !important;
-        }
-
-        .versusPointOuter {
-            width: 16rem !important;
-            height: 16rem !important;
-        }
-        
-        .versusPointInner {
-            width: 10rem !important;
-            height: 10rem !important;
-        }
-
-    }
-      
-    @media (orientation: landscape) {
-        /* Landscape */
-
+    // Product
+    .productSection {
+      flex-direction: column;
     }
 
-    /* Responsive Common */
-    ::-webkit-scrollbar {
-        width: 0px;
+    .productChoice {
+      gap: 10rem !important;
+      width: calc(100vw - 20rem) !important;
+      height: calc(70vh / 2) !important;
     }
 
-    .cursorFollowerContainer {
-        opacity: 0;
+    .productImage {
+      height: auto !important;
+      width: calc(100% + 10rem) !important;
     }
 
-    .textAnimationClass {
-        padding-top: 5rem;
-        margin-bottom: 5rem;
+    // Versus
+    .versusPointButton {
+      width: 12rem !important;
+      height: 12rem !important;
     }
 
-    // Nav
-    .navSection {
-        font-size: 6px !important;
+    .versusPointOuter {
+      width: 16rem !important;
+      height: 16rem !important;
     }
 
-    nav {
-        height: auto !important;
-        align-items: flex-start !important;
-        flex-direction: column !important;
+    .versusPointInner {
+      width: 10rem !important;
+      height: 10rem !important;
     }
+  }
 
-    .navToggle {
-        align-items: flex-start !important;
-    }
+  @media (orientation: landscape) {
+    /* Landscape */
+  }
 
-    .navChoice {
-        padding-inline: 1.5em !important;
-        padding-block: 1.5em !important;
-    }
+  /* Responsive Common */
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 
-    // Modal
-    .modalClose {
-        position: fixed;
-        top: 2.5rem;
-        right: 3.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 7.2em !important;
-        height: 7.2em !important;
-        border-radius: 50%;
-        box-shadow: 1px 1px 5px 0px $mainGrey;
-        background-image: linear-gradient(to top left, $mainOrange, #eb9472);
-        pointer-events: auto;
-        transform: scale(0);
-        cursor: pointer;
-    }
-    
-    .modalCloseInner {
-        position: absolute;
-        width: 6.2em !important;
-        height: 6.2em !important;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-image: linear-gradient(to bottom right, $mainOrange, #eb9472);
-    }
-
-    .closeSVG {
-        transform: scale(0.6) !important;
-    }
-}
-
-@media screen and (max-width: 700px) {
-
-    @media (orientation: Portrait) {
-       /* Portrait */
-
-        // Scroll
-        .scrollCTAContainer {
-            position: absolute;
-            height: 15rem;
-            width: 15rem;
-            border-radius: 50%;
-            bottom: 30rem !important;
-            right: 10rem !important;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        // Versus
-        .versusOverlay {
-            flex-direction: column !important;
-            gap: 30rem !important;
-        }
-
-        .versusPointContainer {
-            position: relative !important;
-        }
-
-        #versusPoint1 {
-            transform: none !important;
-        }
-        
-        #versusPoint2 {
-            transform: none !important;
-        }
-        
-        #versusPoint3 {
-            transform: none !important;
-        }
-
-        // History
-        .historyBanner1 {
-            justify-content: center !important;
-        }
-
-        .historyTextContainer {
-            padding: 1rem;
-        }
-
-        .history2Extra {
-            transform: translateX(20rem) translateY(-20%) !important;
-        }
-        
-        .historySectionExtraOrangeBorder {
-            opacity: 0 !important;
-        }
-
-        .historySectionExtraImageContainer1 {
-            opacity: 0 !important;
-        }
-
-        .historySectionExtraImageContainer2 {
-            margin-right: 5rem;
-        }
-
-        .history2 {
-            margin-top: 15rem !important;
-        }
-        
-        .history3 {
-            justify-content: flex-end !important;
-            margin-top: 15rem !important;
-            margin-inline: 0rem !important;
-            padding-left: 5rem !important;
-            padding-right: 15rem !important;
-        }
-
-        .historySectionExtraOrange {
-            width: 15rem !important;
-            height: 15rem !important;
-        }
-
-        // Purchase
-        .purchaseOverlayContainer {
-            opacity: 0 !important;
-        }
-
-        .purchaseSection {
-            padding-top: 12.5rem !important;
-            padding-bottom: 0 !important;
-        }
-
-        .purchaseText {
-            font-size: 4rem !important;
-            gap: 0rem !important;
-        }
-
-        .purchaseDrugStores {
-            width: 100% !important;
-            justify-content: center !important;
-            gap: 2.5rem !important;
-            padding-inline: 2.5rem !important;
-        }
-        
-        .purchaseSupermarkets {
-            width: 100% !important;
-            justify-content: center !important;
-            gap: 2.5rem !important;
-            padding-inline: 2.5rem !important;
-        }
-
-        .purchaseDSLogo {
-            height: 4rem !important;
-        }
-        
-        .purchaseSMLogo {
-            height: 4rem !important;
-        }
-        
-        .purchaseOLLogo {
-            height: 4rem !important;
-        }
-
-        // Photo
-        .photoSection {
-            flex-direction: column-reverse !important;
-        }
-
-        .photoSectionText {
-            padding-inline: 10rem !important;
-            width: 100% !important;
-        }
-        
-        .photoCardSection {
-            width: 100% !important;
-        }
-
-        .photoCard {
-            width: (45rem * $cardSizeMultiplier) !important;
-            height: (55rem * $cardSizeMultiplier) !important;
-        }
-        
-        .photoFrame {
-            width: (41rem * $cardSizeMultiplier) !important;
-            height: (41rem * $cardSizeMultiplier) !important;
-        }
-
-        .followLinkContainer {
-            font-size: 4rem !important;
-        }
-
-        // Footer
-        .footerContent {
-            max-width: 100% !important;
-        }
-
-        .footerBottomText {
-            font-size: 28rem !important;
-            bottom: 12rem !important;
-        }
-
-        .footerTMText {
-            font-size: 2.5rem !important;
-        }
-        
-        .footerLegalLinks {
-            font-size: 2rem !important;
-        }
-
-        .footerPlugText {
-            font-size: 2rem !important;
-        }
-
-        .footerPlug {
-            width: 20% !important;
-        }
-
-        // Modal
-        .modalContentApproval {
-            padding-top: 5rem !important;
-            flex-direction: column-reverse !important;
-        }
-        
-        .modalContentApprovalTextContainer {
-            width: 100% !important;
-        }
-
-        .modalContentApprovalImageContainer {
-            width: calc(100% + 5rem) !important;
-            transform: translateX(2.5rem) !important;
-        }
-
-        .modalContentCharts {
-            align-items: center !important;
-            padding-block: 5rem !important;
-            flex-direction: column !important;
-            gap: 5rem !important;
-        }
-
-        .modalContentChartsCard {
-            width: calc(100%) !important;
-        }
-
-        .modalContentApplyList {
-            flex-direction: column !important;
-        }
-        
-        .modalContentApplyListLeft, .modalContentApplyListRight {
-            width: 100% !important;
-        }
-
-        .modalContentFeatures {
-            width: 100% !important;
-            position: relative !important;
-            padding-top: 0 !important;
-            padding-right: 0 !important;
-            padding-block: 2.5rem !important;
-            gap: 2.5rem !important;
-        }
-
-        .modalContentExtra {
-            padding-top: 2.5rem !important;
-        }
-    }
-      
-    @media (orientation: landscape) {
-        /* Landscape */
-
-    }
-
-    /* Responsive Common */
-    
-}
-
-// Modal Section
-.modalSection {
-    position: fixed;
-    z-index: 50;
-    width: 100vw;
-    height: 100vh;
-    backdrop-filter: blur(0px);
-    justify-content: center;
-    align-items: flex-start;
-    padding-left: 10rem;
-    padding-right: calc(10rem - 1rem);
-    padding-top: 11.5rem;
-    padding-bottom: 10rem;
-    overflow-x: hidden;
-    display: none;
+  .cursorFollowerContainer {
     opacity: 0;
-    backdrop-filter: blur(5px);
-}
+  }
 
-.modalClose {
+  .textAnimationClass {
+    padding-top: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  // Nav
+  .navSection {
+    font-size: 6px !important;
+  }
+
+  nav {
+    height: auto !important;
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+
+  .navToggle {
+    align-items: flex-start !important;
+  }
+
+  .navChoice {
+    padding-inline: 1.5em !important;
+    padding-block: 1.5em !important;
+  }
+
+  // Modal
+  .modalClose {
     position: fixed;
     top: 2.5rem;
     right: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10em;
-    height: 10em;
+    width: 7.2em !important;
+    height: 7.2em !important;
     border-radius: 50%;
     box-shadow: 1px 1px 5px 0px $mainGrey;
     background-image: linear-gradient(to top left, $mainOrange, #eb9472);
     pointer-events: auto;
     transform: scale(0);
     cursor: pointer;
-}
+  }
 
-.modalCloseInner {
+  .modalCloseInner {
     position: absolute;
-    width: 9em;
-    height: 9em;
+    width: 6.2em !important;
+    height: 6.2em !important;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(to bottom right, $mainOrange, #eb9472);
+  }
+
+  .closeSVG {
+    transform: scale(0.6) !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  @media (orientation: Portrait) {
+    /* Portrait */
+
+    // Scroll
+    .scrollCTAContainer {
+      position: absolute;
+      height: 15rem;
+      width: 15rem;
+      border-radius: 50%;
+      bottom: 30rem !important;
+      right: 10rem !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    // Versus
+    .versusOverlay {
+      flex-direction: column !important;
+      gap: 30rem !important;
+    }
+
+    .versusPointContainer {
+      position: relative !important;
+    }
+
+    #versusPoint1 {
+      transform: none !important;
+    }
+
+    #versusPoint2 {
+      transform: none !important;
+    }
+
+    #versusPoint3 {
+      transform: none !important;
+    }
+
+    // History
+    .historyBanner1 {
+      justify-content: center !important;
+    }
+
+    .historyTextContainer {
+      padding: 1rem;
+    }
+
+    .history2Extra {
+      transform: translateX(20rem) translateY(-20%) !important;
+    }
+
+    .historySectionExtraOrangeBorder {
+      opacity: 0 !important;
+    }
+
+    .historySectionExtraImageContainer1 {
+      opacity: 0 !important;
+    }
+
+    .historySectionExtraImageContainer2 {
+      margin-right: 5rem;
+    }
+
+    .history2 {
+      margin-top: 15rem !important;
+    }
+
+    .history3 {
+      justify-content: flex-end !important;
+      margin-top: 15rem !important;
+      margin-inline: 0rem !important;
+      padding-left: 5rem !important;
+      padding-right: 15rem !important;
+    }
+
+    .historySectionExtraOrange {
+      width: 15rem !important;
+      height: 15rem !important;
+    }
+
+    // Purchase
+    .purchaseOverlayContainer {
+      opacity: 0 !important;
+    }
+
+    .purchaseSection {
+      padding-top: 12.5rem !important;
+      padding-bottom: 0 !important;
+    }
+
+    .purchaseText {
+      font-size: 4rem !important;
+      gap: 0rem !important;
+    }
+
+    .purchaseDrugStores {
+      width: 100% !important;
+      justify-content: center !important;
+      gap: 2.5rem !important;
+      padding-inline: 2.5rem !important;
+    }
+
+    .purchaseSupermarkets {
+      width: 100% !important;
+      justify-content: center !important;
+      gap: 2.5rem !important;
+      padding-inline: 2.5rem !important;
+    }
+
+    .purchaseDSLogo {
+      height: 4rem !important;
+    }
+
+    .purchaseSMLogo {
+      height: 4rem !important;
+    }
+
+    .purchaseOLLogo {
+      height: 4rem !important;
+    }
+
+    // Photo
+    .photoSection {
+      flex-direction: column-reverse !important;
+    }
+
+    .photoSectionText {
+      padding-inline: 10rem !important;
+      width: 100% !important;
+    }
+
+    .photoCardSection {
+      width: 100% !important;
+    }
+
+    .photoCard {
+      width: (45rem * $cardSizeMultiplier) !important;
+      height: (55rem * $cardSizeMultiplier) !important;
+    }
+
+    .photoFrame {
+      width: (41rem * $cardSizeMultiplier) !important;
+      height: (41rem * $cardSizeMultiplier) !important;
+    }
+
+    .followLinkContainer {
+      font-size: 4rem !important;
+    }
+
+    // Footer
+    .footerContent {
+      max-width: 100% !important;
+    }
+
+    .footerBottomText {
+      font-size: 28rem !important;
+      bottom: 12rem !important;
+    }
+
+    .footerTMText {
+      font-size: 2.5rem !important;
+    }
+
+    .footerLegalLinks {
+      font-size: 2rem !important;
+    }
+
+    .footerPlugText {
+      font-size: 2rem !important;
+    }
+
+    .footerPlug {
+      width: 20% !important;
+    }
+
+    // Modal
+    .modalContentApproval {
+      padding-top: 5rem !important;
+      flex-direction: column-reverse !important;
+    }
+
+    .modalContentApprovalTextContainer {
+      width: 100% !important;
+    }
+
+    .modalContentApprovalImageContainer {
+      width: calc(100% + 5rem) !important;
+      transform: translateX(2.5rem) !important;
+    }
+
+    .modalContentCharts {
+      align-items: center !important;
+      padding-block: 5rem !important;
+      flex-direction: column !important;
+      gap: 5rem !important;
+    }
+
+    .modalContentChartsCard {
+      width: calc(100%) !important;
+    }
+
+    .modalContentApplyList {
+      flex-direction: column !important;
+    }
+
+    .modalContentApplyListLeft,
+    .modalContentApplyListRight {
+      width: 100% !important;
+    }
+
+    .modalContentFeatures {
+      width: 100% !important;
+      position: relative !important;
+      padding-top: 0 !important;
+      padding-right: 0 !important;
+      padding-block: 2.5rem !important;
+      gap: 2.5rem !important;
+    }
+
+    .modalContentExtra {
+      padding-top: 2.5rem !important;
+    }
+  }
+
+  @media (orientation: landscape) {
+    /* Landscape */
+  }
+
+  /* Responsive Common */
+}
+
+// Modal Section
+.modalSection {
+  position: fixed;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(0px);
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 10rem;
+  padding-right: calc(10rem - 1rem);
+  padding-top: 11.5rem;
+  padding-bottom: 10rem;
+  overflow-x: hidden;
+  display: none;
+  opacity: 0;
+  backdrop-filter: blur(5px);
+}
+
+.modalClose {
+  position: fixed;
+  top: 2.5rem;
+  right: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 0px $mainGrey;
+  background-image: linear-gradient(to top left, $mainOrange, #eb9472);
+  pointer-events: auto;
+  transform: scale(0);
+  cursor: pointer;
+}
+
+.modalCloseInner {
+  position: absolute;
+  width: 9em;
+  height: 9em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to bottom right, $mainOrange, #eb9472);
 }
 
 .closeSVG {
-    position: absolute;
+  position: absolute;
 }
 
 .closeSVGPath {
-    fill: $mainWhite;
+  fill: $mainWhite;
 }
 
 .modalPopup {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 5rem;
-    box-shadow: 0px 0px 10px 0px $mainGrey;
-    background-color: #fefefe;
-    overscroll-behavior: contain;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5rem;
+  box-shadow: 0px 0px 10px 0px $mainGrey;
+  background-color: #fefefe;
+  overscroll-behavior: contain;
 }
 
 .modalContent {
-    z-index: 1;
-    width: 100%;
-    min-height: calc(100vh - 21.5rem);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 5rem;
-    pointer-events: none;
-    position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: calc(100vh - 21.5rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 5rem;
+  pointer-events: none;
+  position: relative;
 }
 
 .modalContentHeader {
-    position: relative;
-    width: min(75rem, 100%);
-    text-align: left;
-    font-size: 13rem;
-    line-height: 13rem;
-    border-bottom: 1px solid $mainGrey;
-    padding-bottom: 2rem;
+  position: relative;
+  width: min(75rem, 100%);
+  text-align: left;
+  font-size: 13rem;
+  line-height: 13rem;
+  border-bottom: 1px solid $mainGrey;
+  padding-bottom: 2rem;
 }
 
 .modalContentDescription {
-    width: min(75rem, 100%);
-    text-align: left;
-    font-size: 2.5rem;
-    line-height: 5rem;
-    margin-top: 2.5rem;
+  width: min(75rem, 100%);
+  text-align: left;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  margin-top: 2.5rem;
 }
 
 .modalContentSizes {
-    width: 100%;
-    text-align: right;
-    font-size: 2.2rem;
-    line-height: 2.5rem;
-    margin-top: 2.5rem;
+  width: 100%;
+  text-align: right;
+  font-size: 2.2rem;
+  line-height: 2.5rem;
+  margin-top: 2.5rem;
 }
 
 .modalContentFeatures {
-    width: 35%;
-    right: 0;
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    flex-direction: column;
-    text-align: right;
-    padding-top: 7.5rem;
-    padding-right: 5rem;
-    gap: 10rem;
-    font-size: 2.2rem;
-    line-height: 2.5rem;
+  width: 35%;
+  right: 0;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column;
+  text-align: right;
+  padding-top: 7.5rem;
+  padding-right: 5rem;
+  gap: 10rem;
+  font-size: 2.2rem;
+  line-height: 2.5rem;
 }
 
 .modalContentExtra {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10rem;
-    text-align: center;
-    width: 100%;
-    font-size: 2.5rem;
-    line-height: 5rem;
-    padding-top: 20rem;
-    z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10rem;
+  text-align: center;
+  width: 100%;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  padding-top: 20rem;
+  z-index: 1;
 }
 
 .modalContentExtraDiv {
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
-    width: 100%;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  width: 100%;
 }
 
 .modalContentExtraOverlay {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: calc(100% + 10rem);
-    height: 200%;
-    z-index: 1;
-    overflow: hidden;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% + 10rem);
+  height: 200%;
+  z-index: 1;
+  overflow: hidden;
 }
 
 #modalContentExtraOverlayFlip {
-    transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .modalContentExtraPhotoDiv {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    pointer-events: auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  pointer-events: auto;
 }
 
 #modalContentPhotoLavender {
-    position: absolute;
-    left: -1rem;
-    width: 12%;
-    transform: rotateZ(45deg);
-    margin-bottom: 15%;
+  position: absolute;
+  left: -1rem;
+  width: 12%;
+  transform: rotateZ(45deg);
+  margin-bottom: 15%;
 }
 
 #modalContentPhotoChamomile {
-    position: absolute;
-    left: -1rem;
-    width: 14%;
-    transform: rotateZ(45deg);
-    margin-top: 15%;
+  position: absolute;
+  left: -1rem;
+  width: 14%;
+  transform: rotateZ(45deg);
+  margin-top: 15%;
 }
 
 #modalContentPhotoCalendula {
-    position: absolute;
-    right: -1rem;
-    width: 12%;
-    transform: scaleX(-1) scaleY(1) rotateZ(45deg);
-    margin-bottom: 15%;
+  position: absolute;
+  right: -1rem;
+  width: 12%;
+  transform: scaleX(-1) scaleY(1) rotateZ(45deg);
+  margin-bottom: 15%;
 }
 
 #modalContentPhotoRosemary {
-    position: absolute;
-    right: -5rem;
-    width: 20%;
-    transform: scaleX(-1) scaleY(1) rotateZ(-60deg);
-    margin-top: 15%;
+  position: absolute;
+  right: -5rem;
+  width: 20%;
+  transform: scaleX(-1) scaleY(1) rotateZ(-60deg);
+  margin-top: 15%;
 }
 
 .modalContentApproval {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-    width: 100%;
-    font-size: 2.5rem;
-    line-height: 5rem;
-    padding-top: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  width: 100%;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  padding-top: 15rem;
 }
 
 .modalContentApprovalTextContainer {
-    width: 50%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    gap: 5rem;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 .modalContentApprovalText1 {
-    width: 100%;
-    text-align: left;
+  width: 100%;
+  text-align: left;
 }
 
 .modalContentApprovalText2 {
-    width: 100%;
-    text-align: right;
+  width: 100%;
+  text-align: right;
 }
 
 .modalContentApprovalImageContainer {
-    width: calc(50% + 5rem);
-    height: 50rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    overflow: hidden;
-    transform: translateX(5rem);
-    border-radius: 100rem 0 0 100rem;
-    box-shadow: inset 10px 10px 10px 0 red;
+  width: calc(50% + 5rem);
+  height: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  transform: translateX(5rem);
+  border-radius: 100rem 0 0 100rem;
+  box-shadow: inset 10px 10px 10px 0 red;
 }
 
 .modalContentApprovalImage {
-    width: 100%;
+  width: 100%;
 }
 
 .modalContentCharts {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    padding-block: 10rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding-block: 10rem;
 }
 
 .modalContentChartsContainer {
-    position: relative;
-    background-color: #eb5f2850;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: auto;
-    cursor: pointer;
-    perspective: 1000px;
+  position: relative;
+  background-color: #eb5f2850;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  cursor: pointer;
+  perspective: 1000px;
 }
 
 .modalContentChartsFill {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    box-shadow: inset 0 1px 3px 0 #0000005a;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 3px 0 #0000005a;
 }
 
 .modalContentChartsCenter {
-    position: absolute;
-    z-index: 1;
-    width: calc(75%);
-    height: calc(75%);
-    border-radius: 50%;
-    background-color: $mainWhite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    color: $mainOrange;
-    box-shadow: 0 1px 3px 0 #0000005a;
+  position: absolute;
+  z-index: 1;
+  width: calc(75%);
+  height: calc(75%);
+  border-radius: 50%;
+  background-color: $mainWhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  color: $mainOrange;
+  box-shadow: 0 1px 3px 0 #0000005a;
 }
 
 .modalContentChartsCard {
-    width: calc(100%/3);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    gap: 2.5rem;
+  width: calc(100% / 3);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 .modalContentChartsText {
-    width: 100%;
-    padding-inline: 10rem;
-    text-align: center;
-    font-size: 2.2rem;
+  width: 100%;
+  padding-inline: 10rem;
+  text-align: center;
+  font-size: 2.2rem;
 }
 
 .modalContentApply {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .modalContentApplyHeader {
-    font-size: 7rem;
-    font-family: Main;
-    color: $mainOrange;
-    margin-bottom: 2.5rem;
+  font-size: 7rem;
+  font-family: Main;
+  color: $mainOrange;
+  margin-bottom: 2.5rem;
 }
 
 .modalContentApplyList {
-    position: relative;
-    width: 100%;
-    font-size: 2.5rem;
-    line-height: 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  position: relative;
+  width: 100%;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.modalContentApplyListLeft, .modalContentApplyListRight {
-    position: relative;
-    width: 50%;
+.modalContentApplyListLeft,
+.modalContentApplyListRight {
+  position: relative;
+  width: 50%;
 }
 
 ul {
@@ -986,7 +970,7 @@ ul {
 }
 
 ul li::before {
-  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: $mainOrange; /* Change the color */
   font-weight: bold; /* If you want it to be bold */
   display: inline-block; /* Needed to add space between the bullet and the text */
@@ -995,1226 +979,1229 @@ ul li::before {
 }
 
 .orbitCanvas {
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: calc(100vw * 1080/1928);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: calc(100vw * 1080 / 1928);
 }
 
 // Scroll CTA
 .scrollCTAContainer {
-    position: absolute;
-    height: 15rem;
-    width: 15rem;
-    border-radius: 50%;
-    bottom: 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+  bottom: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .scrollCTA {
-    position: absolute;
-    height: 15rem;
-    width: 15rem;
-    border-radius: 50%;
-    background-image: linear-gradient(to top, #87878700, 90%, #87878710);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 1px 2px 0 #0000003a;
-    color: $mainOrange;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 1.6rem;
-    letter-spacing: 1rem;
-    line-height: 2rem;
-    padding-left: 1rem;
+  position: absolute;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+  background-image: linear-gradient(to top, #87878700, 90%, #87878710);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 1px 2px 0 #0000003a;
+  color: $mainOrange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.6rem;
+  letter-spacing: 1rem;
+  line-height: 2rem;
+  padding-left: 1rem;
 }
 
-.scrollCTAText1, .scrollCTAText2 {
-    position: absolute;
+.scrollCTAText1,
+.scrollCTAText2 {
+  position: absolute;
 }
 
 .scrollCTAArrow {
-    position: absolute;
-    height: 25rem;
-    width: 1px;
-    background-color: $mainOrange;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+  position: absolute;
+  height: 25rem;
+  width: 1px;
+  background-color: $mainOrange;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .scrollCTACircle {
-    position: absolute;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background-color: $mainOrange;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: $mainOrange;
 }
 
 // Nav Section
 .navSection {
-    position: fixed;
-    z-index: 100;
-    width: 100vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    padding-block: 2rem;
-    padding-left: 10rem;
-    pointer-events: none;
-    font-size: 10px;
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  padding-block: 2rem;
+  padding-left: 10rem;
+  pointer-events: none;
+  font-size: 10px;
 }
 
 .navToggle {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-image: linear-gradient(to right, $mainOrange, #eb9472);
-    box-shadow: inset 0 0 5px 1px #00000020;
-    border-radius: 6.5em / 2 + 0.4em;
-    overflow: hidden;
-    cursor: pointer;
-    padding: 0.4em;
-    pointer-events: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: linear-gradient(to right, $mainOrange, #eb9472);
+  box-shadow: inset 0 0 5px 1px #00000020;
+  border-radius: 6.5em / 2 + 0.4em;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0.4em;
+  pointer-events: auto;
 }
 
 .navLogo {
-    width: 6.5em;
-    height: 6.5em;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $mainWhite;
-    box-shadow: 0 0 4px 1px #00000020;
-    pointer-events: auto;
+  width: 6.5em;
+  height: 6.5em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $mainWhite;
+  box-shadow: 0 0 4px 1px #00000020;
+  pointer-events: auto;
 }
 
 .logoImage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transform: scale(0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: scale(0.55);
 }
 
 .logoBar {
-    width: 2.5em;
-    height: 0.5em;
-    border-radius: 0.5em;
-    background-color: $mainOrange;
-    margin-block: 0.1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-origin: left;
+  width: 2.5em;
+  height: 0.5em;
+  border-radius: 0.5em;
+  background-color: $mainOrange;
+  margin-block: 0.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: left;
 }
 
 #logoBar1 {
-    width: 1em;
-    transform: translateX(0.45em);
+  width: 1em;
+  transform: translateX(0.45em);
 }
 
 #logoBar2 {
-    width: 1.5em;
+  width: 1.5em;
 }
 
 #logoBar3 {
-    width: 2.3em;
-    transform: translateX(-0.3em);
+  width: 2.3em;
+  transform: translateX(-0.3em);
 }
 
 #logoBar4 {
-    width: 3.2em;
-    transform: translateX(-0.3em);
+  width: 3.2em;
+  transform: translateX(-0.3em);
 }
 
 #logoBar5 {
-    width: 4.6em;
-    transform: translateX(-0.2em);
+  width: 4.6em;
+  transform: translateX(-0.2em);
 }
 
 #logoBar6 {
-    width: 5.6em;
+  width: 5.6em;
 }
 
 #logoBar7 {
-    width: 6.1em;
+  width: 6.1em;
 }
 
 #logoBar8 {
-    width: 6.1em;
+  width: 6.1em;
 }
 
 #logoBar9 {
-    width: 5.9em;
-    transform: translateX(0.06em);
+  width: 5.9em;
+  transform: translateX(0.06em);
 }
 
 #logoBar10 {
-    width: 5.4em;
-    transform: translateX(0.06em);
+  width: 5.4em;
+  transform: translateX(0.06em);
 }
 
 #logoBar11 {
-    width: 4em;
-    transform: translateX(0.06em);
+  width: 4em;
+  transform: translateX(0.06em);
 }
 
 #logoBar12 {
-    width: 1.9em;
-    transform: translateX(0.06em);
+  width: 1.9em;
+  transform: translateX(0.06em);
 }
 
 .navName {
-    height: 2.5em;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    color: $mainWhite;
-    font-size: $logoFontSize;
-    font-family: Main;
+  height: 2.5em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: $mainWhite;
+  font-size: $logoFontSize;
+  font-family: Main;
 }
 
 .navNameText {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-    padding-left: 0.5em;
-    padding-right: 0.25em;
-    text-shadow: 0 0 5px 1px #00000020;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  padding-left: 0.5em;
+  padding-right: 0.25em;
+  text-shadow: 0 0 5px 1px #00000020;
 }
 
 nav {
-    height: 6.5rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: $mainWhite;
-    font-size: $navFontSize;
-    overflow: hidden;
+  height: 6.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: $mainWhite;
+  font-size: $navFontSize;
+  overflow: hidden;
 }
 
 .navChoice {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-    padding-inline: 1em;
-    padding-block: 3em;
-    position: relative;
-    letter-spacing: 0.15em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  padding-inline: 1em;
+  padding-block: 3em;
+  position: relative;
+  letter-spacing: 0.15em;
 }
 
 .navChoiceDot {
-    position: absolute;
-    width: 0.2em;
-    height: 0.2em;
-    border-radius: 50%;
-    background-color: $mainWhite;
-    transform: translateY(1.4em);
+  position: absolute;
+  width: 0.2em;
+  height: 0.2em;
+  border-radius: 50%;
+  background-color: $mainWhite;
+  transform: translateY(1.4em);
 }
 
 // Hero Section
 .heroSection {
-    position: relative;
-    z-index: 3;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  position: relative;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .heroHeaderText {
-    width: 100vw;
-    position: relative;
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-    // background: linear-gradient(to right, $mainOrange, #eb9472);
-    // background-clip: text;
-    // -webkit-text-fill-color: transparent;
-    color: $mainOrange;
-    font-size: 23rem;
-    padding-left: 10rem;
-    font-weight: 1000;
-    letter-spacing: 0.7rem;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  // background: linear-gradient(to right, $mainOrange, #eb9472);
+  // background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  color: $mainOrange;
+  font-size: 23rem;
+  padding-left: 10rem;
+  font-weight: 1000;
+  letter-spacing: 0.7rem;
 }
 
 #heroHeaderText1 {
-    transform: translateY(8rem);
-    // text-shadow: 0px 0px 0px $mainGrey;
+  transform: translateY(8rem);
+  // text-shadow: 0px 0px 0px $mainGrey;
 }
 
 #heroHeaderText3 {
-    transform: translateY(-5rem);
-    // text-shadow: 0px 0px 0px $mainGrey;
+  transform: translateY(-5rem);
+  // text-shadow: 0px 0px 0px $mainGrey;
 }
 
 .heroSubHeaderText {
-    position: absolute;
-    bottom: 7.5rem;
-    right: 10rem;
-    font-size: 4rem;
-    text-align: right;
+  position: absolute;
+  bottom: 7.5rem;
+  right: 10rem;
+  font-size: 4rem;
+  text-align: right;
 }
 
 // Product Section
 .productSection {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 10rem;
-    padding-bottom: 10rem;
-    padding-top: 11.25rem;
-    z-index: 2;
-    overflow: hidden;
-    perspective: 1000px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 10rem;
+  padding-bottom: 10rem;
+  padding-top: 11.25rem;
+  z-index: 2;
+  overflow: hidden;
+  perspective: 1000px;
 }
 
 .productChoice {
-    position: relative;
-    width: calc((100vw - 20rem - 40rem)/2);
-    height: calc(100vh - 21.25rem);
-    border-radius: 5rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    padding: 2.5rem;
-    overflow: hidden;
-    perspective: 1000px;
+  position: relative;
+  width: calc((100vw - 20rem - 40rem) / 2);
+  height: calc(100vh - 21.25rem);
+  border-radius: 5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 2.5rem;
+  overflow: hidden;
+  perspective: 1000px;
 }
 
 .productChoiceFilter {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to top, #00000050, 1%, #00000000);
-    top: 0;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, #00000050, 1%, #00000000);
+  top: 0;
 }
 
 .productImage {
-    position: absolute;
-    z-index: -2;
-    height: calc(100% + 10rem);
-    top: 0;
+  position: absolute;
+  z-index: -2;
+  height: calc(100% + 10rem);
+  top: 0;
 }
 
 #skincareChoice {
-    box-shadow: 1px -1px 3px 0px #0000002a;
+  box-shadow: 1px -1px 3px 0px #0000002a;
 }
 
 #dryskinChoice {
-    box-shadow: -1px -1px 3px 0px #0000002a;
+  box-shadow: -1px -1px 3px 0px #0000002a;
 }
 
 .productName {
-    font-size: 4rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    color: $mainWhite;
-    text-shadow: 0 0 4px #000000;
+  font-size: 4rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  color: $mainWhite;
+  text-shadow: 0 0 4px #000000;
 }
 
 .productQuestion {
-    font-size: 4rem;
-    font-weight: 900;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    color: $mainWhite;
-    text-shadow: 0 0 4px #000000;
+  font-size: 4rem;
+  font-weight: 900;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  color: $mainWhite;
+  text-shadow: 0 0 4px #000000;
 }
 
 // Versus Section
 .versusSection {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    padding-inline: 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding-inline: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .versusHeader {
-    position: relative;
-    width: 100%;
-    text-align: left;
-    color: $mainOrange;
-    opacity: 0;
-    font-size: 23rem;
-    line-height: 20rem;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  color: $mainOrange;
+  opacity: 0;
+  font-size: 23rem;
+  line-height: 20rem;
 }
 
 .ofText {
-    margin-right: 2.6rem;
+  margin-right: 2.6rem;
 }
 
 .versusOverlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
 }
 
 .versusPointContainer {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    pointer-events: none;
-    z-index: 100;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 100;
 }
 
 .versusPointButton {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5rem;
-    box-shadow: -0.2rem 0.2rem 0.5rem 0.2rem #0000002a;
-    background-image: linear-gradient(to bottom left, $mainWhite, 90%, $mainGrey);
-    cursor: pointer;
-    pointer-events: auto;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  box-shadow: -0.2rem 0.2rem 0.5rem 0.2rem #0000002a;
+  background-image: linear-gradient(to bottom left, $mainWhite, 90%, $mainGrey);
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .versusPointOuter {
-    position: absolute;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    border: 1px solid $mainOrange;
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  border: 1px solid $mainOrange;
 }
 
 .versusPointInner {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    background-image: linear-gradient(to top right, $mainWhite, 90%, $mainGrey);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $mainOrange;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-image: linear-gradient(to top right, $mainWhite, 90%, $mainGrey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $mainOrange;
 }
 
 .versusPointBody {
-    font-size: 2.5rem;
-    max-width: 50rem;
-    padding: 2.5rem;
-    box-shadow: -0.2rem 0.2rem 0.5rem 0.2rem #0000002a;
-    border-radius: 2.5rem;
-    backdrop-filter: blur(10px);
-    background-color: #ffffffa0;
-    margin-inline: 2.5rem;
-    position: relative;
-    z-index: 1;
-    color: $mainGrey;
-    text-shadow: 0 0 10px $mainWhite;
+  font-size: 2.5rem;
+  max-width: 50rem;
+  padding: 2.5rem;
+  box-shadow: -0.2rem 0.2rem 0.5rem 0.2rem #0000002a;
+  border-radius: 2.5rem;
+  backdrop-filter: blur(10px);
+  background-color: #ffffffa0;
+  margin-inline: 2.5rem;
+  position: relative;
+  z-index: 1;
+  color: $mainGrey;
+  text-shadow: 0 0 10px $mainWhite;
 }
 
 #versusPoint1 {
-    transform: translateX(40rem) translateY(-17.5rem);
+  transform: translateX(40rem) translateY(-17.5rem);
 }
 
 #versusPoint2 {
-    transform: translateX(-61rem) translateY(-10rem);
-    flex-direction: row-reverse;
+  transform: translateX(-61rem) translateY(-10rem);
+  flex-direction: row-reverse;
 }
 
 #versusPoint3 {
-    transform: translateX(30rem) translateY(35rem);
+  transform: translateX(30rem) translateY(35rem);
 }
 
 #versusBody1 {
-    transform-origin: left;
+  transform-origin: left;
 }
 
 #versusBody2 {
-    transform-origin: right;
+  transform-origin: right;
 }
 
 #versusBody3 {
-    transform-origin: left;
+  transform-origin: left;
 }
 
 .versusImageContainer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .versusImageParallaxDiv {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .versusImageDiv {
-    position: absolute;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .versusImageW {
-    height: calc(100% + 20px);
+  height: calc(100% + 20px);
 }
 
 .versusImageH {
-    width: calc(100% + 20px);
+  width: calc(100% + 20px);
 }
 
 #versusImageDiv1 {
-    width: 45rem;
-    height: 45rem;
-    transform: translateX(-35vw) translateY(20vh);
+  width: 45rem;
+  height: 45rem;
+  transform: translateX(-35vw) translateY(20vh);
 }
 
 #versusImageDiv2 {
-    width: 70rem;
-    height: 70rem;
-    transform: translateX(40vw) translateY(20vh);
+  width: 70rem;
+  height: 70rem;
+  transform: translateX(40vw) translateY(20vh);
 }
 
 #versusImageDiv3 {
-    width: 25rem;
-    height: 25rem;
-    transform: translateX(-25vw) translateY(-30vh);
+  width: 25rem;
+  height: 25rem;
+  transform: translateX(-25vw) translateY(-30vh);
 }
 
 #versusImageDiv4 {
-    width: 32rem;
-    height: 32rem;
-    transform: translateX(20vw) translateY(-42.5vh);
+  width: 32rem;
+  height: 32rem;
+  transform: translateX(20vw) translateY(-42.5vh);
 }
 
 // History Section
 .historySection {
-    position: relative;
-    z-index: 2;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    padding-top: 11.25rem;
-    padding-bottom: 10rem;
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-top: 11.25rem;
+  padding-bottom: 10rem;
 }
 
 .historyBanner1 {
-    width: 45vw;
-    height: 50rem;
-    margin-right: 10rem;
-    border-radius: 0 100rem 100rem 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+  width: 45vw;
+  height: 50rem;
+  margin-right: 10rem;
+  border-radius: 0 100rem 100rem 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .historyBannerPhoto {
-    height: calc(100% + 10rem);
+  height: calc(100% + 10rem);
 }
 
 .history1 {
-    position: relative;
-    width: 100vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1rem;
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
 }
 
 .history2 {
-    position: relative;
-    width: 100vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1rem;
-    margin-top: 10rem;
-    margin-inline: 10rem
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
+  margin-top: 10rem;
+  margin-inline: 10rem;
 }
 
 .history3 {
-    position: relative;
-    width: 100vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1rem;
-    margin-top: 10rem;
-    margin-inline: 10rem;
-    padding-left: 15vw;
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
+  margin-top: 10rem;
+  margin-inline: 10rem;
+  padding-left: 15vw;
 }
 
 .history4 {
-    position: relative;
-    width: 100vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1rem;
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
 }
 
 .historyTextContainer {
-    width: max(40vw, 40%);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+  width: max(40vw, 40%);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .historyYear {
-    font-size: 4em;
+  font-size: 4em;
 }
 
 .historyTitle {
-    font-size: 5em;
-    font-family: Main;
-    color: $mainOrange;
+  font-size: 5em;
+  font-family: Main;
+  color: $mainOrange;
 }
 
 .historyBody {
-    font-size: $bodyFontSize;
-    padding-top: 1em;
-    font-size: 2.5em;
+  font-size: $bodyFontSize;
+  padding-top: 1em;
+  font-size: 2.5em;
 }
 
 .historySectionOverlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: -1;
 }
 
 .history2Extra {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .historySectionExtraOrangeBorder {
-    position: absolute;
-    width: 100rem;
-    height: 100rem;
-    border-radius: 50%;
-    border: 1px solid $mainOrange;
-    opacity: 0.5;
-    transform: translateX(10rem) translateY(5rem);
+  position: absolute;
+  width: 100rem;
+  height: 100rem;
+  border-radius: 50%;
+  border: 1px solid $mainOrange;
+  opacity: 0.5;
+  transform: translateX(10rem) translateY(5rem);
 }
 
 .historySectionExtraImageContainer1 {
-    position: absolute;
-    width: 40rem;
-    height: 40rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transform: translateX(-30vw) translateY(-70%);
-    z-index: 2;
-    box-shadow: 1px 1px 5px 0 #0000003a;
+  position: absolute;
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transform: translateX(-30vw) translateY(-70%);
+  z-index: 2;
+  box-shadow: 1px 1px 5px 0 #0000003a;
 }
 
 .historySectionExtraImageContainer2 {
-    position: absolute;
-    width: 60rem;
-    height: 60rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transform: translateX(10rem) translateY(-60%);
-    z-index: 0;
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transform: translateX(10rem) translateY(-60%);
+  z-index: 0;
 }
 
 .historySectionExtraImageContainer3 {
-    position: absolute;
-    width: 45rem;
-    height: 45rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transform: translateX(calc(-100vw + 45rem - 15rem)) translateY(10rem);
-    z-index: 1;
+  position: absolute;
+  width: 45rem;
+  height: 45rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transform: translateX(calc(-100vw + 45rem - 15rem)) translateY(10rem);
+  z-index: 1;
 }
 
 .historySectionExtraImage {
-    height: 100%;
+  height: 100%;
 }
 
 .historySectionExtraBlur {
-    position: absolute;
-    width: 50rem;
-    height: 50rem;
-    border-radius: 50%;
-    backdrop-filter: blur(5px);
-    box-shadow: inset 1px -1px 1px 0px #0000002a;
-    transform: translateX(-20rem) translateY(-10rem);
-    background-image: linear-gradient(to top right, #87878700, 90%, #87878750);
-    z-index: 1;
+  position: absolute;
+  width: 50rem;
+  height: 50rem;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 1px -1px 1px 0px #0000002a;
+  transform: translateX(-20rem) translateY(-10rem);
+  background-image: linear-gradient(to top right, #87878700, 90%, #87878750);
+  z-index: 1;
 }
 
 .historySectionExtraOrange {
-    position: absolute;
-    width: 25rem;
-    height: 25rem;
-    border-radius: 50%;
-    background-color: $mainOrange;
-    transform: translateX(-20rem) translateY(0rem);
+  position: absolute;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  background-color: $mainOrange;
+  transform: translateX(-20rem) translateY(0rem);
 }
 
 .historySectionExtraOrange2 {
-    position: absolute;
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    background-color: $mainOrange;
-    transform: translateX(calc(-100vw + 10rem + 20rem)) translateY(-25rem);
-    z-index: 2;
-    box-shadow: -1px 1px 5px 0 #0000003a;
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: $mainOrange;
+  transform: translateX(calc(-100vw + 10rem + 20rem)) translateY(-25rem);
+  z-index: 2;
+  box-shadow: -1px 1px 5px 0 #0000003a;
 }
 
 .historySectionExtraOrangeBorder2 {
-    position: absolute;
-    width: 30rem;
-    height: 30rem;
-    border-radius: 50%;
-    border: 1px solid $mainOrange;
-    opacity: 0.5;
-    transform: translateX(calc(-100vw + 40rem)) translateY(15rem);
+  position: absolute;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 50%;
+  border: 1px solid $mainOrange;
+  opacity: 0.5;
+  transform: translateX(calc(-100vw + 40rem)) translateY(15rem);
 }
 
 .historySectionExtraOrangeBorderBanner {
-    position: absolute;
-    width: 60rem;
-    height: 60rem;
-    border-radius: 50%;
-    border: 1px solid $mainOrange;
-    opacity: 0.5;
-    transform: translateX(calc(-30rem + 45vw - 25rem));
-    z-index: -2;
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+  border-radius: 50%;
+  border: 1px solid $mainOrange;
+  opacity: 0.5;
+  transform: translateX(calc(-30rem + 45vw - 25rem));
+  z-index: -2;
 }
 
 .historySectionExtraBlurBanner {
-    position: absolute;
-    width: 36rem;
-    height: 36rem;
-    border-radius: 50%;
-    backdrop-filter: blur(5px);
-    box-shadow: inset -1px -1px 1px 0px #0000002a;
-    transform: translateX(calc(-18rem + 45vw - 25rem + 5rem)) translateY(20rem);
-    background-image: linear-gradient(to top left, #87878700, 90%, #87878750);
-    z-index: 1;
+  position: absolute;
+  width: 36rem;
+  height: 36rem;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  box-shadow: inset -1px -1px 1px 0px #0000002a;
+  transform: translateX(calc(-18rem + 45vw - 25rem + 5rem)) translateY(20rem);
+  background-image: linear-gradient(to top left, #87878700, 90%, #87878750);
+  z-index: 1;
 }
 
 .historySectionExtraOrangeBanner {
-    position: absolute;
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    background-color: $mainOrange;
-    transform: translateX(calc(-3rem + 45vw - 25rem + 20rem)) translateY(30rem);
-    z-index: -3;
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background-color: $mainOrange;
+  transform: translateX(calc(-3rem + 45vw - 25rem + 20rem)) translateY(30rem);
+  z-index: -3;
 }
 
 // History Extra Parallax
 .hpbbanner {
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    z-index: 2;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  z-index: 2;
 }
 
 .hpobanner {
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    z-index: -2;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  z-index: -2;
 }
 
 .heblur {
-    position: absolute;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-    z-index: 2;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  z-index: 2;
 }
 
 .heo1 {
-    position: absolute;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-    z-index: -2;  
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  z-index: -2;
 }
 
 .heo2 {
-    position: absolute;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-    z-index: 2;  
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  z-index: 2;
 }
 
 // Purchase Section
 .purchaseSection {
-    position: relative;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    gap: 5rem;
-    padding-top: 7.5rem;
-    padding-bottom: 7.5rem;
-    z-index: 2;
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+  z-index: 2;
 }
 
 .purchaseText {
-    position: relative;
-    font-size: 5rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 2.5rem;
+  position: relative;
+  font-size: 5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 .purchaseTextLine {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
 }
 
 .purchaseDrugStores {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
 }
 
 .purchaseSupermarkets {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10rem;
-    padding-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  padding-bottom: 5rem;
 }
 
 .purchaseDSLogo {
-    height: 5rem;
+  height: 5rem;
 }
 
 .purchaseSMLogo {
-    height: 5rem;
+  height: 5rem;
 }
 
 .purchaseOLLogo {
-    height: 5rem;
+  height: 5rem;
 }
 
 .purchaseLinkButton {
-    // width: 35rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-block: 2rem;
-    padding-inline: 4rem;
-    border-radius: 100rem;
-    background-color: $mainWhite;
-    box-shadow: inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a;
+  // width: 35rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 2rem;
+  padding-inline: 4rem;
+  border-radius: 100rem;
+  background-color: $mainWhite;
+  box-shadow: inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a;
 }
 
 .purchaseLogo {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .purchaseOverlayContainer {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    pointer-events: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    perspective: 1000px;
-    z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  perspective: 1000px;
+  z-index: -1;
 }
 
 // Purchase Photo Card
 #photoCardP1 {
-    transform: rotateY(5deg) rotateZ(10deg) translateX(-28rem) translateY(10rem) translateZ(-40rem);
-    background-image: linear-gradient(to right, $mainOrange, #eb9472);
+  transform: rotateY(5deg) rotateZ(10deg) translateX(-28rem) translateY(10rem)
+    translateZ(-40rem);
+  background-image: linear-gradient(to right, $mainOrange, #eb9472);
 }
 
 #photoCardP2 {
-    transform: rotateY(-5deg) rotateZ(-10deg) translateX(30rem) translateY(-30rem) translateZ(-35rem);
-    background-image: linear-gradient(to left, $mainOrange, #eb9472);
+  transform: rotateY(-5deg) rotateZ(-10deg) translateX(30rem) translateY(-30rem)
+    translateZ(-35rem);
+  background-image: linear-gradient(to left, $mainOrange, #eb9472);
 }
 
 .photoCardP {
-    width: (35rem * $cardSizeMultiplier);
-    height: (45rem * $cardSizeMultiplier);
-    border-radius: (2rem * $cardSizeMultiplier);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    // background-color: $mainOrange;
-    padding: (2rem * $cardSizeMultiplier);
-    pointer-events: none;
-    gap: 3rem;
-    z-index: -1;
+  width: (35rem * $cardSizeMultiplier);
+  height: (45rem * $cardSizeMultiplier);
+  border-radius: (2rem * $cardSizeMultiplier);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  // background-color: $mainOrange;
+  padding: (2rem * $cardSizeMultiplier);
+  pointer-events: none;
+  gap: 3rem;
+  z-index: -1;
 }
 
 .photoFrameP {
-    position: relative;
-    width: (31rem * $cardSizeMultiplier);
-    height: (31rem * $cardSizeMultiplier);
-    border-radius: (1rem * $cardSizeMultiplier);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: (31rem * $cardSizeMultiplier);
+  height: (31rem * $cardSizeMultiplier);
+  border-radius: (1rem * $cardSizeMultiplier);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .photoP {
-    width: 110%;
-    pointer-events: none;
+  width: 110%;
+  pointer-events: none;
 }
 
 .photoCaptionP {
-    color: $mainWhite;
-    font-size: 2rem;
-    pointer-events: auto;
+  color: $mainWhite;
+  font-size: 2rem;
+  pointer-events: auto;
 }
 
 // Photos Section
 .photoSection {
-    width: 100vw;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .photoCardSection {
-    position: relative;
-    width: 60%;
-    perspective: 100rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: auto;
-    cursor: pointer;
+  position: relative;
+  width: 60%;
+  perspective: 100rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .photoCard {
-    position: absolute;
-    width: (35rem * $cardSizeMultiplier);
-    height: (45rem * $cardSizeMultiplier);
-    border-radius: (2rem * $cardSizeMultiplier);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    background-image: linear-gradient(to left, $mainOrange, #eb9472);
-    padding: (2rem * $cardSizeMultiplier);
-    pointer-events: none;
-    gap: 3rem;
+  position: absolute;
+  width: (35rem * $cardSizeMultiplier);
+  height: (45rem * $cardSizeMultiplier);
+  border-radius: (2rem * $cardSizeMultiplier);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(to left, $mainOrange, #eb9472);
+  padding: (2rem * $cardSizeMultiplier);
+  pointer-events: none;
+  gap: 3rem;
 }
 
 .photoFrame {
-    position: relative;
-    width: (31rem * $cardSizeMultiplier);
-    height: (31rem * $cardSizeMultiplier);
-    border-radius: (1rem * $cardSizeMultiplier);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: (31rem * $cardSizeMultiplier);
+  height: (31rem * $cardSizeMultiplier);
+  border-radius: (1rem * $cardSizeMultiplier);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .photo {
-    width: 110%;
-    pointer-events: none;
+  width: 110%;
+  pointer-events: none;
 }
 
 .photoCaption {
-    color: $mainWhite;
-    font-size: 2rem;
-    pointer-events: auto;
+  color: $mainWhite;
+  font-size: 2rem;
+  pointer-events: auto;
 }
 
 .photoSectionText {
-    position: relative;
-    width: 40%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-left: 10rem;
-    font-size: 7.5rem;
-    z-index: 2;
-    padding-top: 6rem;
-    padding-bottom: 10rem;
-    flex-direction: column;
-    gap: 10rem;
+  position: relative;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 10rem;
+  font-size: 7.5rem;
+  z-index: 2;
+  padding-top: 6rem;
+  padding-bottom: 10rem;
+  flex-direction: column;
+  gap: 10rem;
 }
 
 .followLinkDiv {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  white-space: nowrap;
 }
 
 .followLinkOuter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: 100rem;
-    margin-top: 2rem;
-    box-shadow: inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 100rem;
+  margin-top: 2rem;
+  box-shadow: inset 1px -1px 5px 0 #0000001a, -1px 1px 3px 0 #0000003a;
 }
 
 .followLinkContainer {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
-    padding-block: 0.5rem;
-    padding-left: 2.5rem;
-    padding-right: 0.5rem;
-    color: $mainOrange;
-    font-size: 2.5rem;
-    cursor: pointer;
-    border-radius: 100rem;
-    background-color: $mainWhite;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.5rem;
+  padding-left: 2.5rem;
+  padding-right: 0.5rem;
+  color: $mainOrange;
+  font-size: 2.5rem;
+  cursor: pointer;
+  border-radius: 100rem;
+  background-color: $mainWhite;
 }
 
 .followLinkArrow {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100rem;
-    box-shadow: inset -1px 1px 5px 0 #0000000a;
-    overflow: hidden;
-    background-image: linear-gradient(to bottom left, $mainOrange, 30%, #eb9472);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100rem;
+  box-shadow: inset -1px 1px 5px 0 #0000000a;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom left, $mainOrange, 30%, #eb9472);
 }
 
 .linkIconSVG {
-    position: absolute;
-    transform: scale(0.5);
-    z-index: 0;
+  position: absolute;
+  transform: scale(0.5);
+  z-index: 0;
 }
 
 .linkArrowSVG {
-    transform: scale(0.5);
-    z-index: 0;
+  transform: scale(0.5);
+  z-index: 0;
 }
 
 .linkArrowPath {
-    fill: $mainWhite;
+  fill: $mainWhite;
 }
 
 // Blank Section
 .blankSection {
-    height: min(50vh, 60rem);
-    pointer-events: none;
+  height: min(50vh, 60rem);
+  pointer-events: none;
 }
 
 // Footer
 footer {
-    position: fixed;
-    bottom: 0;
-    z-index: 0;
-    width: 100vw;
-    height: min(50vh, 60rem);
-    background-image: linear-gradient(to top, $mainOrange, 70%,#eb9472);
-    pointer-events: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+  position: fixed;
+  bottom: 0;
+  z-index: 0;
+  width: 100vw;
+  height: min(50vh, 60rem);
+  background-image: linear-gradient(to top, $mainOrange, 70%, #eb9472);
+  pointer-events: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .footerContent {
-    max-width: 50vw;
-    padding-inline: 10rem;
-    color: $mainWhite;
-    margin-top: 5rem;
+  max-width: 50vw;
+  padding-inline: 10rem;
+  color: $mainWhite;
+  margin-top: 5rem;
 }
 
 .footerTMText {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .footerLegalLinksContainer {
-    margin-block: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 2rem;
+  margin-block: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
 }
 
 .footerLegalLinks {
-    font-size: 1.4rem;
-    text-decoration: underline;
-    color: $mainWhite;
-    cursor: pointer;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  color: $mainWhite;
+  cursor: pointer;
 }
 
 .footerBottomText {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    font-size: 50rem;
-    line-height: 0;
-    font-family: Main;
-    color: $mainWhite;
-    white-space: nowrap;
-    bottom: 5rem;
-    pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 50rem;
+  line-height: 0;
+  font-family: Main;
+  color: $mainWhite;
+  white-space: nowrap;
+  bottom: 5rem;
+  pointer-events: none;
 }
 
 // Commons
 .mainFont {
-    font-family: Main;
-    color: $mainOrange;
-    line-height: 100%;
+  font-family: Main;
+  color: $mainOrange;
+  line-height: 100%;
 }
 
 .mainFontWhite {
-    font-family: Main;
-    color: $mainWhite;
-    line-height: 100%;
+  font-family: Main;
+  color: $mainWhite;
+  line-height: 100%;
 }
 
 .mainFontGrey {
-    font-family: Main;
-    color: $mainGrey;
-    line-height: 100%;
+  font-family: Main;
+  color: $mainGrey;
+  line-height: 100%;
 }
 
 .orangeFont {
-    color: $mainOrange;
+  color: $mainOrange;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 // Text Animations
 .textAnimationClass {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .textAnimationClassNav {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .textAnimationClassContainer {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 // Plug
 .footerPlug {
-    position: relative;
-    width: 20%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    color: $mainWhite;
-    margin-top: 5rem;
-    cursor: pointer;
+  position: relative;
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: $mainWhite;
+  margin-top: 5rem;
+  cursor: pointer;
 }
 
 .footerPlugText {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 #logoSVG {
-    width: 1.8rem;
-    height: 1.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 .logoSVGPath {
-    stroke: $mainWhite;
-    stroke-width: 2px;
+  stroke: $mainWhite;
+  stroke-width: 2px;
 }

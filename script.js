@@ -70,7 +70,7 @@ const main = () => {
   let prevHeight = sizes.height
 
   window.addEventListener("resize", () => {
-    if (window.innerHeight > prevHeight) {
+    if (window.innerHeight >= prevHeight) {
       // Update sizes
       sizes.width = window.innerWidth
       sizes.height = window.innerHeight

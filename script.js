@@ -1,10 +1,13 @@
+/**
+ * Initial Settings
+ */
 // GSAP Settings
 gsap.registerPlugin(ScrollTrigger)
 
 // Clear Scroll Memory
 window.history.scrollRestoration = "manual"
 
-// Lenis
+// Lenis Smooth Scrolling
 const lenis = new Lenis({
   duration: 1.5,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
@@ -39,9 +42,15 @@ const raf = (time) => {
 
 requestAnimationFrame(raf)
 
+/**
+ * Main JS
+ */
 const main = () => {
+  /**
+   * 3D Setup
+   */
+  // ----------------------------------------------------------------
   // Canvas
-  // Change '.webgl' with a canvas querySelector
   const canvas = document.querySelector(".webgl")
 
   // Scene
@@ -49,7 +58,6 @@ const main = () => {
 
   // Lighting
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
-
   const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4)
 
   // Sizes
@@ -69,6 +77,7 @@ const main = () => {
 
   let prevHeight = sizes.height
 
+  // Resize
   window.addEventListener("resize", () => {
     if (window.innerHeight >= prevHeight) {
       // Update sizes
@@ -101,7 +110,7 @@ const main = () => {
     "./textures/environmentMaps/1/nz.jpg",
   ])
 
-  // GLTF Loader
+  // GLTF Loader (3D Logo)
   const logo3D = new THREE.Group()
   const rLogo3D = new THREE.Group()
   const logoScale = 0.05
@@ -124,8 +133,11 @@ const main = () => {
   logo3D.position.set(0, (cameraMaxY * 4.5) / 12, 0)
   scene.add(logo3D)
 
-  // 3D Objects
+  /**
+   * 3D Objects
+   */
   // ----------------------------------------------------------------
+  // Temp Boxes
   const scale = 1.5
 
   const boxM = new THREE.MeshStandardMaterial({
@@ -172,6 +184,7 @@ const main = () => {
   blobUp.add(blob)
   scene.add(blobUp)
 
+  // Responsive Variable Positions
   const yValues = {
     box1: 0,
     box2: 0,
@@ -179,6 +192,7 @@ const main = () => {
     box2set: 0,
   }
 
+  // Change values based on width
   if (sizes.width > 900) {
     yValues.box1 = 0
     yValues.box2 = 1
@@ -202,6 +216,7 @@ const main = () => {
   gsap.to(blob.scale, { duration: 0, x: 1.5, z: 1.5 })
   gsap.to(blob.rotation, { duration: 0, y: Math.PI / 20 })
 
+  // Update Blobs
   const updateCubes = (object, time, numblobs) => {
     object.reset()
 
@@ -222,7 +237,9 @@ const main = () => {
 
       if (i != 0) {
         object.addBall(ballx, bally, ballz, strength, subtract)
-      } else {
+      }
+      // Blob Pointer Follower
+      else {
         object.addBall(
           0.5 + mouse.x / 2,
           bally,
@@ -320,6 +337,9 @@ const main = () => {
     logo3D.scale.set(1.5, 1.5, 1.5)
   }
 
+  /**
+   * Renderer Setup
+   */
   // ----------------------------------------------------------------
 
   // Base camera
@@ -349,8 +369,10 @@ const main = () => {
   renderer.shadowMap.enabled = false
   renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
-  // Events
-  // --------------------------------------
+  /**
+   * Events
+   */
+  // ----------------------------------------------------------------
 
   // Nav Startup
   let navWidth = document.querySelector("nav").clientWidth
@@ -358,10 +380,11 @@ const main = () => {
   let navNameWidth = document.querySelector(".navName").clientWidth
   gsap.to("nav", { duration: 0, width: 0, ease: "none" })
 
-  // Nav Click
+  // Nav Click Events
   let isNavOut = false
   const navAnimationDuration = 0.5
 
+  // Logo Bar Initial Values
   const logoBarValues = [
     { width: "1em", x: "0.45em", y: "2em" },
     { width: "1.5em", x: "0em", y: "1.4em" },
@@ -384,6 +407,7 @@ const main = () => {
     ease: "Power1.easeOut",
   })
 
+  // Nav Toggle Function
   const navToggle = () => {
     if (isModalOut == false) {
       if (isNavOut == false) {
@@ -424,10 +448,11 @@ const main = () => {
     }
   }
 
+  // Nav Click Event Listeners
   document.querySelector(".navLogo").addEventListener("click", navToggle)
   document.querySelector(".navName").addEventListener("click", navToggle)
 
-  // Nav Hover
+  // Nav Hover Events
   const navHoverAnimationDuration = 0.3
 
   for (let i = 0; i < logoBars.length; i++) {
@@ -447,6 +472,7 @@ const main = () => {
     })
   }
 
+  // Nav Hover Function
   const navHoverOn = () => {
     if (isModalOut == false) {
       for (let i = 0; i < logoBars.length; i++) {
@@ -464,6 +490,7 @@ const main = () => {
     }
   }
 
+  // Nav Leave Function
   const navHoverOff = () => {
     if (isModalOut == false) {
       for (let i = 0; i < logoBars.length; i++) {
@@ -478,8 +505,11 @@ const main = () => {
     }
   }
 
+  // Nav Enter Listeners
   document.querySelector(".navLogo").addEventListener("mouseenter", navHoverOn)
   document.querySelector(".navName").addEventListener("mouseenter", navHoverOn)
+
+  // Nav Leave Listeners
   document.querySelector(".navLogo").addEventListener("mouseleave", navHoverOff)
   document
     .querySelector(".navToggle")
@@ -494,8 +524,10 @@ const main = () => {
   navLetters[2] = document.querySelectorAll(".navChoiceLetter3")
   navLetters[3] = document.querySelectorAll(".navChoiceLetter4")
 
+  // Nav Animation Delay
   const navTextAnimationDelay = 0.03
 
+  // Nav Scroll Destinations
   const scrollDestinations = [
     document.querySelector(".productSection").getBoundingClientRect().top -
       (sizes.height - document.querySelector(".productSection").clientHeight) /
@@ -509,12 +541,14 @@ const main = () => {
       document.querySelector(".bottomBorderSection").clientHeight,
   ]
 
+  // Nav Click Index
   let navClickedIndex = 5
   let isNavClicked = false
 
   for (let i = 0; i < navChoices.length; i++) {
     gsap.to(navDots[i], { duration: 0, scale: 0 })
 
+    // Nav Choice Enter Listener
     navChoices[i].addEventListener("pointerenter", () => {
       gsap.to(navDots[i], { duration: 0.1, scale: 1 })
 
@@ -528,6 +562,7 @@ const main = () => {
       }
     })
 
+    // Nav Choice Leave Listener
     navChoices[i].addEventListener("pointerleave", () => {
       if (navClickedIndex != i) {
         gsap.to(navChoices[i], { duration: 0.1, fontStyle: "normal", y: 0 })
@@ -544,6 +579,7 @@ const main = () => {
       }
     })
 
+    // Nav Choice Click Listener
     navChoices[i].addEventListener("click", () => {
       if (i != navClickedIndex && isNavClicked == false) {
         isNavClicked = true
@@ -560,6 +596,7 @@ const main = () => {
     })
   }
 
+  // Change Nav Choice Function
   const changeNavChoice = (i) => {
     navClickedIndex = i
     for (let j = 0; j < navChoices.length; j++) {
@@ -591,6 +628,7 @@ const main = () => {
   let scrollY = 0
   let scrollOnVersus = true
 
+  // Change Nav Choice by Scrolling
   document.addEventListener("scroll", () => {
     scrollY = window.pageYOffset
 
@@ -631,10 +669,12 @@ const main = () => {
       gsap.to(versusPointBodys[i], { duration: 0, x: -20, opacity: 0 })
     }
 
+    // Versus Point Click Listener
     versusPointButtons[i].addEventListener("click", () => {
       clickVersusPoint(i)
     })
 
+    // Versus Point Enter Listener
     versusPointButtons[i].addEventListener("pointerenter", () => {
       if (versusBodyStates[i] == 0) {
         gsap.to(versusPointOuters[i], {
@@ -645,6 +685,7 @@ const main = () => {
       }
     })
 
+    // Versus Point Leave Listener
     versusPointButtons[i].addEventListener("pointerleave", () => {
       if (versusBodyStates[i] == 0) {
         gsap.to(versusPointOuters[i], {
@@ -656,7 +697,9 @@ const main = () => {
     })
   }
 
+  // Click Versus Point Function
   const clickVersusPoint = (i) => {
+    // Choice
     if (versusBodyStates[i] == 0) {
       versusBodyStates[i] = 1
 
@@ -665,6 +708,7 @@ const main = () => {
         width: "9rem",
         height: "9rem",
       })
+
       gsap.to(versusPointOuters[i], {
         duration: 0.3,
         delay: 0.2,
@@ -678,18 +722,17 @@ const main = () => {
         { rotateZ: "0deg" },
         { duration: 0.2, rotateZ: "45deg", scale: 0.85 }
       )
+
       gsap.fromTo(
         versusPointButtons[i],
         { scale: 0.9 },
         { duration: 0.1, delay: 0.2, scale: 0.95 }
       )
 
-      if (i == 1) {
-        gsap.to(versusPointBodys[i], { duration: 0.5, x: 0, opacity: 1 })
-      } else {
-        gsap.to(versusPointBodys[i], { duration: 0.5, x: 0, opacity: 1 })
-      }
-    } else {
+      gsap.to(versusPointBodys[i], { duration: 0.5, x: 0, opacity: 1 })
+    }
+    // Others
+    else {
       versusBodyStates[i] = 0
 
       gsap.to(versusPointOuters[i], {
@@ -718,6 +761,7 @@ const main = () => {
     }
   }
 
+  // Initial Versus Point Scroll Trigger Animation
   let isVersusInitialized = false
   const startVersusPoint = () => {
     if (isVersusInitialized == false) {
@@ -726,6 +770,7 @@ const main = () => {
     }
   }
 
+  // Initial Versus Point Scroll Trigger
   ScrollTrigger.create({
     trigger: ".versusSection",
     start: () =>
@@ -759,6 +804,7 @@ const main = () => {
     cardIndexArray[i] = i
   }
 
+  // Photo Card Down Listener
   document
     .querySelector(".photoCardSection")
     .addEventListener("pointerdown", () => {
@@ -768,6 +814,7 @@ const main = () => {
       prevY = mouse.y
     })
 
+  // Photo Card Up Listener
   document
     .querySelector(".photoCardSection")
     .addEventListener("pointerup", () => {
@@ -777,6 +824,7 @@ const main = () => {
       prevY = mouse.y
     })
 
+  // Photo Card Leave Listener
   document
     .querySelector(".photoCardSection")
     .addEventListener("pointerleave", () => {
@@ -794,6 +842,7 @@ const main = () => {
   for (let i = 0; i < followLinkOuters.length; i++) {
     gsap.to(linkIconSVGs[i], { duration: 0, x: -30, y: 30 })
 
+    // Follow Link Enter Listener
     followLinkOuters[i].addEventListener("pointerenter", () => {
       gsap.to(linkArrowSVGs[i], { duration: 0.2, x: 30, y: -30 })
       gsap.to(linkIconSVGs[i], { duration: 0.2, x: 0, y: 0 })
@@ -805,6 +854,7 @@ const main = () => {
       })
     })
 
+    // Follow Link Leave Listener
     followLinkOuters[i].addEventListener("pointerleave", () => {
       gsap.to(linkArrowSVGs[i], { duration: 0.2, x: 0, y: 0 })
       gsap.to(linkIconSVGs[i], { duration: 0.2, x: -30, y: 30 })
@@ -817,7 +867,7 @@ const main = () => {
     })
   }
 
-  // Mouse
+  // Mouse Setup
   const pointer = new THREE.Vector3()
   const point = new THREE.Vector3()
 
@@ -830,7 +880,9 @@ const main = () => {
   let prevY = 0
   let deltaXY = 0
 
+  // Mouse Event Listeners Function
   const pointerMoveEvents = () => {
+    // Not Mobile
     if (window.innerWidth > 900) {
       // Pointer Events
       document.addEventListener("pointermove", (e) => {
@@ -845,9 +897,6 @@ const main = () => {
         })
 
         if (isModalOut == true) {
-          // Modal Close
-          // gsap.to('.modalClose', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/sizes.height})
-
           // Modal Flowers
           gsap.to("#modalContentPhotoLavender", {
             duration: 0,
@@ -873,9 +922,6 @@ const main = () => {
             y: (-mouse.y * 5 * window.innerWidth) / sizes.height,
             rotateZ: -mouse.x * 5 + 225,
           })
-
-          // Charts
-          // gsap.to('.modalContentChartsCenter', {duration: 0, rotateY: -mouse.x * 20, rotateX: -mouse.y * 20, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/sizes.height})
         } else {
           if (scrollY < scrollDestinations[1]) {
             // Product Choice
@@ -901,11 +947,9 @@ const main = () => {
                 rotateY: mouse.x * 10,
                 rotateX: mouse.y * 4,
               })
-            } else {
-              // Blob
-              // gsap.to(blob.rotation, {duration: 1, z: mouse.x * 0.25, x: mouse.y * 0.25 + Math.PI/2})
             }
-            // Logo
+
+            // 3D Logo
             gsap.to(rLogo3D.rotation, {
               duration: 2,
               y: (mouse.x * Math.PI) / 6,
@@ -913,13 +957,11 @@ const main = () => {
             })
 
             // Versus
-            // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/sizes.height})
             gsap.to(".versusImage", {
               duration: 1,
               x: -mouse.x * 10,
               y: (mouse.y * 10 * window.innerWidth) / sizes.height,
             })
-            // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/sizes.height})
 
             // 3D --------------
             if (scrollOnVersus == true) {
@@ -1029,7 +1071,9 @@ const main = () => {
           }
         }
       })
-    } else {
+    }
+    // Mobile Changes
+    else {
       // Pointer Events - Mobile
       document.addEventListener("touchmove", (e) => {
         mouse.x = e.touches[0].clientX / window.innerWidth - 0.5
@@ -1099,9 +1143,6 @@ const main = () => {
         })
 
         if (isModalOut == true) {
-          // Modal Close
-          // gsap.to('.modalClose', {duration: 0, x: mouse.x * 5, y: -mouse.y *  5 * window.innerWidth/sizes.height})
-
           // Modal Flowers
           gsap.to("#modalContentPhotoLavender", {
             duration: 0,
@@ -1127,9 +1168,6 @@ const main = () => {
             y: (-mouse.y * 5 * window.innerWidth) / sizes.height,
             rotateZ: -mouse.x * 5 + 225,
           })
-
-          // Charts
-          // gsap.to('.modalContentChartsCenter', {duration: 0, rotateY: -mouse.x * 20, rotateX: -mouse.y * 20, x: -mouse.x * 5, y: mouse.y * 5 * window.innerWidth/sizes.height})
         } else {
           if (scrollY < scrollDestinations[1]) {
             // Product Choice
@@ -1155,24 +1193,21 @@ const main = () => {
                 rotateY: mouse.x * 10,
                 rotateX: mouse.y * 4,
               })
-            } else {
-              // Blob
-              // gsap.to(blob.rotation, {duration: 1, z: mouse.x * 0.25, x: mouse.y * 0.25 + Math.PI/2})
             }
-            // Logo
+
+            // 3D Logo
             gsap.to(rLogo3D.rotation, {
               duration: 2,
               y: (mouse.x * Math.PI) / 6,
               x: (-mouse.y * Math.PI) / 6,
             })
 
-            // gsap.to('.versusPointButton', {duration: 1, x: -mouse.x * 10, y: mouse.y * 10 * window.innerWidth/sizes.height})
+            // Versus
             gsap.to(".versusImage", {
               duration: 1,
               x: -mouse.x * 10,
               y: (mouse.y * 10 * window.innerWidth) / sizes.height,
             })
-            // gsap.to('.versusImageParallaxDiv', {duration: 1, x: mouse.x * 10, y: -mouse.y * 10 * window.innerWidth/sizes.height})
           }
 
           // Photo
@@ -1224,9 +1259,11 @@ const main = () => {
 
   pointerMoveEvents()
 
+  // Swipe Card Function
   const swipeCard = (dt) => {
     for (let i = 0; i < cards.length; i++) {
       let swipeIndex = cardIndexArray[i] - 1
+      // Card In Front
       if (swipeIndex < 0) {
         gsap.to(cards[i], {
           duration: dt,
@@ -1255,6 +1292,7 @@ const main = () => {
         cardIndexArray[i] = cards.length
         swipeIndex = cardIndexArray[i] - 1
       }
+      // All Cards
       gsap.to(cards[i], {
         duration: dt,
         delay: cardIndexArray[i] * dt * 0.5,
@@ -1267,6 +1305,7 @@ const main = () => {
         z: -100 * swipeIndex,
         ease: "back",
       })
+      // Last Card
       if (cardIndexArray[i] == cards.length) {
         gsap.to(cards[i], {
           duration: dt,
@@ -1287,10 +1326,11 @@ const main = () => {
 
   swipeCard(0)
 
-  // Purchase Events
+  // Purchase Link Events
   const purchaseLinkButtons = document.querySelectorAll(".purchaseLinkButton")
 
   for (let i = 0; i < purchaseLinkButtons.length; i++) {
+    // Purchase Link Enter Events
     purchaseLinkButtons[i].addEventListener("pointerenter", () => {
       gsap.to(purchaseLinkButtons[i], {
         duration: 0.2,
@@ -1300,6 +1340,7 @@ const main = () => {
       })
     })
 
+    // Purchase Link Leave Events
     purchaseLinkButtons[i].addEventListener("pointerleave", () => {
       gsap.to(purchaseLinkButtons[i], {
         duration: 0.2,
@@ -1316,6 +1357,7 @@ const main = () => {
   const cursorChoices = document.querySelectorAll(".cursorChoice")
 
   for (let i = 0; i < cursorChoices.length; i++) {
+    // Cursor Follower Enter Listener
     cursorChoices[i].addEventListener("pointerenter", () => {
       gsap.to(".cursorFollower", {
         duration: 0.25,
@@ -1353,6 +1395,7 @@ const main = () => {
       }
     })
 
+    // Cursor Follower Leave Listener
     cursorChoices[i].addEventListener("pointerleave", () => {
       gsap.to(".cursorFollower", {
         duration: 0.25,
@@ -1364,6 +1407,7 @@ const main = () => {
     })
   }
 
+  // Cursor Text Changes (Flowers)
   const cursorTexts = document.querySelectorAll(".cursorText")
   gsap.to(".cursorText", { duration: 0, opacity: 0, scale: 0 })
 
@@ -1373,6 +1417,7 @@ const main = () => {
   gsap.to(".modalContentPlantPhoto", { duration: 0, filter: "brightness(1)" })
 
   for (let i = 0; i < modalContentPlantPhotos.length; i++) {
+    // Flower Enter Listener
     modalContentPlantPhotos[i].addEventListener("pointerenter", () => {
       gsap.to(modalContentPlantPhotos[i], {
         duration: 0.25,
@@ -1394,6 +1439,7 @@ const main = () => {
       }
     })
 
+    // Flower Leave Listener
     modalContentPlantPhotos[i].addEventListener("pointerleave", () => {
       gsap.to(".modalContentPlantPhoto", {
         duration: 0.25,
@@ -1407,7 +1453,7 @@ const main = () => {
     })
   }
 
-  // Product Choice Events - Modal
+  // Product Choice Events (Modal Animations)
   const productChoices = document.querySelectorAll(".productChoice")
   const modalContents = document.querySelectorAll(".modalContent")
   const productImages = document.querySelectorAll(".productImage")
@@ -1416,12 +1462,14 @@ const main = () => {
   let affectedChartsState = [0, 0, 0, 0, 0]
 
   for (let i = 0; i < productChoices.length; i++) {
+    // Product Choice Enter Listener
     productChoices[i].addEventListener("pointerenter", () => {
       gsap.to(productChoices[i], { duration: 0.2, scale: 1.01 })
       gsap.to(productImages[i], { duration: 0.2, scale: 1.05 })
       productEnterValue = i
     })
 
+    // Product Choice Leave Listener
     productChoices[i].addEventListener("pointerleave", () => {
       gsap.to(productChoices[i], { duration: 0.2, scale: 1 })
       gsap.to(productImages[i], { duration: 0.2, scale: 1 })
@@ -1433,10 +1481,12 @@ const main = () => {
       gsap.to(productImages[1], { duration: 0, rotateY: 0, rotateX: 0 })
     })
 
+    // Product Choice Click Listner
     productChoices[i].addEventListener("click", () => {
       if (isModalOut == false) {
         isModalOut = true
 
+        // Only toggle which charts to animate
         if (i == 0) {
           affectedChartsState = [1, 1, 1, 0, 0]
         } else {
@@ -1492,21 +1542,24 @@ const main = () => {
     })
   }
 
-  // Modal Close
+  // Modal Close Events
   let isModalCloseClicked = false
 
+  // Modal Close Enter Listener
   document.querySelector(".modalClose").addEventListener("pointerenter", () => {
     if (isModalOut == true) {
       gsap.to(".modalClose", { duration: 0.125, scale: 1.05 })
     }
   })
 
+  // Modal Close Leave Listener
   document.querySelector(".modalClose").addEventListener("pointerleave", () => {
     if (isModalOut == true && isModalCloseClicked == false) {
       gsap.to(".modalClose", { duration: 0.125, scale: 1 })
     }
   })
 
+  // Modal Close Click Listener
   document.querySelector(".modalClose").addEventListener("click", () => {
     if (isModalOut == true) {
       setTimeout(() => {
@@ -1541,7 +1594,7 @@ const main = () => {
     }
   })
 
-  // Modal Charts
+  // Modal Charts Events
   const modalChartsContainers = document.querySelectorAll(
     ".modalContentChartsContainer"
   )
@@ -1552,6 +1605,7 @@ const main = () => {
   const modalChartPopupStates = [0, 0, 0, 0, 0]
   const modalChartPercentages = [92, 100, 93, 92, 86]
 
+  // Modal Chart Count Up Function
   const countUp = (p, i) => {
     if (p < modalChartPercentages[i]) {
       if (p < modalChartPercentages[i] - 5) {
@@ -1566,6 +1620,7 @@ const main = () => {
     }
   }
 
+  // Modal Chart Fill Function
   const fillModalChart = (i) => {
     const p = modalChartPercentages[i]
     gsap.fromTo(
@@ -1581,6 +1636,7 @@ const main = () => {
     countUp(0, i)
   }
 
+  // Modal Chart Reset Function
   const resetModalChart = () => {
     for (let i = 0; i < modalCharts.length; i++) {
       gsap.to(modalCharts[i], {
@@ -1596,6 +1652,7 @@ const main = () => {
   const textAnimationDivs = []
   let textAnimationIndex = 0
 
+  // Text Setup Function
   const textSetup = (e, dir) => {
     const string = e.innerText
     e.innerText = ""
@@ -1625,6 +1682,7 @@ const main = () => {
     textAnimationIndex++
   }
 
+  // Initial Text Setups for Affected Texts
   textSetup(document.querySelector("#heroHeaderText1"), "upHero")
   textSetup(document.querySelector("#heroHeaderText2"), "upHero")
   textSetup(document.querySelector("#heroHeaderText3"), "upHero")
@@ -1634,6 +1692,7 @@ const main = () => {
   textSetup(document.querySelector("#purchaseTextLine3"), "up")
   textSetup(document.querySelector("#purchaseTextLine4"), "up")
 
+  // Animate Text Function
   const animateText = (e, td, dir) => {
     const spans = textAnimationDivs[e]
     for (let i = 0; i < spans.length; i++) {
@@ -1645,7 +1704,6 @@ const main = () => {
           opacity: 1,
           scaleY: 1,
         })
-        // gsap.to(spans[i], {duration: 0.25, delay: i * td + 1, textShadow: '5px 0px 0px #878787'})
       } else if (dir == "upHero1") {
         gsap.to(spans[i], {
           duration: 1,
@@ -1703,6 +1761,7 @@ const main = () => {
   gsap.to(".scrollCTAText1", { duration: 0, opacity: 0 })
   gsap.to(".scrollCTAText2", { duration: 0, opacity: 0 })
 
+  // Startup Animations Function
   const startupAnimations = () => {
     // Scroll
     gsap.to(".scrollCTACircle", { duration: 4.25, y: "0rem" })
@@ -1777,6 +1836,7 @@ const main = () => {
     gsap.to(purchaseTextGreys[i], { duration: 0, opacity: 0 })
   }
 
+  // Purchase Text Animations Function
   const purchaseTextAnimations = () => {
     for (let i = 0; i < purchaseTextGreys.length; i++) {
       gsap.to(purchaseTextGreys[i], {
@@ -1819,6 +1879,7 @@ const main = () => {
       pointerEvents: "auto",
     })
 
+    // Purchase Text Animation Sequence
     animateText(3, 0.05, "up")
     setTimeout(() => {
       animateText(4, 0.05, "up")
@@ -1831,6 +1892,7 @@ const main = () => {
     }, 37 * 0.05 * 1000)
   }
 
+  // Purchase Text Animation Scroll Trigger
   ScrollTrigger.create({
     trigger: ".purchaseSection",
     start: () =>
@@ -1839,8 +1901,10 @@ const main = () => {
     onEnter: purchaseTextAnimations,
   })
 
-  // Animate
-  // --------------------------------------
+  /**
+   * Animate
+   */
+  // ----------------------------------------------------------------
   let elapsedTime,
     blobTime = 0
 
@@ -1860,15 +1924,10 @@ const main = () => {
     blobTime = elapsedTime * 0.2 + 45
   }
 
-  // tick()
-
   // ###########################################################
-  // ###########################################################
-  // ###########################################################
-
-  // Orbit Canvas
-  // ###########################################################
-  // ###########################################################
+  /**
+   * Orbit Canvas
+   */
   // ###########################################################
 
   const orbitCanvasJS = () => {
@@ -1895,6 +1954,7 @@ const main = () => {
 
     let prevWidth = sizes.width
 
+    // Resize
     window.addEventListener("resize", () => {
       if (window.innerWidth != prevWidth) {
         prevWidth = window.innerWidth
@@ -1914,7 +1974,9 @@ const main = () => {
       }
     })
 
-    // 3D Objects
+    /**
+     * 3D Objects
+     */
     // ----------------------------------------------------------------
     const scale = 1.5
 
@@ -1936,6 +1998,9 @@ const main = () => {
     scene.add(box2)
     box2.rotation.set(Math.PI / 24, Math.PI / 6, Math.PI / 12)
 
+    /**
+     * Renderer
+     */
     // ----------------------------------------------------------------
 
     // Base camera
@@ -1967,11 +2032,13 @@ const main = () => {
     renderer.shadowMap.enabled = false
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
-    // Product Choice Events - Modal
+    // Product Choice Events (Modal Animations)
     const productChoices = document.querySelectorAll(".productChoice")
 
     for (let i = 0; i < productChoices.length; i++) {
+      // Product Choice Click Listener
       productChoices[i].addEventListener("click", () => {
+        // Set which Box is displayed on the orbit canvas
         if (i == 0) {
           scene.remove(box2)
           scene.add(box1)
@@ -1984,9 +2051,10 @@ const main = () => {
 
     const dy = []
 
-    // Animate
-    // --------------------------------------
-
+    /**
+     * Animate
+     */
+    // ----------------------------------------------------------------
     const tick2 = () => {
       // Render
       if (isModalOut == true) {
@@ -2008,20 +2076,20 @@ const main = () => {
       controls.update()
     }
 
-    // tick2()
+    // Main Tick Function
     const tickMain = () => {
       elapsedTime = clock.getElapsedTime()
 
-      // Call tick again on the next frame
-      // setTimeout(() => {
+      // If Modal is Out, tick2
       if (isModalOut == true) {
         tick2()
-      } else {
+      }
+      // Else, tick
+      else {
         tick()
       }
 
       window.requestAnimationFrame(tickMain)
-      // }, 1000 / 60)
     }
 
     tickMain()
@@ -2029,10 +2097,11 @@ const main = () => {
 
   orbitCanvasJS()
 
+  /**
+   * ScrollTriggers
+   */
+  // ----------------------------------------------------------------
   const scrollTriggerJS = () => {
-    // ScrollTriggers
-    // -------------------------------------------------
-
     // Camera
     gsap.fromTo(
       camera.position,
@@ -2740,6 +2809,7 @@ const main = () => {
   }
 
   scrollTriggerJS()
+
   setTimeout(() => {
     startupAnimations()
   }, 750)
@@ -2747,7 +2817,9 @@ const main = () => {
 
 // ###########################################################
 
-// Load
+/**
+ * Load
+ */
 window.addEventListener("load", () => {
   gsap.to(".loadingPage", { duration: 1, delay: 1, opacity: 0 })
   main()

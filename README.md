@@ -1,9 +1,4 @@
-# Folder Title
-Project Description
+# Bio-Oil Philippines Test Site
 
-To Add Before Production:
--
-
-Notes:
-- CDNs were used to run GSAP and Three.js to minimize file size
-- Custom CSS classes were made instead of Bootstrap classes
+A Test Site to Showcase Bio-Oil Philippines Products.
+Made with HTML, CSS, Vanilla JS, Three.js, GSAP, Lenis

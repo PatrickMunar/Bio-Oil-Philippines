@@ -2,7 +2,7 @@
 
 - A Test Site to Showcase Bio-Oil Philippines Products.
 - Made with:
-| HTML
+HTML
 | CSS
 | Vanilla JS
 | Three.js

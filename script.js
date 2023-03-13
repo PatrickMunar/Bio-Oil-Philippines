@@ -376,7 +376,7 @@ const main = () => {
 
   // Nav Startup
   let navWidth = document.querySelector("nav").clientWidth
-  let navHeight = document.querySelector("nav").clientHeight
+  let navHeight = document.querySelector(".navToggle").clientHeight
   let navNameWidth = document.querySelector(".navName").clientWidth
   gsap.to("nav", { duration: 0, width: 0, ease: "none" })
 
@@ -414,7 +414,7 @@ const main = () => {
         isNavOut = true
         gsap.to(".navToggle", {
           duration: navAnimationDuration,
-          height: navHeight + 6,
+          height: navHeight,
           ease: "Power1.easeOut",
         })
         gsap.to("nav", {

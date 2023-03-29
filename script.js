@@ -58,7 +58,7 @@ const main = () => {
 
   // Lighting
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4)
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
 
   // Sizes
   const sizes = {
@@ -99,6 +99,8 @@ const main = () => {
   // Texture Loader
   const textureLoader = new THREE.TextureLoader()
   const versusTexture = textureLoader.load("./textures/Power.png")
+  const box1Texture = textureLoader.load("./textures/box1Texture.png")
+  const box2Texture = textureLoader.load("./textures/box2Texture.png")
 
   const cubeTextureLoader = new THREE.CubeTextureLoader()
   const envMapTexture = cubeTextureLoader.load([
@@ -122,8 +124,6 @@ const main = () => {
 
     obj.scene.children[0].material = new THREE.MeshStandardMaterial({
       color: new THREE.Color(0xffffff),
-      emissive: new THREE.Color(0xeb5f28),
-      emissiveIntensity: 0.1,
       envMap: envMapTexture,
       roughness: 0.1,
       metalness: 0.1,
@@ -133,6 +133,34 @@ const main = () => {
   logo3D.position.set(0, (cameraMaxY * 4.5) / 12, 0)
   scene.add(logo3D)
 
+  const box1 = new THREE.Group()
+  const box2 = new THREE.Group()
+  const boxScale = 0.0275
+
+  gltfLoader.load("./glb/Box1.glb", (obj) => {
+    box1.add(obj.scene)
+    obj.scene.scale.set(boxScale, boxScale, boxScale)
+
+    obj.scene.children[0].material.color = new THREE.Color(0xffffff)
+    obj.scene.children[0].material.envMap = envMapTexture
+    obj.scene.children[0].material.roughness = 0.1
+    obj.scene.children[0].material.map = box1Texture
+    obj.scene.children[0].material.map.minFilter = THREE.LinearFilter
+    obj.scene.children[0].material.map.magFilter = THREE.LinearFilter
+  })
+
+  gltfLoader.load("./glb/Box2.glb", (obj) => {
+    box2.add(obj.scene)
+    obj.scene.scale.set(boxScale, boxScale, boxScale)
+
+    obj.scene.children[0].material.color = new THREE.Color(0xffffff)
+    obj.scene.children[0].material.envMap = envMapTexture
+    obj.scene.children[0].material.roughness = 0.1
+    obj.scene.children[0].material.map = box2Texture
+    obj.scene.children[0].material.map.minFilter = THREE.LinearFilter
+    obj.scene.children[0].material.map.magFilter = THREE.LinearFilter
+  })
+
   /**
    * 3D Objects
    */
@@ -141,20 +169,28 @@ const main = () => {
   const scale = 1.5
 
   const boxM = new THREE.MeshStandardMaterial({
-    color: new THREE.Color(0xfdfdfd),
-    emissive: new THREE.Color(0xeb5f28),
-    emissiveIntensity: 0.1,
+    color: new THREE.Color(0xffffff),
     envMap: envMapTexture,
     roughness: 0.1,
   })
 
-  const box1 = new THREE.Mesh(new THREE.BoxGeometry(1, 2, 1), boxM)
-  box1.scale.set(scale, scale, scale)
-  scene.add(box1)
-  box1.rotation.set(-Math.PI / 24, -Math.PI / 6, -Math.PI / 12)
+  const box1M = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(0xffffff),
+    envMap: envMapTexture,
+    roughness: 0.1,
+    map: box1Texture,
+  })
 
-  const box2 = new THREE.Mesh(new THREE.BoxGeometry(1, 2, 1), boxM)
-  box2.scale.set(scale, scale, scale)
+  const box2M = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(0xffffff),
+    envMap: envMapTexture,
+    roughness: 0.1,
+    map: box2Texture,
+  })
+
+  scene.add(box1)
+  box1.rotation.set(-Math.PI / 12, -Math.PI / 6, -Math.PI / 12)
+
   scene.add(box2)
   box2.rotation.set(Math.PI / 24, Math.PI / 12, Math.PI / 12)
 
@@ -195,11 +231,11 @@ const main = () => {
   // Change values based on width
   if (sizes.width > 900) {
     yValues.box1 = 0
-    yValues.box2 = 1
+    yValues.box2 = 0
     yValues.box1set = -7
     yValues.box2set = -6
     box1.position.set(0.75, 0, 1)
-    box2.position.set(4, 1, 0)
+    box2.position.set(3.5, 0.5, 0.5)
     blobUp.position.set(-2, 0, 2)
     blobUp.scale.set(1, 1, 1)
   } else {
@@ -353,7 +389,7 @@ const main = () => {
   scene.add(camera)
   camera.add(ambientLight)
   camera.add(directionalLight)
-  directionalLight.position.set(10, 10, 10)
+  directionalLight.position.set(0, 0, 10)
 
   // Controls
   // const controls = new THREE.OrbitControls(camera, canvas)
@@ -923,6 +959,9 @@ const main = () => {
             rotateZ: -mouse.x * 5 + 225,
           })
         } else {
+          // Camera Movement
+          gsap.to(camera.position, { duration: 1, x: -mouse.x * 0.1 })
+
           if (scrollY < scrollDestinations[1]) {
             // Product Choice
             if (productEnterValue == 0) {
@@ -1752,9 +1791,15 @@ const main = () => {
   }
 
   // Startup Animations
-  gsap.to(box1.rotation, { duration: 0, y: -Math.PI / 6 + Math.PI })
+  gsap.to(box1.rotation, {
+    duration: 0,
+    y: -Math.PI / 6 - Math.PI / 2 + Math.PI * 2,
+  })
   gsap.to(box1.position, { duration: 0, y: yValues.box1set })
-  gsap.to(box2.rotation, { duration: 0, y: Math.PI / 12 + Math.PI })
+  gsap.to(box2.rotation, {
+    duration: 0,
+    y: Math.PI / 12 - Math.PI,
+  })
   gsap.to(box2.position, { duration: 0, y: yValues.box2set })
   gsap.to(".heroSubHeaderText", { duration: 0, opacity: 0 })
   gsap.to(".scrollCTACircle", { duration: 0, y: "-24rem" })
@@ -1789,7 +1834,7 @@ const main = () => {
     // Boxes
     gsap.to(box1.rotation, {
       duration: 1.5,
-      y: -Math.PI / 6,
+      y: -Math.PI / 6 - Math.PI / 2,
       ease: "Power3.easeOut",
     })
     gsap.to(box1.position, {
@@ -1800,7 +1845,7 @@ const main = () => {
     gsap.to(box2.rotation, {
       duration: 1.5,
       delay: 0.35,
-      y: Math.PI / 12,
+      y: Math.PI / 12 + Math.PI,
       ease: "Power3.easeOut",
     })
     gsap.to(box2.position, {
@@ -1940,11 +1985,7 @@ const main = () => {
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
-    scene.add(ambientLight)
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4)
-    scene.add(directionalLight)
-    directionalLight.position.set(0, 10, 10)
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
 
     // Sizes
     const sizes = {
@@ -1978,23 +2019,37 @@ const main = () => {
      * 3D Objects
      */
     // ----------------------------------------------------------------
-    const scale = 1.5
+    const box1 = new THREE.Group()
+    const box2 = new THREE.Group()
+    const boxScale = 0.0275
 
-    const boxM = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(0xfdfdfd),
-      emissive: new THREE.Color(0xeb5f28),
-      emissiveIntensity: 0.1,
-      envMap: envMapTexture,
-      roughness: 0.1,
+    gltfLoader.load("./glb/Box1.glb", (obj) => {
+      box1.add(obj.scene)
+      obj.scene.scale.set(boxScale, boxScale, boxScale)
+
+      obj.scene.children[0].material.color = new THREE.Color(0xffffff)
+      obj.scene.children[0].material.envMap = envMapTexture
+      obj.scene.children[0].material.roughness = 0.1
+      obj.scene.children[0].material.map = box1Texture
+      obj.scene.children[0].material.map.minFilter = THREE.LinearFilter
+      obj.scene.children[0].material.map.magFilter = THREE.LinearFilter
     })
 
-    const box1 = new THREE.Mesh(new THREE.BoxGeometry(1, 2, 1), boxM)
-    box1.scale.set(scale, scale, scale)
+    gltfLoader.load("./glb/Box2.glb", (obj) => {
+      box2.add(obj.scene)
+      obj.scene.scale.set(boxScale, boxScale, boxScale)
+
+      obj.scene.children[0].material.color = new THREE.Color(0xffffff)
+      obj.scene.children[0].material.envMap = envMapTexture
+      obj.scene.children[0].material.roughness = 0.1
+      obj.scene.children[0].material.map = box2Texture
+      obj.scene.children[0].material.map.minFilter = THREE.LinearFilter
+      obj.scene.children[0].material.map.magFilter = THREE.LinearFilter
+    })
+
     scene.add(box1)
     box1.rotation.set(-Math.PI / 24, -Math.PI / 6, -Math.PI / 12)
 
-    const box2 = new THREE.Mesh(new THREE.BoxGeometry(1, 2, 1), boxM)
-    box2.scale.set(scale, scale, scale)
     scene.add(box2)
     box2.rotation.set(Math.PI / 24, Math.PI / 6, Math.PI / 12)
 
@@ -2011,7 +2066,9 @@ const main = () => {
       100
     )
     camera.position.set(0, 0, 7)
+    camera.add(ambientLight)
     camera.add(directionalLight)
+    directionalLight.position.set(10, 10, 10)
     scene.add(camera)
 
     // Controls

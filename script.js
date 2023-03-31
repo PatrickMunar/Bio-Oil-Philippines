@@ -355,7 +355,7 @@ const main = () => {
     })
   )
 
-  planePic.position.z = 0
+  planePic.position.z = 0.1
 
   const versusGroup = new THREE.Group()
   versusGroup.add(allParticles)
@@ -960,7 +960,11 @@ const main = () => {
           })
         } else {
           // Camera Movement
-          gsap.to(camera.position, { duration: 1, x: -mouse.x * 0.1 })
+          gsap.to(camera.rotation, {
+            duration: 1,
+            y: -mouse.x * 0.05,
+            x: mouse.y * 0.05,
+          })
 
           if (scrollY < scrollDestinations[1]) {
             // Product Choice
@@ -1958,7 +1962,7 @@ const main = () => {
   const tick = () => {
     if (isModalOut == false) {
       // Marching Cubes
-      if (blobUp.position.y - camera.position.y < 5) {
+      if (blobUp.position.y - camera.position.y < 7) {
         updateCubes(blob, blobTime, blobCount)
       }
 
@@ -2048,10 +2052,10 @@ const main = () => {
     })
 
     scene.add(box1)
-    box1.rotation.set(-Math.PI / 24, -Math.PI / 6, -Math.PI / 12)
+    box1.rotation.set(0, -Math.PI / 2, 0)
 
     scene.add(box2)
-    box2.rotation.set(Math.PI / 24, Math.PI / 6, Math.PI / 12)
+    box2.rotation.set(0, -Math.PI / 2, 0)
 
     /**
      * Renderer
